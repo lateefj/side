@@ -74,4 +74,4 @@ end
 
 
 source $SIDE_HOME/prompt.fish
-source $HOME/.side.fish
+source $HOME/.side/config.fish

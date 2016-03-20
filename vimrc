@@ -353,3 +353,9 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 endif
+
+" Extend vim via config file
+let g:slide_vimrc = $HOME . '/.slide/vimrc'
+if filereadable(!empty(glob(slide_vimrc)))
+  source slide_vimrc
+endif
