@@ -69,5 +69,9 @@ end
 
 
 
-source $SIDE_HOME/prompt.fish
-source $HOME/.side/config.fish
+if test -e $SIDE_HOME/prompt.fish
+  source $SIDE_HOME/prompt.fish
+end
+if test -e $HOME/.side/config.fish
+  source $HOME/.side/config.fish
+end
