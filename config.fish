@@ -63,10 +63,6 @@ function ge
   end
 end
 
-function fisher_install
-  fisher install cmorrell 
-end
-
 function ll
   ls -lh $argv
 end

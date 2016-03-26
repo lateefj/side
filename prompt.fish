@@ -1,25 +1,20 @@
 
-set -g __fish_git_prompt_showdirtystate 'yes'
-set -g __fish_git_prompt_char_dirtystate "✚"
-set -g __fish_git_prompt_char_untrackedfiles "…"
-set -g __fish_git_prompt_char_conflictedstate "✖"
-set -g __fish_git_prompt_char_cleanstate "✔"
-
+# Prompt that is not very specifal
+# TODO: Use segment plugin to fix this
 function git_prompt -d "Display the actual git state"
   set -l ref
   set -l dirty
   if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
-    set dirty (parse_git_dirty)
+    set dirty (git_is_dirty)
     set ref (command git symbolic-ref HEAD 2> /dev/null)
     set ref (command git symbolic-ref HEAD 2> /dev/null)
     if [ $status -gt 0 ]
-      set -l branch (command git show-ref --head -s --abbrev |head -n1 2> /dev/null)
+      set -l branch (git_branch_name)
       set ref "➦ $branch "
     end
     #set branch_symbol \uE0A0
     set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
     if [ "$dirty" != "" ]
-      #prompt_segment red black "($branch| $dirty)"
       set_color green
       echo -n " ($branch|"
       set_color red
@@ -27,7 +22,6 @@ function git_prompt -d "Display the actual git state"
       set_color green 
       echo -n ")"
     else
-      #prompt_segment green black "($branch| $dirty)"
       set_color green
       echo -n " ($branch|"
       set_color red
@@ -57,9 +51,7 @@ function fish_prompt
     echo -n (date '+%m-%d-%Y %X')
     echo -n ']'
 
-    #prompt_hg
-    #prompt_git
-    #git_prompt
+    git_prompt
     hg_prompt
 
     set -l arrow " $red➜ "
