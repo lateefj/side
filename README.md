@@ -15,8 +15,6 @@ This is a project to document configuration and usage of shell as an IDE. The cu
 ```bash
 brew install fish neovim
 chsh /usr/local/bin/fish
-curl -sL get.fisherman.sh | fish
-fisherman install 
 ```
 
 ### Checkout side
@@ -30,12 +28,17 @@ git clone git@github.com:lateefj/side.git
 ```bash
 rm $HOME/.config/fish/config.fish
 ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
+ln -s $HOME/side/vimrc $HOME/.vimrc
 
 ```
 
 ### Run post install script
 
 ```
+# Install fisher
+curl -sL get.fisherman.sh | fish
+fisher install 
+
 fisher install git_branch_name
 fisher install git_is_stashed
 fisher install git_is_dirty
