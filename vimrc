@@ -59,11 +59,16 @@ set laststatus=2
 
 syntax enable
 set background=dark
+filetype plugin on
+filetype plugin indent on    " required
+set nofoldenable
+
+" Spelling!
+set spell spelllang=en_us
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -72,13 +77,10 @@ Plugin 'gmarik/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
 
 " To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -88,6 +90,7 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
 
 if has('gui_running')
 else 
@@ -107,7 +110,7 @@ compiler fish
 
 " DelimitMage auto close tabes and quaots ect
 Plugin 'Raimondi/delimitMate.git'
-"
+
 
 Plugin 'jlanzarotta/bufexplorer'
 
@@ -194,6 +197,9 @@ Plugin 'klen/python-mode'
 Plugin 'tshirtman/vim-cython'
 au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
 
+" Restructured Text
+Plugin 'Rykka/riv.vim'
+
 " Javascript
 Plugin 'pangloss/vim-javascript'
 " Polymer
@@ -223,10 +229,6 @@ Plugin 'jmcantrell/vim-virtualenv'
 " ctrl-p
 "plugin 'kien/ctrlp.vim'
 "
-
-" Restructured text
-Plugin 'Rykka/riv.vim'
-"Plugin 'Rykka/clickable.vim'
 
 " Vagrant
 Plugin 'markcornick/vim-vagrant'
@@ -368,3 +370,4 @@ let g:slide_vimrc = $HOME . '/.slide/vimrc'
 if filereadable(!empty(glob(slide_vimrc)))
   source slide_vimrc
 endif
+
