@@ -48,6 +48,7 @@ end
 # TODO: Figure this out
 function e 
   set cmd (which_editor)
+  set TERM screen-256color
   eval $cmd $argv
 end
 

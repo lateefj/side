@@ -89,8 +89,14 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+if has('gui_running')
+else 
+  " 256 colors
+  set t_Co=256 
+  let g:solarized_termcolors=256
+endif
+
 Plugin 'altercation/vim-colors-solarized'
-let g:solarized_termcolors=256
 colorscheme solarized
 
 
@@ -184,6 +190,9 @@ filetype plugin indent on
 " Python
 Plugin 'klen/python-mode'
 
+" Cython
+Plugin 'tshirtman/vim-cython'
+au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
 
 " Javascript
 Plugin 'pangloss/vim-javascript'
