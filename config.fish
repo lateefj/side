@@ -9,7 +9,7 @@ set -xg SIDE_HOME $HOME/side
 # GO
 set -xg GOPATH $HOME
 # Set envionment variables
-set -xg PATH $PATH $HOME/bin $HOME/go/bin
+set -xg PATH $PATH $HOME/bin $HOME/go/bin $HOME/local/bin
 
 # Fortran
 set -xg FFLAGS -ff2c
@@ -68,6 +68,15 @@ function ll
   ls -lh $argv
 end
 
+
+function mkenv
+  mkdir -p $HOME/.venv
+  pyvenv $HOME/.venv/$argv
+end
+
+function wrkenv
+  source $HOME/.venv/$argv/bin/activate.fish
+end
 
 
 if test -e $SIDE_HOME/prompt.fish
