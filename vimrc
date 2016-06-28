@@ -366,8 +366,8 @@ if has("gui_running")
 endif
 
 " Extend vim via config file
-let g:slide_vimrc = $HOME . '/.slide/vimrc'
-if filereadable(!empty(glob(slide_vimrc)))
-  source slide_vimrc
+let g:side_vimrc = $HOME . '/.side/vimrc'
+if filereadable(!empty(glob(side_vimrc)))
+  source side_vimrc
 endif
 
