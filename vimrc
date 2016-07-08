@@ -34,6 +34,9 @@ map <C-l> :wincmd ><CR>
 nmap j gj
 nmap k gk
 
+" Json format alias
+command Jsonify %!python -m json.tool
+
 " Line number on
 set number
 " Fix alt key mapping for chromebooks
@@ -112,7 +115,7 @@ compiler fish
 Plugin 'Raimondi/delimitMate.git'
 
 
-Plugin 'jlanzarotta/bufexplorer'
+" Plugin 'jlanzarotta/bufexplorer'
 
 
 Plugin 'bling/vim-airline'
