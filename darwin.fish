@@ -1,2 +1,5 @@
 # Love path
-set -xg PATH $PATH /Applications/love.app/Contents/MacOS/love
+set -xg love /Applications/love.app/Contents/MacOS/love
+if test -e $love
+  set -xg PATH $PATH 
+end 

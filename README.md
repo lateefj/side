@@ -38,9 +38,7 @@ ln -s $HOME/side/vimrc $HOME/.vimrc
 # Install fisher
 curl -sL get.fisherman.sh | fish
 
-fisher install git_branch_name
-fisher install git_is_stashed
-fisher install git_is_dirty
+fisher install git_util
 fisher install segment
 
 mkdir -p $HOME/.vim/backup_files
