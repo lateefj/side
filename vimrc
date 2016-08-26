@@ -237,6 +237,8 @@ Plugin 'Shougo/neobundle.vim'
 
 Plugin 'Shougo/vimproc.vim'
 
+Plugin 'junegunn/vim-emoji'
+
 if system('uname -o') =~ '^GNU/'
   let g:make = 'make'
 endif
