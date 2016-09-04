@@ -30,6 +30,12 @@ function git_prompt -d "Display the actual git state"
       echo -n ")"
     end
     set_color normal
+
+    set -l nix_shell_info (
+        if test "$IN_NIX_SHELL" = "1"
+          echo -n "<nix-shell> "
+        end
+      )
   end
 end
 
