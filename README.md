@@ -36,21 +36,23 @@ ln -s $HOME/side/vimrc $HOME/.vimrc
 
 ```
 # Install fisher
-curl -sL get.fisherman.sh | fish
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 fisher install git_util
+fisher install git_is_dirty
 fisher install segment
 
 mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files
 mkdir -p $HOME/.vim/undo_files
-mkdir $HOME/.slide
+mkdir $HOME/.side
 ```
 
 
 ## Configuration
 
-To extend the existing slide configuration simply drop configuration exentions into $HOME/.slide.
+To extend the existing slide configuration simply drop configuration exertions into $HOME/.side.
 
-$HOME/.slide/vimrc to customize vim 
-$HOME/.slide/config.fish to extends fish shell
+* $HOME/.side/vimrc to customize vim 
+* $HOME/.side/config.fish to extends fish shell
