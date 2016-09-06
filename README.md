@@ -47,6 +47,7 @@ mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files
 mkdir -p $HOME/.vim/undo_files
 mkdir $HOME/.side
+mkdir -p $HOME/.vim/bundle/
 ```
 
 
