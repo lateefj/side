@@ -41,6 +41,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 fisher install git_util
 fisher install git_is_dirty
+fisher install pyenv
 fisher install segment
 
 mkdir -p $HOME/.vim/backup_files
