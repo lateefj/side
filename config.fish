@@ -35,10 +35,12 @@ function gs
   git status
 end
 
-
-set pyenv_exists (which pyenv)
-if [ $pyenv_exists ];  test -x $pyenv_exists
-  . (pyenv init - | psub)
+if test -e $HOME/.pyenv/bin/pyenv
+  set -xg PATH $PATH $HOME/.pyenv/bin
+  set pyenv_exists (which pyenv)
+  if [ $pyenv_exists ];  test -x $pyenv_exists
+    . (pyenv init - | psub)
+  end
 end
 # Use neovim if it exists
 function which_editor
