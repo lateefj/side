@@ -40,6 +40,7 @@ if test -e $HOME/.pyenv/bin/pyenv
   set pyenv_exists (which pyenv)
   if [ $pyenv_exists ];  test -x $pyenv_exists
     . (pyenv init - | psub)
+    . (pyenv virtualenv-init - | psub)
   end
 end
 # Use neovim if it exists
