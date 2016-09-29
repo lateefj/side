@@ -18,6 +18,10 @@ set undodir=~/.vim/undo_files//
 
 set splitright
 let mapleader = ","
+
+" ex mode is not a place I want to be
+nnoremap Q <nop>
+
 " Window short cuts
 map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
@@ -56,7 +60,10 @@ set autoindent
 " 2 esc to stop search
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " OS X thing for copy paste
-set clipboard=unnamed
+" set clipboard=unnamed
+" Linux thing cor copy paste ... 
+set clipboard=unnamedplus
+
 " Show status bar always
 set laststatus=2
 
