@@ -59,10 +59,8 @@ set autoindent
 
 " 2 esc to stop search
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
-" OS X thing for copy paste
-" set clipboard=unnamed
-" Linux thing cor copy paste ... 
-set clipboard=unnamedplus
+" Copy Paste clipboard 
+set clipboard=unnamed
 
 " Show status bar always
 set laststatus=2
@@ -143,6 +141,9 @@ map <C-n> :NERDTreeToggle<CR>
 " C
 Plugin 'vim-scripts/c.vim'
 
+" Ada 
+Plugin 'vim-scripts/Ada-Bundle'
+
 " Go
 Plugin 'fatih/vim-go'
 
@@ -213,6 +214,7 @@ Plugin 'bendavis78/vim-polymer'
 
 " Misc for lua
 Plugin 'xolox/vim-misc'
+
 " Sessions 
 Plugin 'xolox/vim-session'
 " Turn on session autoload already!!
@@ -244,7 +246,14 @@ Plugin 'Shougo/neobundle.vim'
 
 Plugin 'Shougo/vimproc.vim'
 
-Plugin 'junegunn/vim-emoji'
+Plugin 'junegunn/vader.vim'
+
+Plugin 'junegunn/vim-emoji' " Requires vader
+"let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
+"let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
+"let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
+"let g:gitgutter_sign_modified_removed = emoji#for('collision')
+"set completefunc=emoji#complete
 
 if system('uname -o') =~ '^GNU/'
   let g:make = 'make'
