@@ -60,7 +60,13 @@ set autoindent
 " 2 esc to stop search
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " Copy Paste clipboard 
-set clipboard=unnamed
+if system('uname -s') == "Darwin\n"
+  "OSX
+  set clipboard=unnamed 
+else
+  "Linux
+  set clipboard=unnamedplus
+endif
 
 " Show status bar always
 set laststatus=2
