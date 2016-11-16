@@ -10,6 +10,12 @@ set -xg SIDE_HOME $HOME/side
 set -xg GOPATH $HOME
 # Set envionment variables
 set -xg PATH $PATH $HOME/bin $HOME/go/bin $HOME/local/bin
+if test -e $HOME/go/bin
+  set -xg PATH $PATH $HOME/go/bin
+end
+if test -e $HOME/local/bin
+  set -xg PATH $PATH $HOME/bin $HOME/local/bin
+end
 
 # Fortran
 set -xg FFLAGS -ff2c
