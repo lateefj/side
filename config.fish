@@ -41,6 +41,11 @@ function gs
   git status
 end
 
+
+if test -e /usr/lib/dart/bin/
+  set -xg PATH $PATH /usr/lib/dart/bin/
+end
+
 if test -e $HOME/.pyenv/bin/pyenv
   set -xg PATH $PATH $HOME/.pyenv/bin
   set pyenv_exists (which pyenv)
