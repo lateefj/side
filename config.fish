@@ -6,20 +6,7 @@ set fisher_config ~/.config/fisherman
 # Set SIDE_HOME env
 set -xg SIDE_HOME $HOME/side
 
-# GO
-set -xg GOPATH $HOME
-# Set envionment variables
-set -xg PATH $PATH $HOME/bin $HOME/go/bin $HOME/local/bin
-if test -e $HOME/go/bin
-  set -xg PATH $PATH $HOME/go/bin
-end
-if test -e $HOME/local/bin
-  set -xg PATH $PATH $HOME/bin $HOME/local/bin
-end
-
-# Fortran
-set -xg FFLAGS -ff2c
-
+# Set a variable to tracks
 set -x PLATFORM (uname)
 
 switch $PLATFORM
@@ -29,23 +16,44 @@ switch $PLATFORM
     source $SIDE_HOME/darwin.fish
 end
 
+# Install a $HOME/local directory for installing local package
+if test -e $HOME/local/bin
+  set -xg PATH $PATH $HOME/local/bin
+end
+# Path for binaries installed in home
+if test -e $HOME/bin
+  set -xg PATH $PATH $HOME/bin 
+end
 
+# GO
+set -xg GOPATH $HOME
 
-# Mercurial
+# Set environment variables
+if test -e $HOME/go/bin
+  set -xg PATH $PATH $HOME/go/bin
+end
+
+# Fortran
+set -xg FFLAGS -ff2c
+
+# Mercurial alias 
 function hs
   hg status
 end
 
-# Git
+# Git alias
 function gs
   git status
 end
 
 
+# Dart library installed
 if test -e /usr/lib/dart/bin/
   set -xg PATH $PATH /usr/lib/dart/bin/
 end
 
+
+# pyenv installation
 if test -e $HOME/.pyenv/bin/pyenv
   set -xg PATH $PATH $HOME/.pyenv/bin
   set pyenv_exists (which pyenv)
@@ -54,6 +62,7 @@ if test -e $HOME/.pyenv/bin/pyenv
     . (pyenv virtualenv-init - | psub)
   end
 end
+
 # Use neovim if it exists
 function which_editor
   set nvim_path (which nvim)
@@ -105,6 +114,7 @@ if test -e $HOME/.side/config.fish
   source $HOME/.side/config.fish
 end
 
+# TODO: Use nix for package installation?
 # NIX
 if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
 #eval (bash -c "source ~/.nix-profile/etc/profile.d/nix.sh; fish --command 'echo set -x NIX_PATH \"\$NIX_PATH\"\;; echo set -x PATH \"\$PATH\"\;; echo set -x SSL_CERT_FILE \"\$SSL_CERT_FILE\"'")
