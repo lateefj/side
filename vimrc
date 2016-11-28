@@ -115,6 +115,10 @@ endif
 
 Plugin 'altercation/vim-colors-solarized'
 colorscheme solarized
+" Plugin 'nanotech/jellybeans.vim'
+" colorscheme jellybeans
+
+hi Normal ctermbg=NONE
 
 
 " Fish shell

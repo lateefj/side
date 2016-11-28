@@ -1,7 +1,4 @@
-
-set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
-. $fisher_home/config.fish
 
 # Set SIDE_HOME env
 set -xg SIDE_HOME $HOME/side
