@@ -29,7 +29,10 @@ git clone git@github.com:lateefj/side.git
 rm $HOME/.config/fish/config.fish
 ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
 ln -s $HOME/side/vimrc $HOME/.vimrc
-
+ln -s $HOME/side/vimrc $HOME/.vimrc
+mkdir -p ~/.config/nvim
+ln -s $HOME/side/vimrc $HOME/.config/nvim/init.vim
+ln -s $HOME/.vim $HOME/.nvim
 ```
 
 ### Run post install script
