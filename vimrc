@@ -227,7 +227,8 @@ endif
 filetype plugin indent on
 
 " Python
-Plugin 'klen/python-mode'
+Plugin 'davidhalter/jedi-vim'
+
 
 " Cython
 Plugin 'tshirtman/vim-cython'
