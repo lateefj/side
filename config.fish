@@ -22,6 +22,11 @@ if test -e $HOME/bin
   set -xg PATH $PATH $HOME/bin 
 end
 
+# tmux unicode
+function utmux
+  tmux -u $argv
+end
+
 # GO
 set -xg GOPATH $HOME
 

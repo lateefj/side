@@ -117,6 +117,9 @@ Plugin 'altercation/vim-colors-solarized'
 colorscheme solarized
 " Plugin 'nanotech/jellybeans.vim'
 " colorscheme jellybeans
+" Plugin 'vim-scripts/moria'
+" let moria_monochrome = 1
+" colorscheme moria
 
 hi Normal ctermbg=NONE
 
@@ -374,8 +377,7 @@ if has("gui_running")
 endif
 
 " Extend vim via config file
-let g:side_vimrc = $HOME . '/.side/vimrc'
-if filereadable(!empty(glob(side_vimrc)))
-  source side_vimrc
+let side_vimrc=$HOME . '/.side/vimrc'
+if !empty(glob(side_vimrc)) " Not sure but can't seem to use the variable in the source command 
+	source $HOME/.side/vimrc 
 endif
-
