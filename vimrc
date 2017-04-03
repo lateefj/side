@@ -240,10 +240,38 @@ au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
 " Restructured Text
 Plugin 'Rykka/riv.vim'
 
+" Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
+" Markdown
+Plugin 'junegunn/goyo.vim'
+" Markdown Highlights 
+Plugin 'tpope/vim-markdown'
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['javascript', 'go', 'php']
+
+" Goyo
+function! s:auto_goyo()
+    if &ft == 'markdown' && winnr('$') == 1
+        Goyo 80
+    elseif exists('#goyo')
+        Goyo!
+    endif
+endfunction
+
+function! s:goyo_leave()
+    if winnr('$') < 2
+        silent! :q
+    endif
+endfunction
+
+augroup goyo_markdown
+    autocmd!
+    autocmd BufNewFile,BufRead * call s:auto_goyo()
+    autocmd! User GoyoLeave nested call goyo_leave()
+augroup END
+
+
 " Javascript
 Plugin 'pangloss/vim-javascript'
-" Polymer
-Plugin 'bendavis78/vim-polymer'
 
 " Misc for lua
 Plugin 'xolox/vim-misc'

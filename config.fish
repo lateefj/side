@@ -11,6 +11,8 @@ switch $PLATFORM
     source $SIDE_HOME/linux.fish
   case Darwin
     source $SIDE_HOME/darwin.fish
+  case FreeBSD
+    source $SIDE_HOME/bsd.fish
 end
 
 # Install a $HOME/local directory for installing local package
