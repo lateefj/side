@@ -266,7 +266,7 @@ endfunction
 augroup goyo_markdown
     autocmd!
     autocmd BufNewFile,BufRead * call s:auto_goyo()
-    autocmd! User GoyoLeave nested call goyo_leave()
+    autocmd! User GoyoLeave nested call s:goyo_leave()
 augroup END
 
 
