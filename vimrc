@@ -80,85 +80,128 @@ set nofoldenable
 " Spelling!
 set spell spelllang=en_us
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Plugins that don't have special configuration with them
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plug 'tpope/vim-fugitive'
+" DelimitMage auto close tabes and quaots ect
+"Plug 'Raimondi/delimitMate.git'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+" fzf fuzzy search matching 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" To ignore plugin indent changes, instead use:
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+" Plug 'jlanzarotta/bufexplorer'
+
+"Syntastic
+Plug 'scrooloose/syntastic'
+
+Plug 'bling/vim-airline'
+"let g:airline#extensions#tabline#enabled = 1
+
+"NERDTree
+Plug 'scrooloose/nerdtree'
+" NERDTree ctrl-n
+map <C-n> :NERDTreeToggle<CR>
+
+" Git nerdTree git plugin
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" C
+Plug 'vim-scripts/c.vim'
+
+" Ada 
+Plug 'vim-scripts/Ada-Bundle'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Lua
+Plug 'xolox/vim-lua-ftplugin'
+
+" Dart
+Plug 'dart-lang/dart-vim-plugin'
+
+" Python
+Plug 'davidhalter/jedi-vim'
+
+" Restructured Text
+Plug 'Rykka/riv.vim'
+
+" Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
+" Markdown Highlights 
+Plug 'tpope/vim-markdown'
+
+" Cython
+Plug 'tshirtman/vim-cython'
+au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
 
 
+" Javascript
+Plug 'pangloss/vim-javascript'
+
+" Misc for lua
+Plug 'xolox/vim-misc'
+
+" csv
+Plug 'chrisbra/csv.vim'
+
+" Git gutter
+Plug 'airblade/vim-gitgutter'
+
+" Virtualenv
+Plug 'jmcantrell/vim-virtualenv'
+
+
+" Vagrant
+Plug 'markcornick/vim-vagrant'
+
+" Neocomplete
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neocomplcache.vim'
+Plug 'Shougo/neobundle.vim'
+
+Plug 'Shougo/vimproc.vim'
+Plug 'junegunn/vader.vim'
+
+Plug 'junegunn/vim-emoji' " Requires vader
+call plug#end()
+
+
+call plug#begin('~/.vim/plugged')
+Plug 'altercation/vim-colors-solarized'
+call plug#end()
 if has('gui_running')
 else 
   " 256 colors
   set t_Co=256 
   let g:solarized_termcolors=256
 endif
-
-Plugin 'altercation/vim-colors-solarized'
 colorscheme solarized
-" Plugin 'nanotech/jellybeans.vim'
+" Plug 'nanotech/jellybeans.vim'
 " colorscheme jellybeans
-" Plugin 'vim-scripts/moria'
+" Plug 'vim-scripts/moria'
 " let moria_monochrome = 1
 " colorscheme moria
 
 hi Normal ctermbg=NONE
 
 
+
 " Fish shell
-Plugin 'dag/vim-fish'
+call plug#begin('~/.vim/plugged')
+Plug 'dag/vim-fish'
+call plug#end()
 " Set up :make to use fish for syntax checking.
 compiler fish
 
-" DelimitMage auto close tabes and quaots ect
-Plugin 'Raimondi/delimitMate.git'
-
-
-" Plugin 'jlanzarotta/bufexplorer'
-
-
-Plugin 'bling/vim-airline'
-let g:airline#extensions#tabline#enabled = 1
-
-"Syntastic
-Plugin 'scrooloose/syntastic'
-
-"NERDTree
-Plugin 'scrooloose/nerdtree'
-
-" NERDTree git plugin
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-
-" NERDTree ctrl-n
-map <C-n> :NERDTreeToggle<CR>
-
-" C
-Plugin 'vim-scripts/c.vim'
-
-" Ada 
-Plugin 'vim-scripts/Ada-Bundle'
 
 " Go
-Plugin 'fatih/vim-go'
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go'
+call plug#end()
 
 " au BufRead,BufNewFile *.go set filetype=go
 "let g:go_snippet_engine = "neosnippet"
@@ -198,55 +241,11 @@ function! s:build_go_files()
 endfunction
 
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-" Rust
-Plugin 'rust-lang/rust.vim'
 
-" Lua
-Plugin 'xolox/vim-lua-ftplugin'
-
-" Nim
-Plugin 'zah/nimrod.vim'
-au BufRead,BufNewFile *.nim set filetype=nim
-fun! JumpToDef()
-  if exists("*GotoDefinition_" . &filetype)
-    call GotoDefinition_{&filetype}()
-  else
-    exe "norm! \<C-]>"
-  endif
-endf
-
-" Jump to tag
-nn <M-g> :call JumpToDef()<cr>
-ino <M-g> <esc>:call JumpToDef()<cr>i
-
-" Dart
-" https://github.com/dart-lang/dart-vim-plugin
-Plugin 'dart-lang/dart-vim-plugin'
-au BufRead,BufNewFile *.dart set filetype=dart
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/dart-vim-plugin
-endif
-filetype plugin indent on
-
-" Python
-Plugin 'davidhalter/jedi-vim'
-
-
-" Cython
-Plugin 'tshirtman/vim-cython'
-au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
-
-" Restructured Text
-Plugin 'Rykka/riv.vim'
-
-" Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
-" Markdown
-Plugin 'junegunn/goyo.vim'
-" Markdown Highlights 
-Plugin 'tpope/vim-markdown'
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['javascript', 'go', 'php']
+call plug#begin('~/.vim/plugged')
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+call plug#end()
+autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
 " Goyo
 function! s:auto_goyo()
@@ -270,63 +269,6 @@ augroup goyo_markdown
 augroup END
 
 
-" Javascript
-Plugin 'pangloss/vim-javascript'
-
-" Misc for lua
-Plugin 'xolox/vim-misc'
-
-" Sessions 
-Plugin 'xolox/vim-session'
-" Turn on session autoload already!!
-let g:session_autoload = 1
-let g:session_autosave = 1
-let g:sesson_autosave_periodic = 1
-let g:session_autosave = 'no'
-
-" csv
-Plugin 'chrisbra/csv.vim'
-
-" Git gutter
-Plugin 'airblade/vim-gitgutter'
-
-" Virtualenv
-Plugin 'jmcantrell/vim-virtualenv'
-
-
-" Vagrant
-Plugin 'markcornick/vim-vagrant'
-
-" Neocomplete
-Plugin 'Shougo/neocomplete'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/neobundle.vim'
-
-Plugin 'Shougo/vimproc.vim'
-
-Plugin 'junegunn/vader.vim'
-
-Plugin 'junegunn/vim-emoji' " Requires vader
-"let g:gitgutter_sign_added = emoji#for('small_blue_diamond')
-"let g:gitgutter_sign_modified = emoji#for('small_orange_diamond')
-"let g:gitgutter_sign_removed = emoji#for('small_red_triangle')
-"let g:gitgutter_sign_modified_removed = emoji#for('collision')
-"set completefunc=emoji#complete
-
-if system('uname -o') =~ '^GNU/'
-  let g:make = 'make'
-endif
-" Replacement for ctrlp
-Plugin 'Shougo/unite.vim'
-nnoremap <C-p> :Unite file_rec/async<cr>
-nnoremap <space><space> :Unite file_rec/async<cr>
-nnoremap <space>/ :Unite grep:.<cr>
-"Plugin 'rking/ag.vim'
-"let g:unite_source_rec_async_command =
-            \ 'ag --follow --nocolor --nogroup --hidden -g ""'
 
 
 "Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
@@ -359,7 +301,7 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" Plugin key-mappings.
+" Plug key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
 inoremap <expr><C-l>     neocomplcache#complete_common_string()
 

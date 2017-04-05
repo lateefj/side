@@ -40,7 +40,8 @@ ln -s $HOME/.vim $HOME/.nvim
 ```
 # Install fisher
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 fisher install git_util
 fisher install git_is_dirty
