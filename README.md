@@ -43,6 +43,9 @@ curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+vim +PlugInstall
+vim +GoInstallBinaries
+
 fisher install git_util
 fisher install git_is_dirty
 fisher install pyenv
@@ -52,7 +55,6 @@ mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files
 mkdir -p $HOME/.vim/undo_files
 mkdir $HOME/.side
-mkdir -p $HOME/.vim/bundle/
 ```
 
 
