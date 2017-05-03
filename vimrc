@@ -57,6 +57,9 @@ set expandtab
 set shiftwidth=2
 set autoindent 
 
+" When building it automatically write the contents of a file
+set autowrite
+
 " 2 esc to stop search
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " Copy Paste clipboard 
@@ -86,6 +89,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 " DelimitMage auto close tabes and quaots ect
 "Plug 'Raimondi/delimitMate.git'
+
+" Ctrl -P
+Plug 'ctrlpvim/ctrlp.vim'
 
 " fzf fuzzy search matching 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -145,6 +151,9 @@ Plug 'xolox/vim-misc'
 " csv
 Plug 'chrisbra/csv.vim'
 
+" End quoates ect
+Plug 'Raimondi/delimitMate'
+
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
@@ -173,6 +182,14 @@ Plug 'dag/vim-fish'
 
 " Go
 Plug 'fatih/vim-go'
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+nnoremap <leader>f :cnext<CR>
+nnoremap <leader>e :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+" Way to automatically split
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 autocmd! User goyo.vim echom 'Goyo is now loaded!'
@@ -197,6 +214,28 @@ colorscheme solarized
 
 hi Normal ctermbg=NONE
 
+" Go  config
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+" Nicer highlights
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+" Checkers
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+" Lint on save
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_deadline = "5s"
+" Go shortcuts
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>C <Plug>(go-coverage-toggle)
 
 
 " Set up :make to use fish for syntax checking.
