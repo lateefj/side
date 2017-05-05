@@ -185,7 +185,7 @@ Plug 'fatih/vim-go'
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 nnoremap <leader>f :cnext<CR>
-nnoremap <leader>e :cprevious<CR>
+nnoremap <leader>b :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
 " Way to automatically split
