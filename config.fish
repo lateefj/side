@@ -57,14 +57,18 @@ if test -e /usr/lib/dart/bin/
 end
 
 
-# pyenv installation
+# Add pyenv to path if installed
 if test -e $HOME/.pyenv/bin/pyenv
   set -xg PATH $PATH $HOME/.pyenv/bin
-  set pyenv_exists (which pyenv)
-  if [ $pyenv_exists ];  test -x $pyenv_exists
-    . (pyenv init - | psub)
-    . (pyenv virtualenv-init - | psub)
-  end
+  set -xg  PYENV_ROOT $HOME/.pyenv
+end
+
+# If pyenv exists then run it
+set pyenv_exists (which pyenv)
+if [ $pyenv_exists ];  test -x $pyenv_exists
+  source (pyenv init - | psub)
+  source (pyenv virtualenv-init - | psub)
+  pyenv rehash
 end
 
 # Use neovim if it exists
