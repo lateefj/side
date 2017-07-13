@@ -50,6 +50,10 @@ function gs
   git status
 end
 
+# Local nim
+if test -e $HOME/local/nim
+  set -xg PATH $PATH $HOME/local/nim/bin
+end
 
 # Dart library installed
 if test -e /usr/lib/dart/bin/

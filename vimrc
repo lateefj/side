@@ -101,6 +101,15 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "Syntastic
 Plug 'scrooloose/syntastic'
 
+" Unit outline
+Plug 'h1mesuke/unite-outline'
+
+" Neo make
+Plug 'neomake/neomake'
+
+" Define your own operator
+Plug 'kana/vim-operator-user'
+
 Plug 'bling/vim-airline'
 "let g:airline#extensions#tabline#enabled = 1
 
@@ -132,6 +141,9 @@ Plug 'davidhalter/jedi-vim'
 
 " Restructured Text
 Plug 'Rykka/riv.vim'
+
+" Nim 
+Plug 'baabelfish/nvim-nim'
 
 " Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
 " Markdown Highlights 
@@ -229,7 +241,7 @@ let g:go_highlight_build_constraints = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " Lint on save
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet', ]
 let g:go_metalinter_deadline = "5s"
 " Go shortcuts
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
