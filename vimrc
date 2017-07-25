@@ -181,13 +181,11 @@ Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
 
-"Solarized
-Plug 'altercation/vim-colors-solarized'
-" Plug 'nanotech/jellybeans.vim'
-" colorscheme jellybeans
-" Plug 'vim-scripts/moria'
-" let moria_monochrome = 1
-" colorscheme moria
+" seoul256
+Plug 'junegunn/seoul256.vim'
+" Solarized
+" Plug 'altercation/vim-colors-solarized'
+
 
 " Fish shell
 Plug 'dag/vim-fish'
@@ -203,6 +201,9 @@ nnoremap <leader>a :cclose<CR>
 " Way to automatically split
 Plug 'AndrewRadev/splitjoin.vim'
 
+" Highlighter
+Plug 'junegunn/limelight.vim'
+" Mark down editor
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
@@ -216,14 +217,7 @@ Plug 'Shougo/neobundle.vim'
 call plug#end()
 
 
-if has('gui_running')
-else 
-  " 256 colors
-  set t_Co=256 
-  let g:solarized_termcolors=256
-endif
-colorscheme solarized
-
+colo seoul256
 hi Normal ctermbg=NONE
 
 " Go  config
@@ -253,12 +247,13 @@ autocmd FileType go nmap <leader>C <Plug>(go-coverage-toggle)
 " Set up :make to use fish for syntax checking.
 compiler fish
 
-
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " Goyo
 function! s:auto_goyo()
     if &ft == 'markdown' && winnr('$') == 1
-        Goyo 80
+        Goyo 70%
     elseif exists('#goyo')
         Goyo!
     endif
