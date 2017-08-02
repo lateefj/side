@@ -92,7 +92,6 @@ function e
   eval $cmd $argv
 end
 
-set -U EDITOR (which_editor)
 
 # Gui vim
 function ge
