@@ -75,7 +75,6 @@ endif
 set laststatus=2
 
 syntax enable
-set background=dark
 filetype plugin on
 filetype plugin indent on    " required
 set nofoldenable
@@ -185,6 +184,12 @@ Plug 'junegunn/vim-emoji' " Requires vader
 Plug 'junegunn/seoul256.vim'
 " Solarized
 " Plug 'altercation/vim-colors-solarized'
+" Plug 'fneu/breezy'
+
+" Plug 'nanotech/jellybeans.vim'
+
+Plug 'itchyny/lightline.vim'
+
 
 
 " Fish shell
@@ -217,7 +222,9 @@ Plug 'Shougo/neobundle.vim'
 call plug#end()
 
 
+let g:seoul256_background = 233
 colo seoul256
+
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
@@ -354,7 +361,7 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 if has("gui_running")
-  set background=dark
+  set background=light
   set guioptions-=T         " Remove toolbar
   if has("gui_gtk2")
     "set guifont=Consolas\ 10
@@ -365,6 +372,8 @@ if has("gui_running")
   elseif has("gui_win32")
     set guifont=Consolas:h11:cANSI
   endif
+else
+  set background=dark
 endif
 
 " Extend vim via config file
