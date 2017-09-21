@@ -183,7 +183,7 @@ Plug 'junegunn/vim-emoji' " Requires vader
 " seoul256
 Plug 'junegunn/seoul256.vim'
 " Solarized
-" Plug 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 " Plug 'fneu/breezy'
 
 " Plug 'nanotech/jellybeans.vim'
@@ -222,8 +222,10 @@ Plug 'Shougo/neobundle.vim'
 call plug#end()
 
 
-let g:seoul256_background = 233
-colo seoul256
+"let g:seoul256_background = 233
+"colo seoul256
+
+colo solarized
 
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'

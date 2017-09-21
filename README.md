@@ -14,7 +14,9 @@ This is a project to document configuration and usage of shell as an IDE. The cu
 
 ```bash
 brew install fish neovim
-chsh /usr/local/bin/fish
+brew install reattach-to-user-namespace
+brew install vim --with-lua --with-python --with-wrap-pbcopy-and-pbpaste
+chsh -s /usr/local/bin/fish -u $USER
 ```
 
 ### Checkout side
@@ -41,6 +43,10 @@ ln -s $HOME/.vim $HOME/.nvim
 # Install fisher
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Neovim plug install
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 vim +PlugInstall
