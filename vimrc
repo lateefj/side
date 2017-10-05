@@ -4,6 +4,7 @@ if $SHELL =~ 'fish'
   set shell=/bin/bash
 endif
 
+let s:uname = substitute(system('uname'), "\n", "", "")
 " Turn the error bell off!!
 set noeb vb t_vb=
 
@@ -179,18 +180,20 @@ Plug 'Shougo/vimproc.vim'
 Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
-
-" seoul256
-Plug 'junegunn/seoul256.vim'
-" Solarized
-Plug 'altercation/vim-colors-solarized'
+if has("unix")
+  if s:uname == "FreeBSD"
+    " seoul256
+    Plug 'junegunn/seoul256.vim'
+  else
+    " Solarized
+    Plug 'altercation/vim-colors-solarized'
+  endif
+endif
 " Plug 'fneu/breezy'
 
 " Plug 'nanotech/jellybeans.vim'
 
-Plug 'itchyny/lightline.vim'
-
-
+"Plug 'itchyny/lightline.vim'
 
 " Fish shell
 Plug 'dag/vim-fish'
@@ -221,11 +224,16 @@ Plug 'Shougo/neocomplcache.vim'
 Plug 'Shougo/neobundle.vim'
 call plug#end()
 
-
-"let g:seoul256_background = 233
-"colo seoul256
-
-colo solarized
+if has("unix")
+  if s:uname == "FreeBSD"
+    let g:seoul256_background = 233
+    " seoul256
+    colo seoul256
+  else
+    " Solarized
+    colo solarized 
+  endif
+endif
 
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
