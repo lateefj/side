@@ -142,6 +142,9 @@ Plug 'davidhalter/jedi-vim'
 " Restructured Text
 Plug 'Rykka/riv.vim'
 
+" Zig
+Plug 'andrewrk/zig.vim'
+
 " Nim 
 Plug 'baabelfish/nvim-nim'
 
