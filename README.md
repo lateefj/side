@@ -64,6 +64,7 @@ mkdir $HOME/.side
 ```
 
 ## Window Manager
+
 OS X [http://www.hammerspoon.org](http://www.hammerspoon.org)
 
 ```bash
@@ -72,6 +73,16 @@ if [ "$(uname)" == "Darwin" ]; then
   # Simlink the configuration and add a require to include the functionality
   [ -f $HOME/.hammerspoon/hammerspoon.lua ] || ln -s $HOME/side/hammerspoon.lua $HOME/.hammerspoon/side.lua && echo 'require("side")' >> $HOME/.hammerspoon/init.lua
 fi
+```
+
+Linux / BSD
+
+Awsome WM
+
+```bash
+
+mkdir -p  ~/.config/awesome/
+ln -s $HOME/side/awesome.lua $HOME/.config/awesome/awesome.lua && echo 'require("side")' >> $HOME/.config/awesome/side.lua
 ```
 
 

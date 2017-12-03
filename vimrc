@@ -64,7 +64,9 @@ set autowrite
 " 2 esc to stop search
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " Copy Paste clipboard 
-if system('uname -s') == "Darwin\n"
+if $TMUX == ''
+  set clipboard+=unnamed
+elseif system('uname -s') == "Darwin\n"
   "OSX
   set clipboard=unnamed 
 else
@@ -78,7 +80,8 @@ set laststatus=2
 syntax enable
 filetype plugin on
 filetype plugin indent on    " required
-set nofoldenable
+
+set nofoldenable    " disable folding
 
 " Spelling!
 set spell spelllang=en_us
