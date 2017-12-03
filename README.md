@@ -63,6 +63,17 @@ mkdir -p $HOME/.vim/undo_files
 mkdir $HOME/.side
 ```
 
+## Window Manager
+OS X [http://www.hammerspoon.org](http://www.hammerspoon.org)
+
+```bash
+if [ "$(uname)" == "Darwin" ]; then
+  [ -f $HOME/.hammerspoon ] || mkdir -p $HOME/.hammerspoon
+  # Simlink the configuration and add a require to include the functionality
+  [ -f $HOME/.hammerspoon/hammerspoon.lua ] || ln -s $HOME/side/hammerspoon.lua $HOME/.hammerspoon/side.lua && echo 'require("side")' >> $HOME/.hammerspoon/init.lua
+fi
+```
+
 
 ## Configuration
 
