@@ -113,8 +113,9 @@ Plug 'neomake/neomake'
 " Define your own operator
 Plug 'kana/vim-operator-user'
 
-Plug 'bling/vim-airline'
-"let g:airline#extensions#tabline#enabled = 1
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 "NERDTree
 Plug 'scrooloose/nerdtree'
@@ -186,13 +187,14 @@ Plug 'Shougo/vimproc.vim'
 Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
+" Color scheme is great
+Plug 'NLKNguyen/papercolor-theme'
 if has("unix")
   if s:uname == "FreeBSD"
-    " seoul256
-    Plug 'junegunn/seoul256.vim'
+    " For future reference
   else
     " Solarized
-    Plug 'altercation/vim-colors-solarized'
+    "Plug 'altercation/vim-colors-solarized'
   endif
 endif
 " Plug 'fneu/breezy'
@@ -230,16 +232,10 @@ Plug 'Shougo/neocomplcache.vim'
 Plug 'Shougo/neobundle.vim'
 call plug#end()
 
-if has("unix")
-  if s:uname == "FreeBSD"
-    let g:seoul256_background = 233
-    " seoul256
-    colo seoul256
-  else
-    " Solarized
-    colo solarized 
-  endif
-endif
+
+colo PaperColor
+let g:airline_theme='papercolor'
+let g:lightline = { 'colorscheme': 'PaperColor' }
 
 " Color name (:help cterm-colors) or ANSI code
 let g:limelight_conceal_ctermfg = 'gray'
@@ -370,7 +366,6 @@ endif
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 if has("gui_running")
-  set background=light
   set guioptions-=T         " Remove toolbar
   if has("gui_gtk2")
     "set guifont=Consolas\ 10
@@ -382,7 +377,15 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 else
-  set background=dark
+  " place holder
+endif
+
+if has("unix")
+  if s:uname == "FreeBSD"
+    set background=light
+  else
+    set background=dark
+  endif
 endif
 
 " Extend vim via config file
