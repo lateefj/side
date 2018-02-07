@@ -59,7 +59,7 @@ editor_cmd = terminal .. " -e " .. editor
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 -- Command Key
-cmdkey = "Alt"
+modalt = "Alt"
 -- Control Key
 ctrlkey = "Control"
 
@@ -371,6 +371,12 @@ clientkeys = gears.table.join(
             c.maximized = not c.maximized
             c:raise()
         end ,
+        {description = "minimize", group = "client"}),
+    awful.key({ modkey, modalt}, "f",
+        function (c)
+            c.maximized = not c.maximized
+            c:raise()
+        end ,
         {description = "(un)maximize", group = "client"}),
     awful.key({ modkey, "Control" }, "m",
         function (c)
@@ -380,10 +386,16 @@ clientkeys = gears.table.join(
         {description = "(un)maximize vertically", group = "client"}),
     awful.key({ modkey, "Shift"   }, "m",
         function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c:raise()
-        end ,
-        {description = "(un)maximize horizontally", group = "client"})
+          c.maximized_horizontal = not c.maximized_horizontal
+          c:raise()
+        end,
+        {description = "(un)maximize horizontally", group = "client"}),
+    awful.key({ }, "F11", 
+        function () 
+          naughty.notify({ title = "Locking Screen!", text = "Lock screen key clicked!", timeout = 0 })
+          awful.util.spawn("xscreensaver-command -lock") 
+        end,
+        {description = "lock screen", group="client"})
 )
 
 -- Bind all key numbers to tags.
@@ -565,6 +577,10 @@ client.connect_signal("mouse::enter", function(c)
     end
 end)
 
+-- Start xscreensaver in the background
+awful.util.spawn_with_shell("xscreensaver -no-splash")
+
+-- Test out the notification system
 naughty.notify({ title = "Test Notification!", text = "Hi this is a test", timeout = 0 })
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
