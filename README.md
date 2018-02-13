@@ -51,7 +51,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 vim +PlugInstall
 vim +GoInstallBinaries
-
+gometalinter --install
 fisher install git_util
 fisher install git_is_dirty
 fisher install pyenv
