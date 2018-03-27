@@ -90,12 +90,15 @@ set spell spelllang=en_us
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
-" DelimitMage auto close tabes and quaots ect
-"Plug 'Raimondi/delimitMate.git'
 
-" Ctrl -P
-Plug 'ctrlpvim/ctrlp.vim'
-
+" Search
+Plug 'Shougo/denite.nvim'
+" Tag bar
+Plug 'majutsushi/tagbar'
+" Version control thing
+Plug 'airblade/vim-rooter'
+" Markdown
+Plug 'gabrielelana/vim-markdown'
 " fzf fuzzy search matching 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
@@ -242,6 +245,12 @@ let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
 
 hi Normal ctermbg=NONE
+
+" Search Denite
+nmap <F9> <Esc>:Denite file_rec<CR>
+nmap <C-P> <Esc>:Denite file_rec<CR>
+" Tag Bar Toggle
+nmap <C-T> <Esc>:TagbarToggle<CR>
 
 " Go  config
 let g:go_list_type = "quickfix"
