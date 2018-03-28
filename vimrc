@@ -282,31 +282,6 @@ autocmd FileType go nmap <leader>C <Plug>(go-coverage-toggle)
 " Set up :make to use fish for syntax checking.
 compiler fish
 
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-
-" Goyo
-function! s:auto_goyo()
-    if &ft == 'markdown' && winnr('$') == 1
-        Goyo 70%
-    elseif exists('#goyo')
-        Goyo!
-    endif
-endfunction
-
-function! s:goyo_leave()
-    if winnr('$') < 2
-        silent! :q
-    endif
-endfunction
-
-augroup goyo_markdown
-    autocmd!
-    autocmd BufNewFile,BufRead * call s:auto_goyo()
-    autocmd! User GoyoLeave nested call s:goyo_leave()
-augroup END
-
-
 
 " Neocomplete
 
