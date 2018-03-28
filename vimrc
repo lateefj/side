@@ -88,7 +88,15 @@ set spell spelllang=en_us
 
 " Plugins that don't have special configuration with them
 call plug#begin('~/.vim/plugged')
-
+" Deoplete 
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 Plug 'tpope/vim-fugitive'
 
 " Search
@@ -222,13 +230,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 
 " Highlighter
 Plug 'junegunn/limelight.vim'
-" Mark down editor
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-autocmd! User goyo.vim echom 'Goyo is now loaded!'
 
 
-" Deoplete
-Plug 'Shougo/deoplete.nvim'
 call plug#end()
 
 
