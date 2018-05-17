@@ -187,8 +187,8 @@ Plug 'Raimondi/delimitMate'
 " Git gutter
 Plug 'airblade/vim-gitgutter'
 
-" Virtualenv
-Plug 'jmcantrell/vim-virtualenv'
+" Pyenv
+Plug 'lambdalisue/vim-pyenv'
 
 
 " Vagrant
