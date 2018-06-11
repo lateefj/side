@@ -324,7 +324,7 @@ endif
 
 if has("unix")
   if s:uname == "FreeBSD"
-    set background=light
+    set background=dark
   else
     set background=dark
   endif
