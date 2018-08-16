@@ -246,6 +246,8 @@ call plug#end()
 if has("unix")
   if s:uname == "Darwin"
     let g:clang_library_path='/usr/local/opt/llvm/lib'
+  elseif s:uname == "FreeBSD"
+    let g:clang_library_path='/usr/local/llvm-devel/lib'
   endif
 endif
 

@@ -18,6 +18,21 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local volume_control = require("volume-control")
+ -- define your volume control, using default settings:
+
+volumecfg = volume_control({
+  device  = "pulse",            -- e.g.: "default", "pulse"
+  cardid  = nil,            -- e.g.: 0, 1, ...
+  channel = "Master",
+  step    = '5%',           -- step size for up/down
+  lclick  = "toggle",       -- mouse actions described below
+  mclick  = "pavucontrol",
+  rclick  = "pavucontrol",
+  widget  = nil,            -- use this instead of creating a awful.widget.textbox
+  font    = nil,            -- font used for the widget's text
+  callback = nil,           -- called to update the widget: `callback(self, state)`
+})
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -227,6 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+						volumecfg.widget, -- Volume control
             s.mylayoutbox,
         },
     }
@@ -339,7 +355,11 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+	-- Audio controls
+	 awful.key({}, "XF86AudioRaiseVolume", function() volumecfg:up() end),
+	 awful.key({}, "XF86AudioLowerVolume", function() volumecfg:down() end),
+	 awful.key({}, "XF86AudioMute",        function() volumecfg:toggle() end)
 )
 
 clientkeys = gears.table.join(
@@ -585,3 +605,4 @@ naughty.notify({ title = "Test Notification!", text = "Hi this is a test", timeo
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+

@@ -6,6 +6,9 @@ set -xg SIDE_HOME $HOME/side
 # Set a variable to tracks
 set -x PLATFORM (uname)
 
+# Use vi key binds
+fish_vi_key_bindings
+
 switch $PLATFORM
   case Linux
     source $SIDE_HOME/linux.fish
