@@ -163,7 +163,7 @@ Plug 'Rykka/riv.vim'
 Plug 'andrewrk/zig.vim'
 
 " Nim 
-Plug 'baabelfish/nvim-nim'
+Plug 'zah/nim.vim'
 
 " Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
 " Markdown Highlights 
