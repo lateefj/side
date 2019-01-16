@@ -52,9 +52,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 vim +PlugInstall
 vim +GoInstallBinaries
 gometalinter --install
-fisher install git_util
-fisher install pyenv
-fisher install segment
+fisher add pyenv
+fisher add segment
+fisher add fishpkg/fish-git-util
 
 mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files
