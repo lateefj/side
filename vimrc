@@ -28,7 +28,7 @@ map <leader>h :wincmd h<CR>
 map <leader>j :wincmd j<CR>
 map <leader>k :wincmd k<CR>
 map <leader>l :wincmd l<CR>
-map <leader>c :wincmd c<CR>
+map <leader>x :wincmd c<CR>
 map <leader>s :wincmd s<CR>
 map <leader>v :wincmd v<CR>
 map <leader>e :wincmd =<CR>
@@ -202,6 +202,7 @@ Plug 'junegunn/vader.vim'
 Plug 'junegunn/vim-emoji' " Requires vader
 " Color scheme is great
 Plug 'NLKNguyen/papercolor-theme'
+" Plug 'fatih/molokai'
 if has("unix")
   if s:uname == "FreeBSD"
     " For future reference
@@ -221,11 +222,7 @@ Plug 'dag/vim-fish'
 
 " Go
 Plug 'fatih/vim-go'
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-nnoremap <leader>f :cnext<CR>
-nnoremap <leader>b :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+Plug 'SirVer/ultisnips'
 
 " Way to automatically split
 Plug 'AndrewRadev/splitjoin.vim'
@@ -274,6 +271,7 @@ nmap <C-P> <Esc>:Denite file_rec<CR>
 nmap <C-T> <Esc>:TagbarToggle<CR>
 
 " Go  config
+
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 " Nicer highlights
@@ -288,14 +286,24 @@ let g:go_highlight_build_constraints = 1
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " Lint on save
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', ]
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 let g:go_metalinter_deadline = "5s"
-" Go shortcuts
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <leader>C <Plug>(go-coverage-toggle)
+" Auto show identify
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 
+" Go shortcuts
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+" Identifier under the cursor
+autocmd FileType go nmap <Leader>i <Plug>(go-info)<Paste>
+
+
+nnoremap <leader>f :cnext<CR>
+nnoremap <leader>b :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 " Set up :make to use fish for syntax checking.
 compiler fish
