@@ -1,9 +1,8 @@
-" Vim doesn't work with fish yet
+" vim doesn't work with fish yet
 "
 if $SHELL =~ 'fish'
   set shell=/bin/bash
 endif
-
 let s:uname = substitute(system('uname'), "\n", "", "")
 " Turn the error bell off!!
 set noeb vb t_vb=
@@ -88,15 +87,22 @@ set spell spelllang=en_us
 
 " Plugins that don't have special configuration with them
 call plug#begin('~/.vim/plugged')
+
 " Deoplete 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+  " Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+if has('python3')                                                                                                 
+  set pyx=3
+  set pyxversion=3
+else                                                                            
+  set pyx=2                                                                     
+endif
 Plug 'tpope/vim-fugitive'
 
 " Search
@@ -114,6 +120,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 "Syntastic
 Plug 'scrooloose/syntastic'
+
+"Super tab
+Plug 'ervandew/supertab' 
 
 " Unit outline
 Plug 'h1mesuke/unite-outline'
@@ -224,6 +233,9 @@ Plug 'dag/vim-fish'
 Plug 'fatih/vim-go'
 Plug 'SirVer/ultisnips'
 
+" Julia 
+Plug 'JuliaEditorSupport/julia-vim'
+
 " Way to automatically split
 Plug 'AndrewRadev/splitjoin.vim'
 
@@ -248,6 +260,10 @@ if has("unix")
   endif
 endif
 
+" Clang configuration
+let g:clang_user_options='|| exit 0'
+let g:clang_complete_auto = 1
+let g:clang_complete_copen = 1
 
 
 colo PaperColor
