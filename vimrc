@@ -146,9 +146,9 @@ map <C-n> :NERDTreeToggle<CR>
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " C
-" Plug 'vim-scripts/c.vim'
 " Clang complete
-Plug 'Rip-Rip/clang_complete'
+" Plug 'Rip-Rip/clang_complete'
+Plug 'justmao945/vim-clang'
 
 " Ada 
 Plug 'vim-scripts/Ada-Bundle'
@@ -253,6 +253,7 @@ call plug#end()
 
 " C library path
 if has("unix")
+  let g:clang_c_options = '-std=gnu11'
   if s:uname == "Darwin"
     let g:clang_library_path='/usr/local/opt/llvm/lib'
   elseif s:uname == "FreeBSD"

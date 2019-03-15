@@ -44,6 +44,9 @@ end
 # Fortran
 set -xg FFLAGS -ff2c
 
+# Default to optimized compile c code
+set -xg CFLAGS -O2
+
 # Mercurial alias 
 function hs
   hg status

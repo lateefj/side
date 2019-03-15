@@ -15,7 +15,8 @@ This is a project to document configuration and usage of shell as an IDE. The cu
 ```bash
 brew install fish neovim
 brew install reattach-to-user-namespace
-brew install vim --with-lua --with-python --with-wrap-pbcopy-and-pbpaste
+brew install vim 
+brew install tmux
 chsh -s /usr/local/bin/fish -u $USER
 ```
 
@@ -30,11 +31,19 @@ git clone git@github.com:lateefj/side.git
 ```bash
 rm $HOME/.config/fish/config.fish
 ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
+```
+### Vim config file
+```
 ln -s $HOME/side/vimrc $HOME/.vimrc
 ln -s $HOME/side/vimrc $HOME/.vimrc
 mkdir -p ~/.config/nvim
 ln -s $HOME/side/vimrc $HOME/.config/nvim/init.vim
 ln -s $HOME/.vim $HOME/.nvim
+```
+
+### tmux onfig
+```
+ln -s $HOME/side/tmux $HOME/.tmux
 ```
 
 ### Run post install script
@@ -49,6 +58,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 vim +PlugInstall
 vim +GoInstallBinaries
 gometalinter --install
@@ -61,6 +72,16 @@ mkdir -p $HOME/.vim/swap_files
 mkdir -p $HOME/.vim/undo_files
 mkdir $HOME/.side
 ```
+
+#### Install pyenv  OS X (after fish shell installed)
+
+
+```
+# Probably a sign that pyenv requires brew to install it...
+
+brew install pyenv-virtualenv
+
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 
 ## Window Manager
 
