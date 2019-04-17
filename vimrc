@@ -88,6 +88,8 @@ call plug#begin('~/.vim/plugged')
 " Deoplete 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  let g:python_host_skip_check = 1
+  let g:python3_host_skip_check = 1
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
@@ -95,7 +97,7 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
-let g:pyenv_host_prog = '/usr/local/bin/pyenv'
+" let g:pyenv_host_prog = '/usr/local/bin/pyenv'
 if has('python3')                                                                                                 
   " set pyxversion=3
 else                                                                            

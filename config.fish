@@ -77,9 +77,13 @@ end
 # If pyenv exists then run it
 set pyenv_exists (which pyenv)
 if [ $pyenv_exists ];  test -x $pyenv_exists
-  source (pyenv init - | psub)
+  source (pyenv init - --no-rehash | psub)
   source (pyenv virtualenv-init - | psub)
-  pyenv rehash
+  # Found this saves a lot of startup time (like 40%) by not calling it based on using this command
+  # echo '' > startup.txt && nvim --startuptime startup.txt
+  if test -z "$VIMRUNTIME"
+    pyenv rehash
+  end
 end
 
 # Use neovim if it exists
