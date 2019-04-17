@@ -1,8 +1,5 @@
 " vim doesn't work with fish yet
 "
-if $SHELL =~ 'fish'
-  set shell=/bin/bash
-endif
 let s:uname = substitute(system('uname'), "\n", "", "")
 " Turn the error bell off!!
 set noeb vb t_vb=
@@ -94,14 +91,18 @@ if has('nvim')
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
-  " Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
+let g:pyenv_host_prog = '/usr/local/bin/pyenv'
 if has('python3')                                                                                                 
-  set pyx=3
-  set pyxversion=3
+  " set pyxversion=3
 else                                                                            
   set pyx=2                                                                     
+endif
+if has('pythonx')
+	set pyxversion=3
 endif
 Plug 'tpope/vim-fugitive'
 
