@@ -213,7 +213,9 @@ Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
 " Color scheme is great
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
+" New Solarized8 
+Plug 'lifepillar/vim-solarized8'
 " Plug 'fatih/molokai'
 if has("unix")
   if s:uname == "FreeBSD"
@@ -270,17 +272,21 @@ let g:clang_complete_auto = 1
 let g:clang_complete_copen = 1
 
 
-colo PaperColor
-let g:airline_theme='papercolor'
-let g:lightline = { 'colorscheme': 'PaperColor' }
+colo solarized8
 
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
 
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
+" colo PaperColor
+"
+" let g:airline_theme='papercolor'
+" let g:lightline = { 'colorscheme': 'PaperColor' }
+" 
+" " Color name (:help cterm-colors) or ANSI code
+" let g:limelight_conceal_ctermfg = 'gray'
+" let g:limelight_conceal_ctermfg = 240
+" 
+" " Color name (:help gui-colors) or RGB color
+" let g:limelight_conceal_guifg = 'DarkGray'
+" let g:limelight_conceal_guifg = '#777777'
 
 hi Normal ctermbg=NONE
 
