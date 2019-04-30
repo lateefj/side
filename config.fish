@@ -34,7 +34,7 @@ end
 
 # GO
 set -xg GOPATH $HOME
-set -xg GO111MODULE on
+set -xg GO111MODULE auto
 
 # Set environment variables
 if test -e $HOME/go/bin
