@@ -17,6 +17,7 @@ brew install fish neovim
 brew install reattach-to-user-namespace
 brew install vim 
 brew install tmux
+brew install fzf
 chsh -s /usr/local/bin/fish -u $USER
 ```
 
@@ -66,6 +67,7 @@ gometalinter --install
 fisher add pyenv
 fisher add segment
 fisher add fishpkg/fish-git-util
+fisher add jethrokuan/fzf
 
 mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files
