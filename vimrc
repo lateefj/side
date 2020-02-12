@@ -100,16 +100,12 @@ let g:deoplete#enable_at_startup = 1
 " let g:pyenv_host_prog = '/usr/local/bin/pyenv'
 if has('python3')                                                                                                 
   " set pyxversion=3
-else                                                                            
-  set pyx=2                                                                     
 endif
 if has('pythonx')
 	set pyxversion=3
 endif
 Plug 'tpope/vim-fugitive'
 
-" Search
-Plug 'Shougo/denite.nvim'
 " Tag bar
 Plug 'majutsushi/tagbar'
 " Version control thing
@@ -118,7 +114,6 @@ Plug 'airblade/vim-rooter'
 Plug 'gabrielelana/vim-markdown'
 " fzf fuzzy search matching 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
 " Plug 'jlanzarotta/bufexplorer'
 
 "Syntastic
@@ -152,6 +147,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Clang complete
 " Plug 'Rip-Rip/clang_complete'
 Plug 'justmao945/vim-clang'
+
+" XMake
+Plug 'luzhlon/xmake.vim'
 
 " Ada 
 Plug 'vim-scripts/Ada-Bundle'
@@ -213,9 +211,9 @@ Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
 " Color scheme is great
-" Plug 'NLKNguyen/papercolor-theme'
+Plug 'NLKNguyen/papercolor-theme'
 " New Solarized8 
-Plug 'lifepillar/vim-solarized8'
+"Plug 'lifepillar/vim-solarized8'
 " Plug 'fatih/molokai'
 if has("unix")
   if s:uname == "FreeBSD"
@@ -233,6 +231,9 @@ endif
 
 " Fish shell
 Plug 'dag/vim-fish'
+
+" Awk
+Plug 'vim-scripts/awk.vim'
 
 " Go
 Plug 'fatih/vim-go'
@@ -272,13 +273,11 @@ let g:clang_complete_auto = 1
 let g:clang_complete_copen = 1
 
 
-colo solarized8
 
-
-" colo PaperColor
+colo PaperColor
 "
-" let g:airline_theme='papercolor'
-" let g:lightline = { 'colorscheme': 'PaperColor' }
+let g:airline_theme='papercolor'
+let g:lightline = { 'colorscheme': 'PaperColor' }
 " 
 " " Color name (:help cterm-colors) or ANSI code
 " let g:limelight_conceal_ctermfg = 'gray'
@@ -290,11 +289,12 @@ colo solarized8
 
 hi Normal ctermbg=NONE
 
-" Search Denite
-nmap <F9> <Esc>:Denite file_rec<CR>
-nmap <C-P> <Esc>:Denite file_rec<CR>
+" fzf search configuration
+nmap <F9> <Esc>:FZF<CR>
+nmap <C-P> <Esc>:FZF<CR>
 " Tag Bar Toggle
-nmap <C-T> <Esc>:TagbarToggle<CR>
+nmap <C-T> <Esc>:FZF<CR>
+nnoremap <leader>/ :FZF<CR>
 
 " Go  config
 
@@ -308,11 +308,11 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
-" Checkers
+" Checkers (disable golint) 
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 " Lint on save
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_autosave_enabled = ['vet']
 let g:go_metalinter_deadline = "5s"
 " Auto show identify
 let g:go_auto_type_info = 1
