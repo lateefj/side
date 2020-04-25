@@ -56,8 +56,6 @@ endif
 " Show status bar always
 set laststatus=2
 
-" Plugins that don't have special configuration with them
-call plug#begin('~/.vim/plugged')
 syntax enable
 filetype plugin on
 filetype plugin indent on    " required
@@ -109,10 +107,8 @@ map <C-n> :NERDTreeToggle<CR>
 " Git nerdTree git plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-
 " Pyenv
 Plug 'lambdalisue/vim-pyenv'
-
 
 " Vagrant
 Plug 'markcornick/vim-vagrant'
@@ -135,12 +131,8 @@ if has("unix")
     "Plug 'altercation/vim-colors-solarized'
   endif
 endif
-" Plug 'fneu/breezy'
 
-" Plug 'nanotech/jellybeans.vim'
-
-"Plug 'itchyny/lightline.vim'
-
+" 120 languages
 Plug 'sheerun/vim-polyglot'
 
 " Fish shell
@@ -149,9 +141,6 @@ Plug 'sheerun/vim-polyglot'
 " Awk
 Plug 'vim-scripts/awk.vim'
 
-
-" 120 languages
-Plug 'sheerun/vim-polyglot'
 
 " Color scheme is great
 Plug 'NLKNguyen/papercolor-theme'
