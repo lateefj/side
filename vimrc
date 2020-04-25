@@ -1,12 +1,16 @@
-" vim doesn't work with fish yet
-"
+
 let s:uname = substitute(system('uname'), "\n", "", "")
-" Turn the error bell off!!
 set noeb vb t_vb=
 
 set nocompatible              " be iMproved, required
 set hidden
 filetype off                  " required
+
+" Tab settings 4 spaces means more code
+set tabstop=2
+set expandtab
+set shiftwidth=2
+set autoindent 
 
 "Less temp files
 set backupdir=~/.vim/backup_files//
@@ -35,30 +39,9 @@ map <C-l> :wincmd ><CR>
 nmap j gj
 nmap k gk
 
-" Json format alias
-command Jsonify %!python -m json.tool
-
-" Line number on
-set number
-" Fix alt key mapping for chromebooks
-imap ≥ =>
-
-" Reload .vimrc
-map <leader>rv  :source ~/.vimrc<CR>
-
 " Wrap text
 set wrap
-" Tab settings 4 spaces means more code
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set autoindent 
 
-" When building it automatically write the contents of a file
-set autowrite
-
-" 2 esc to stop search
-nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 " Copy Paste clipboard 
 if $TMUX == ''
   set clipboard+=unnamed
@@ -73,11 +56,11 @@ endif
 " Show status bar always
 set laststatus=2
 
+" Plugins that don't have special configuration with them
+call plug#begin('~/.vim/plugged')
 syntax enable
 filetype plugin on
 filetype plugin indent on    " required
-
-set nofoldenable    " disable folding
 
 " Spelling!
 set spell spelllang=en_us
@@ -116,26 +99,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " fzf fuzzy search matching 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'jlanzarotta/bufexplorer'
 
-"Syntastic
-Plug 'scrooloose/syntastic'
-
-"Super tab
-Plug 'ervandew/supertab' 
-
-" Unit outline
-Plug 'h1mesuke/unite-outline'
-
-" Neo make
-Plug 'neomake/neomake'
-
-" Define your own operator
-Plug 'kana/vim-operator-user'
-
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 "NERDTree
 Plug 'scrooloose/nerdtree'
@@ -145,53 +109,6 @@ map <C-n> :NERDTreeToggle<CR>
 " Git nerdTree git plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" C
-" Clang complete
-" Plug 'Rip-Rip/clang_complete'
-Plug 'justmao945/vim-clang'
-
-" XMake
-Plug 'luzhlon/xmake.vim'
-
-" Ada 
-Plug 'vim-scripts/Ada-Bundle'
-
-" Rust
-Plug 'rust-lang/rust.vim'
-
-
-" Python
-Plug 'davidhalter/jedi-vim'
-
-" Restructured Text
-Plug 'Rykka/riv.vim'
-
-" Zig
-Plug 'andrewrk/zig.vim'
-
-" Nim 
-Plug 'zah/nim.vim'
-
-
-" Cython
-Plug 'tshirtman/vim-cython'
-au BufRead,BufNewFile *.pxd,*.pxi,*.pyx set filetype=pyrex
-
-
-" Javascript
-Plug 'pangloss/vim-javascript'
-
-" Misc for lua
-Plug 'xolox/vim-misc'
-
-" csv
-Plug 'chrisbra/csv.vim'
-
-" End quoates ect
-Plug 'Raimondi/delimitMate'
-
-" Git gutter
-Plug 'airblade/vim-gitgutter'
 
 " Pyenv
 Plug 'lambdalisue/vim-pyenv'
@@ -232,24 +149,28 @@ Plug 'sheerun/vim-polyglot'
 " Awk
 Plug 'vim-scripts/awk.vim'
 
-" Go
-Plug 'fatih/vim-go'
-" Plug 'SirVer/ultisnips'
 
-" Julia 
-Plug 'JuliaEditorSupport/julia-vim'
+" 120 languages
+Plug 'sheerun/vim-polyglot'
 
-" Way to automatically split
-Plug 'AndrewRadev/splitjoin.vim'
+" Color scheme is great
+Plug 'NLKNguyen/papercolor-theme'
 
-" Highlighter
-Plug 'junegunn/limelight.vim'
+"Super tab
+Plug 'ervandew/supertab' 
+
+" SCSS
+Plug 'cakebaker/scss-syntax.vim'
+
+" C
+" Clang complete
+" Plug 'Rip-Rip/clang_complete'
+Plug 'justmao945/vim-clang'
 
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 
 	source $HOME/.side/vimplug 
 endif
-
 
 
 call plug#end()
@@ -263,6 +184,10 @@ if has("unix")
     let g:clang_library_path='/usr/local/llvm-devel/lib'
   endif
 endif
+
+
+let g:airline_theme='papercolor'
+let g:lightline = { 'colorscheme': 'PaperColor' }
 
 " Clang configuration
 let g:clang_user_options='|| exit 0'
@@ -280,20 +205,6 @@ let g:lightline = {'colorscheme' : 'edge'}
 colo edge
 
 
-"
-"let g:airline_theme='papercolor'
-"let g:lightline = { 'colorscheme': 'PaperColor' }
-" 
-" " Color name (:help cterm-colors) or ANSI code
-" let g:limelight_conceal_ctermfg = 'gray'
-" let g:limelight_conceal_ctermfg = 240
-" 
-" " Color name (:help gui-colors) or RGB color
-" let g:limelight_conceal_guifg = 'DarkGray'
-" let g:limelight_conceal_guifg = '#777777'
-
-hi Normal ctermbg=NONE
-
 " fzf search configuration
 nmap <F9> <Esc>:FZF<CR>
 nmap <C-P> <Esc>:FZF<CR>
@@ -301,27 +212,6 @@ nmap <C-P> <Esc>:FZF<CR>
 nmap <C-T> <Esc>:FZF<CR>
 nnoremap <leader>/ :FZF<CR>
 
-" Go  config
-
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-" Nicer highlights
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-" Checkers (disable golint) 
-let g:go_metalinter_enabled = ['vet', 'errcheck']
-" Lint on save
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet']
-let g:go_metalinter_deadline = "5s"
-" Auto show identify
-let g:go_auto_type_info = 1
-let g:go_auto_sameids = 1
 
 " Go shortcuts
 autocmd FileType go nmap <leader>b <Plug>(go-build)
