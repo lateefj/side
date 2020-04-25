@@ -110,8 +110,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'majutsushi/tagbar'
 " Version control thing
 Plug 'airblade/vim-rooter'
+
 " Markdown
-Plug 'gabrielelana/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
 " fzf fuzzy search matching 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'jlanzarotta/bufexplorer'
@@ -157,11 +159,6 @@ Plug 'vim-scripts/Ada-Bundle'
 " Rust
 Plug 'rust-lang/rust.vim'
 
-" Lua
-Plug 'xolox/vim-lua-ftplugin'
-
-" Dart
-Plug 'dart-lang/dart-vim-plugin'
 
 " Python
 Plug 'davidhalter/jedi-vim'
@@ -175,9 +172,6 @@ Plug 'andrewrk/zig.vim'
 " Nim 
 Plug 'zah/nim.vim'
 
-" Markdown setup thanks to: https://josh.blog/2017/04/writing-mode-vim
-" Markdown Highlights 
-Plug 'tpope/vim-markdown'
 
 " Cython
 Plug 'tshirtman/vim-cython'
@@ -211,7 +205,8 @@ Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
 " Color scheme is great
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
+Plug 'sainnhe/edge'
 " New Solarized8 
 "Plug 'lifepillar/vim-solarized8'
 " Plug 'fatih/molokai'
@@ -229,15 +224,17 @@ endif
 
 "Plug 'itchyny/lightline.vim'
 
+Plug 'sheerun/vim-polyglot'
+
 " Fish shell
-Plug 'dag/vim-fish'
+" Plug 'dag/vim-fish'
 
 " Awk
 Plug 'vim-scripts/awk.vim'
 
 " Go
 Plug 'fatih/vim-go'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " Julia 
 Plug 'JuliaEditorSupport/julia-vim'
@@ -273,11 +270,19 @@ let g:clang_complete_auto = 1
 let g:clang_complete_copen = 1
 
 
+set termguicolors
 
-colo PaperColor
+let g:edge_style = 'neon'
+let g:edge_disable_italic_comment = 1
+let g:airline_theme = 'edge'
+let g:lightline = {'colorscheme' : 'edge'}
+
+colo edge
+
+
 "
-let g:airline_theme='papercolor'
-let g:lightline = { 'colorscheme': 'PaperColor' }
+"let g:airline_theme='papercolor'
+"let g:lightline = { 'colorscheme': 'PaperColor' }
 " 
 " " Color name (:help cterm-colors) or ANSI code
 " let g:limelight_conceal_ctermfg = 'gray'
@@ -309,7 +314,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 " Checkers (disable golint) 
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_enabled = ['vet', 'errcheck']
 " Lint on save
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['vet']
@@ -334,6 +339,8 @@ nnoremap <leader>a :cclose<CR>
 " Set up :make to use fish for syntax checking.
 compiler fish
 
+" Markdown preview
+nmap <C-s> <Plug>MarkdownPreview
 
 " Neocomplete
 

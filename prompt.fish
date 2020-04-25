@@ -58,7 +58,7 @@ function fish_prompt
     echo -n ']'
 
     git_prompt
-    hg_prompt
+    # hg_prompt
 
     set -l arrow " $red➜ "
     #set -l arrow "$red: "

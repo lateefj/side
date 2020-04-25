@@ -6,6 +6,9 @@ set -xg SIDE_HOME $HOME/side
 # Set a variable to tracks
 set -x PLATFORM (uname)
 
+# Set the default editor
+set -x EDITOR vim
+
 # Use vi key binds
 fish_vi_key_bindings
 
@@ -141,3 +144,6 @@ end
 if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
 #eval (bash -c "source ~/.nix-profile/etc/profile.d/nix.sh; fish --command 'echo set -x NIX_PATH \"\$NIX_PATH\"\;; echo set -x PATH \"\$PATH\"\;; echo set -x SSL_CERT_FILE \"\$SSL_CERT_FILE\"'")
 end
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/lateef/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/lateef/Downloads/google-cloud-sdk/path.fish.inc'; end
