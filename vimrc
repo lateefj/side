@@ -35,7 +35,7 @@ map <leader>e :wincmd =<CR>
 map <C-j> :wincmd <<CR>
 map <C-l> :wincmd ><CR>
 
-" Go one screen line down instead of an next end of line caracter
+" Go one screen line down instead of an next end of line character
 nmap j gj
 nmap k gk
 
@@ -45,7 +45,7 @@ set wrap
 " Copy Paste clipboard 
 if $TMUX == ''
   set clipboard+=unnamed
-elseif system('uname -s') == "Darwin\n"
+elseif s:uname == "Darwin\n"
   "OSX
   set clipboard=unnamed 
 else
@@ -65,18 +65,6 @@ set spell spelllang=en_us
 
 " Plugins that don't have special configuration with them
 call plug#begin('~/.vim/plugged')
-
-" Deoplete 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:python_host_skip_check = 1
-  let g:python3_host_skip_check = 1
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-let g:deoplete#enable_at_startup = 1
 
 " let g:pyenv_host_prog = '/usr/local/bin/pyenv'
 if has('python3')                                                                                                 
@@ -117,33 +105,21 @@ Plug 'Shougo/vimproc.vim'
 Plug 'junegunn/vader.vim'
 
 Plug 'junegunn/vim-emoji' " Requires vader
-" Color scheme is great
-" Plug 'NLKNguyen/papercolor-theme'
+
 Plug 'sainnhe/edge'
-" New Solarized8 
-"Plug 'lifepillar/vim-solarized8'
-" Plug 'fatih/molokai'
-if has("unix")
-  if s:uname == "FreeBSD"
-    " For future reference
-  else
-    " Solarized
-    "Plug 'altercation/vim-colors-solarized'
-  endif
-endif
+
+" Go plugin
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " 120 languages
 Plug 'sheerun/vim-polyglot'
 
 " Fish shell
-" Plug 'dag/vim-fish'
+Plug 'dag/vim-fish'
 
 " Awk
 Plug 'vim-scripts/awk.vim'
 
-
-" Color scheme is great
-Plug 'NLKNguyen/papercolor-theme'
 
 "Super tab
 Plug 'ervandew/supertab' 
@@ -156,6 +132,8 @@ Plug 'cakebaker/scss-syntax.vim'
 " Plug 'Rip-Rip/clang_complete'
 Plug 'justmao945/vim-clang'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 
 	source $HOME/.side/vimplug 
@@ -163,6 +141,9 @@ endif
 
 
 call plug#end()
+
+" Set default super tab
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " C library path
 if has("unix")
@@ -209,6 +190,16 @@ autocmd FileType go nmap <leader>t <Plug>(go-test)
 autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 " Identifier under the cursor
 autocmd FileType go nmap <Leader>i <Plug>(go-info)<Paste>
+
+let g:go_highlight_types = 1
+" let g:go_metalinter_autosave = 1
+let g:go_fmt_autosave = 1
+let g:go_metalinter_enabled = ['vet', 'errcheck']
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+
+
+set autowrite
 
 
 nnoremap <leader>f :cnext<CR>

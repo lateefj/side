@@ -5,5 +5,7 @@ apt install -y git fish gcc neovim vim fuse tmux mercurial \
   htop sysstat libbluetooth-dev
 
 sudo add-apt-repository ppa:longsleep/golang-backports
+sudo add-apt-repository ppa:neovim-ppa/unstable
+
 sudo apt update
 sudo apt install -y golang-go
