@@ -42,6 +42,19 @@ nmap k gk
 " Wrap text
 set wrap
 
+" Transparent background
+let t:is_transparent = 0                                                                        
+function! Toggle_transparent_background()                                                       
+  if t:is_transparent == -1                                                                      
+    hi Normal guibg=#111111 ctermbg=black                                                       
+    let t:is_transparent = 1                                                                    
+  else                                                                                          
+    hi Normal guibg=NONE ctermbg=NONE                                                           
+    let t:is_transparent = 0                                                                    
+  endif                                                                                         
+endfunction                                                                                     
+nnoremap <C-x><C-t> :call Toggle_transparent_background()<CR>  
+
 " Copy Paste clipboard 
 if $TMUX == ''
   set clipboard+=unnamed
@@ -133,6 +146,9 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'justmao945/vim-clang'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Prolog
+Plug 'soli/prolog-vim'
 
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 

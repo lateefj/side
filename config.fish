@@ -145,5 +145,25 @@ if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
 #eval (bash -c "source ~/.nix-profile/etc/profile.d/nix.sh; fish --command 'echo set -x NIX_PATH \"\$NIX_PATH\"\;; echo set -x PATH \"\$PATH\"\;; echo set -x SSL_CERT_FILE \"\$SSL_CERT_FILE\"'")
 end
 
+
+# Android studio if test -e $HOME/local/android-studio/bin
+if test -e $HOME/local/android-studio/bin
+  set -xg ANDROID_SDK_ROOT $HOME/local/android-studio/bin
+  set -xg PATH $PATH $HOME/local/android-studio/bin
+end
+if test -e $HOME/Android/Sdk/
+  set -xg ANDROID_SDK_ROOT $HOME/Android/Sdk/
+  set -xg PATH $PATH $HOME/Android/Sdk/tools/
+end
+
+# Set chrome executable if chromium
+if test -e /usr/bin/chromium
+  set -xg CHROME_EXECUTABLE /usr/bin/chromium
+end
+
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/lateef/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/lateef/Downloads/google-cloud-sdk/path.fish.inc'; end
+if test -e $HOME/local/google-cloud-sdk/path.fish.inc
+  source $HOME/local/google-cloud-sdk/path.fish.inc
+end
+
