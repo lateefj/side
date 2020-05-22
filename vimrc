@@ -134,6 +134,8 @@ Plug 'justmao945/vim-clang'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+" Prolog
+Plug 'soli/prolog-vim'
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 
 	source $HOME/.side/vimplug 
