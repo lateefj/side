@@ -150,6 +150,9 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Prolog
 Plug 'soli/prolog-vim'
 
+" Dart
+Plug 'natebosch/vim-lsc'
+
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 
 	source $HOME/.side/vimplug 
@@ -157,6 +160,7 @@ endif
 
 
 call plug#end()
+
 
 " Set default super tab
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -179,6 +183,12 @@ let g:lightline = { 'colorscheme': 'PaperColor' }
 let g:clang_user_options='|| exit 0'
 let g:clang_complete_auto = 1
 let g:clang_complete_copen = 1
+
+" Dart language server
+let g:lsc_server_commands = {'dart': 'dart_language_server'}
+let g:lsc_auto_map = v:true
+let g:lsc_enable_autocomplete = v:true
+
 
 
 set termguicolors

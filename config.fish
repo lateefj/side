@@ -156,6 +156,16 @@ if test -e $HOME/Android/Sdk/
   set -xg PATH $PATH $HOME/Android/Sdk/tools/
 end
 
+# Flutter integration
+if test -e $HOME/local/flutter/bin/cache/dart-sdk/bin
+  # Add flutters dart to the path
+  set -xg PATH $PATH $HOME/local/flutter/bin/cache/dart-sdk/bin 
+  # Add language server hook for vim configuration
+  function dart_language_server
+    dart $HOME/local/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot --lsp
+  end
+end
+
 # Set chrome executable if chromium
 if test -e /usr/bin/chromium
   set -xg CHROME_EXECUTABLE /usr/bin/chromium
