@@ -177,3 +177,7 @@ if test -e $HOME/local/google-cloud-sdk/path.fish.inc
   source $HOME/local/google-cloud-sdk/path.fish.inc
 end
 
+function random_string --description "random_string 32"
+  head /dev/urandom | tr -dc A-Za-z0-9 | head -c $argv[1] ; echo ''
+end
+

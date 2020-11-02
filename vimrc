@@ -153,8 +153,9 @@ Plug 'soli/prolog-vim'
 " Dart
 Plug 'natebosch/vim-lsc'
 
-" Color
-Plug 'sainnhe/sonokai'
+" Color scheme
+Plug 'lifepillar/vim-solarized8'
+
 
 
 let side_vimplug=$HOME . '/.side/vimplug'
@@ -206,22 +207,16 @@ let g:lsc_auto_map = {
 
 
 
-set termguicolors
+set t_8f=^[[38;2;%lu;%lu;%lum  " Needed in tmux
+set t_8b=^[[48;2;%lu;%lu;%lum  " Ditto
+if (has("termguicolors"))
+  set termguicolors
+endif
 
-let g:airline_theme='sonokai'
-let g:lightline = { 'colorscheme': 'sonokai' }
-let g:sonokai_style = 'maia'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 1
-colorscheme sonokai
+colo solarized8
+set t_Co=256
 
 
-"let g:edge_style = 'neon'
-"let g:edge_disable_italic_comment = 1
-"let g:airline_theme = 'edge'
-"let g:lightline = {'colorscheme' : 'edge'}
-
-" colo edge
 
 
 " fzf search configuration
