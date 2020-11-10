@@ -146,6 +146,12 @@ if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
 end
 
 
+# Flutter integration
+if test -e $HOME/local/zig/zig
+  # Add zig to path
+  set -xg PATH $PATH $HOME/local/zig
+end
+
 # Android studio if test -e $HOME/local/android-studio/bin
 if test -e $HOME/local/android-studio/bin
   set -xg ANDROID_SDK_ROOT $HOME/local/android-studio/bin
@@ -181,3 +187,6 @@ function random_string --description "random_string 32"
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c $argv[1] ; echo ''
 end
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/lateef/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/lateef/Downloads/google-cloud-sdk/path.fish.inc'; end

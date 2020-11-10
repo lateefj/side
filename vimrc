@@ -156,6 +156,9 @@ Plug 'natebosch/vim-lsc'
 " Color scheme
 Plug 'lifepillar/vim-solarized8'
 
+" Zig
+Plug 'ziglang/zig.vim'
+
 
 
 let side_vimplug=$HOME . '/.side/vimplug'
