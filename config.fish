@@ -189,4 +189,4 @@ end
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/lateef/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/lateef/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/lateef/local/google-cloud-sdk/path.fish.inc' ]; . '/Users/lateef/local/google-cloud-sdk/path.fish.inc'; end
