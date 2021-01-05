@@ -108,9 +108,6 @@ map <C-n> :NERDTreeToggle<CR>
 " Git nerdTree git plugin
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" Pyenv
-Plug 'lambdalisue/vim-pyenv'
-
 " Vagrant
 Plug 'markcornick/vim-vagrant'
 
@@ -160,6 +157,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ziglang/zig.vim'
 
 
+" Rip grep
+Plug 'jremmen/vim-ripgrep'
 
 let side_vimplug=$HOME . '/.side/vimplug'
 if !empty(glob(side_vimplug)) " Not sure but can't seem to use the variable in the source command 
@@ -219,7 +218,11 @@ endif
 colo solarized8
 set t_Co=256
 
-
+" Tagbar Toggle
+nmap <F8> :TagbarToggle<CR>
+" Rip Grep
+let g:rg_command = 'rg --vimgrep -S'
+nnoremap <C-r> :Rg<Cr>
 
 
 " fzf search configuration
