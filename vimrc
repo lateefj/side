@@ -11,6 +11,7 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 set autoindent 
+set number
 
 "Less temp files
 set backupdir=~/.vim/backup_files//
@@ -97,7 +98,8 @@ Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 " fzf fuzzy search matching 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 
 "NERDTree
