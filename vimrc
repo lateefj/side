@@ -224,7 +224,7 @@ set t_Co=256
 nmap <F8> :TagbarToggle<CR>
 " Rip Grep
 let g:rg_command = 'rg --vimgrep -S'
-nnoremap <C-r> :Rg<Cr>
+nnoremap <leader>/  :Rg<Cr>
 
 
 " fzf search configuration
@@ -232,7 +232,7 @@ nmap <F9> <Esc>:FZF<CR>
 nmap <C-P> <Esc>:FZF<CR>
 " Tag Bar Toggle
 nmap <C-T> <Esc>:FZF<CR>
-nnoremap <leader>/ :FZF<CR>
+nnoremap <leader>p :FZF<CR>
 
 
 " Go shortcuts
