@@ -30,12 +30,11 @@ git clone git@github.com:lateefj/side.git
 ### Link Fish config
 
 ```bash
-rm $HOME/.config/fish/config.fish
+rm -f $HOME/.config/fish/config.fish
 ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
 ```
 ### Vim config file
 ```
-ln -s $HOME/side/vimrc $HOME/.vimrc
 ln -s $HOME/side/vimrc $HOME/.vimrc
 mkdir -p ~/.config/nvim
 ln -s $HOME/side/vimrc $HOME/.config/nvim/init.vim
@@ -61,13 +60,10 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
-vim +PlugInstall
-vim +GoInstallBinaries
 gometalinter --install
-fisher add pyenv
-fisher add segment
-fisher add fishpkg/fish-git-util
-fisher add jethrokuan/fzf
+fisher install pyenv
+fisher install segment
+fisher install jethrokuan/fzf
 
 mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files

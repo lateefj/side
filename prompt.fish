@@ -1,51 +1,22 @@
 
 # Prompt that is not very specifal
-# TODO: Use segment plugin to fix this
-function git_prompt -d "Display the actual git state"
-  set -l ref
-  set -l dirty
-  if command git rev-parse --is-inside-work-tree >/dev/null 2>&1
-    set dirty (git_is_dirty)
-    set ref (command git symbolic-ref HEAD 2> /dev/null)
-    set ref (command git symbolic-ref HEAD 2> /dev/null)
-    if [ $status -gt 0 ]
-      set -l branch (git_branch_name)
-      set ref "➦ $branch "
-    end
-    #set branch_symbol \uE0A0
-    set -l branch (echo $ref | sed  "s-refs/heads/-$branch_symbol -")
-    if [ "$dirty" != "" ]
-      set_color green
-      echo -n " ($branch|"
-      set_color red
-      echo -n " $dirty"
-      set_color green 
-      echo -n ")"
-    else
-      set_color green
-      echo -n " ($branch|"
-      set_color red
-      echo -n " $dirty"
-      set_color green 
-      echo -n ")"
-    end
-    set_color normal
 
-    set -l nix_shell_info (
-        if test "$IN_NIX_SHELL" = "1"
-          echo -n "<nix-shell> "
-        end
-      )
-  end
-end
+set -g __fish_git_prompt_showupstream auto
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showstashstate 'yes'
+set __fish_git_prompt_showuntrackedfiles 'yes'
+set __fish_git_prompt_showupstream 'yes'
+set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_upstream_ahead green
+set __fish_git_prompt_color_upstream_behind red
 
-function hg_prompt
-    if hg root >/dev/null 2>&1
-        set_color blue
-        printf ' (%s)' (hg branch ^/dev/null)
-        set_color normal
-    end
-end
+# Status Chars
+set __fish_git_prompt_char_dirtystate '⚡'
+set __fish_git_prompt_char_stagedstate '→'
+set __fish_git_prompt_char_untrackedfiles '☡'
+set __fish_git_prompt_char_stashstate '↩'
+set __fish_git_prompt_char_upstream_ahead '+'
+set __fish_git_prompt_char_upstream_behind '-'
 
 function fish_prompt
     set -l red (set_color -o red)
@@ -57,11 +28,12 @@ function fish_prompt
     echo -n (date '+%m-%d-%Y %X')
     echo -n ']'
 
-    git_prompt
-    # hg_prompt
+    set last_status $status
+
+    set_color $fish_color_cwd
+    fish_git_prompt
 
     set -l arrow " $red➜ "
-    #set -l arrow "$red: "
     set_color normal
     if set -q VIRTUAL_ENV
         echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " " (prompt_pwd) $arrow
