@@ -30,12 +30,6 @@ function git_prompt -d "Display the actual git state"
       echo -n ")"
     end
     set_color normal
-
-    set -l nix_shell_info (
-        if test "$IN_NIX_SHELL" = "1"
-          echo -n "<nix-shell> "
-        end
-      )
   end
 end
 
@@ -57,15 +51,19 @@ function fish_prompt
     echo -n (date '+%m-%d-%Y %X')
     echo -n ']'
 
-    git_prompt
     # hg_prompt
 
-    set -l arrow " $red➜ "
-    #set -l arrow "$red: "
     set_color normal
     if set -q VIRTUAL_ENV
-        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " " (prompt_pwd) $arrow
+        echo -n -s (set_color -b blue white) "(" (basename "$VIRTUAL_ENV") ")" (set_color normal) " " (prompt_pwd)
     else
-      echo -n -s ' '(prompt_pwd) $arrow
+      echo -n -s ' '(prompt_pwd)
     end
+    git_prompt
+    #set_color normal
+    #set -l arrow " $red➜ "
+    set -l arrow "$red 🙏"
+    echo $arrow
+    # Create a newline as the prompt is getting long!
+    echo
 end
