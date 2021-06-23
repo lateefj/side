@@ -146,7 +146,7 @@ if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
 end
 
 # Add current path to include path
-set -xg C_INCLUDE_PATH .;$C_INCLUDE_PATH
+set -xg C_INCLUDE_PATH . $C_INCLUDE_PATH
 # Local zig installation
 if test -e $HOME/local/zig/zig
   # Add zig to path
