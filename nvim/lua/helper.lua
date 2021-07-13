@@ -18,17 +18,13 @@ local helper = {
 		TMAP='t'
 	}
 }
-for k,v in pairs(helper) do 
-	print(k,v) 
-	if k == 'MODE' then
-		for sk,sv in pairs(v) do 
-			print(k, key, value) 
-		end
-	end
-end
 
 
 function helper.map(mode, lhs, rhs, opts)
+	if helper.MODE[mode] ~= nil then
+		print(mode .. ' is not in modes ')
+		return
+	end
 	if opts == nil then
 		opts = {}
 	end

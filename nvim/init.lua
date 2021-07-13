@@ -18,5 +18,8 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when th
 -- Install plugins
 require('plugins')
 
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme gruvbox-material]])
 -- Key mappings
 require('keymappings')
+

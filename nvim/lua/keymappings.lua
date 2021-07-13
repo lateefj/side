@@ -32,14 +32,19 @@ helper.map(helper.MODE.MAP, '<leader>/', ':Rg<Cr>', { noremap = true})
 helper.map(helper.MODE.NMAP, '<F9>', '<Esc>:FZF<CR>')
 helper.map(helper.MODE.NMAP, '<C-P>', '<Esc>:FZF<CR>')
 -- Tag Bar Toggle
-helper.map(helper.MODE.NAMP, '<C-T>', '<Esc>:FZF<CR>')
+helper.map(helper.MODE.NMAP, '<C-T>', '<Esc>:FZF<CR>')
 helper.map(helper.MODE.MAP, '<leader>p', ':FZF<CR>', { noremap = true})
 
 
+-- Telescope
+helper.map(helper.MODE.MAP, '<leader>ff', '<cmd>Telescope find_files<cr>', { noremap = true})
+helper.map(helper.MODE.MAP, '<leader>fg', '<cmd>Telescope live_grep<cr>', { noremap = true})
+helper.map(helper.MODE.MAP, '<leader>fb', '<cmd>Telescope buffers<cr>', { noremap = true})
+helper.map(helper.MODE.MAP, '<leader>fh', '<cmd>Telescope help_tags<cr>', { noremap = true})
 -- Go shortcuts
-cmd 'autocmd FileType go nmap <leader>b <Plug>(go-build)'
-cmd 'autocmd FileType go nmap <leader>r <Plug>(go-run)'
-cmd 'autocmd FileType go nmap <leader>t <Plug>(go-test)'
-cmd 'autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)'
+vim.cmd 'autocmd FileType go nmap <leader>b <Plug>(go-build)'
+vim.cmd 'autocmd FileType go nmap <leader>r <Plug>(go-run)'
+vim.cmd 'autocmd FileType go nmap <leader>t <Plug>(go-test)'
+vim.cmd 'autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)'
 -- Identifier under the cursor
-cmd 'autocmd FileType go nmap <Leader>i <Plug>(go-info)<Paste>'
+vim.cmd 'autocmd FileType go nmap <Leader>i <Plug>(go-info)<Paste>'

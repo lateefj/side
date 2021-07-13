@@ -50,7 +50,7 @@ return require('packer').startup(function()
     use { 'soli/prolog-vim' }
 
     -- solarized 8
-    use { 'lifepillar/vim-solarized8' }
+    --use { 'lifepillar/vim-solarized8' }
 
     -- Zig
     use { 'ziglang/zig.vim' }
@@ -58,4 +58,8 @@ return require('packer').startup(function()
     -- Rip Grep
     use { 'jremmen/vim-ripgrep' }
 
+    --Fzf (Need to learn how to use )
+    -- use { 'vijaymarupudi/nvim-fzf' }
+
 end)
+

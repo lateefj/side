@@ -14,6 +14,8 @@ helper.BUFFER.expandtab = true
 helper.BUFFER.autoindent = true
 helper.WINDOW.number = true
 
+-- Termguicolosrs
+vim.o.termguicolors = true
 -- Wrap text
 helper.BUFFER.wrap = true
 
@@ -31,3 +33,4 @@ cmd 'set t_Co=256'
 
 -- Highlight on yank
 vim.cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+
