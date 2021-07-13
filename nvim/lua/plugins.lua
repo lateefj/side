@@ -40,9 +40,6 @@ return require('packer').startup(function()
     -- Awk
     use { 'vim-scripts/awk.vim' }
 
-    -- Super tab
-    use { 'ervandew/supertab' }
-
     -- C
     use { 'justmao945/vim-clang' }
 
@@ -61,8 +58,6 @@ return require('packer').startup(function()
         'kabouzeid/nvim-lspinstall'
     }
 
-    -- Autocomplete
-    use { 'nvim-lua/completion-nvim' }
 
     -- Rip Grep
     use { 'jremmen/vim-ripgrep' }
