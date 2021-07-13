@@ -55,6 +55,15 @@ return require('packer').startup(function()
     -- Zig
     use { 'ziglang/zig.vim' }
 
+    -- Language Servers
+    use {
+        'neovim/nvim-lspconfig',
+        'kabouzeid/nvim-lspinstall'
+    }
+
+    -- Autocomplete
+    use { 'nvim-lua/completion-nvim' }
+
     -- Rip Grep
     use { 'jremmen/vim-ripgrep' }
 
