@@ -3,21 +3,24 @@ return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
     -- Color scheme
-    use { 'sainnhe/gruvbox-material' }
+    -- use { 'sainnhe/gruvbox-material' }
+    use { 'lifepillar/vim-gruvbox8' }
 
     -- Fuzzy finder
     use {
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
-
-    -- LSP and completion
-    use { 'neovim/nvim-lspconfig' }
+    -- Language Servers
+    use {
+        'neovim/nvim-lspconfig',
+        'kabouzeid/nvim-lspinstall'
+    }
+    -- completion
     use { 'nvim-lua/completion-nvim' }
 
     -- Lua development
     use { 'tjdevries/nlua.nvim' }
-
 
     -- Vim dispatch
     use { 'tpope/vim-dispatch' }
@@ -46,18 +49,8 @@ return require('packer').startup(function()
     -- Prolog
     use { 'soli/prolog-vim' }
 
-    -- solarized 8
-    --use { 'lifepillar/vim-solarized8' }
-
     -- Zig
     use { 'ziglang/zig.vim' }
-
-    -- Language Servers
-    use {
-        'neovim/nvim-lspconfig',
-        'kabouzeid/nvim-lspinstall'
-    }
-
 
     -- Rip Grep
     use { 'jremmen/vim-ripgrep' }
