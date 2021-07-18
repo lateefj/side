@@ -17,7 +17,7 @@ return require('packer').startup(function()
         'kabouzeid/nvim-lspinstall'
     }
     -- completion
-    use { 'nvim-lua/completion-nvim' }
+    use { 'hrsh7th/nvim-compe' }
 
     -- Lua development
     use { 'tjdevries/nlua.nvim' }
@@ -55,6 +55,8 @@ return require('packer').startup(function()
     -- Rip Grep
     use { 'jremmen/vim-ripgrep' }
 
+    -- SQL
+    use { 'nanotee/sqls.nvim' }
     --Fzf (Need to learn how to use )
     -- use { 'vijaymarupudi/nvim-fzf' }
 
