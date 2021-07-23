@@ -116,3 +116,7 @@ require'lspinstall'.post_install_hook = function ()
   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 
+-- Flutter configuration
+require("flutter-tools").setup{} -- use defaults
+require("telescope").load_extension("flutter")
+

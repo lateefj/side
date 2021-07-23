@@ -59,6 +59,10 @@ return require('packer').startup(function()
     use { 'nanotee/sqls.nvim' }
     --Fzf (Need to learn how to use )
     -- use { 'vijaymarupudi/nvim-fzf' }
+    --
+    -- FLutter tools
+    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
+
 
 end)
 

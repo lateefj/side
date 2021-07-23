@@ -7,7 +7,7 @@ set -xg SIDE_HOME $HOME/side
 set -x PLATFORM (uname)
 
 # Set the default editor
-set -x EDITOR vim
+set -x EDITOR nvim
 
 # Use vi key binds
 fish_vi_key_bindings
@@ -80,8 +80,10 @@ end
 # If pyenv exists then run it
 set pyenv_exists (which pyenv)
 if [ $pyenv_exists ];  test -x $pyenv_exists
-  source (pyenv init - --no-rehash | psub)
-  source (pyenv virtualenv-init - | psub)
+  set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+  status is-login; and pyenv init --path | source
+  pyenv init - | source
+
   # Found this saves a lot of startup time (like 40%) by not calling it based on using this command
   # echo '' > startup.txt && nvim --startuptime startup.txt
   if test -z "$VIMRUNTIME"

@@ -1,4 +1,4 @@
-local helper = require('helper')
+	local helper = require('helper')
 
 helper.map(helper.MODE.MAP, 'Q', '<nop>', { noremap = true})
 -- Window management mapping
@@ -10,8 +10,8 @@ helper.map(helper.MODE.NMAP, '<leader>x', ':wincmd c<CR>')
 helper.map(helper.MODE.NMAP, '<leader>s', ':wincmd s<CR>')
 helper.map(helper.MODE.NMAP, '<leader>v', ':wincmd v<CR>')
 helper.map(helper.MODE.NMAP, '<leader>e', ':wincmd =<CR>')
-helper.map(helper.MODE.NMAP, '<C-j>', ':wincmd <<CR>')
-helper.map(helper.MODE.NMAP, '<C-l>', ':wincmd ><CR>')
+helper.map(helper.MODE.NMAP, '>', '<C-W>>')
+helper.map(helper.MODE.NMAP, '<', '<C-W><')
 
 -- Go one screen line down instead of an next end of line character
 helper.map(helper.MODE.NMAP, 'j', 'gj')
