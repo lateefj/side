@@ -22,3 +22,6 @@ if test -e $openssl_path
   set -gx LDFLAGS "-L$LDFLAG:$openssl_path/lib"
   set -gx CPPFLAGS "-I$CPPFLAGS:$openssl_path/include"
 end
+
+# Big Sur hack for python
+set -gx GRPC_PYTHON_BUILD_SYSTEM_ZLIB true

@@ -36,9 +36,8 @@ ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
 ### Vim config file
 ```
 ln -s $HOME/side/vimrc $HOME/.vimrc
-mkdir -p ~/.config/nvim
-ln -s $HOME/side/vimrc $HOME/.config/nvim/init.vim
-ln -s $HOME/.vim $HOME/.nvim
+mkdir -p $HOME/.config
+ln -s $HOME/side/nvim $HOME/.config/
 ```
 
 ### tmux onfig
@@ -49,21 +48,23 @@ ln -s $HOME/side/tmux $HOME/.tmux
 ### Run post install script
 
 ```
-# Install fisher
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Neovim plug install
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ # Packer install
+mkdir -p ~/.config/nvim/lua/; ln -s $HOME/side/plugins.lua ~/.config/nvim/lua/plugins.lua
 
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
-gometalinter --install
+# Install fisher
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+fisher install jhillyerd/plugin-git
+fisher install PatrickF1/fzf.fish
 fisher install pyenv
-fisher install segment
-fisher install jethrokuan/fzf
 
 mkdir -p $HOME/.vim/backup_files
 mkdir -p $HOME/.vim/swap_files

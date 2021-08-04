@@ -38,10 +38,11 @@ function fish_prompt
     end
     set_color $fish_color_cwd
     fish_git_prompt
-    #set_color normal
-    set -l arrow "$red 🙏"
+    set_color normal
     # Create a newline as the prompt is getting long!
     echo
-    set -l arrow " $red➜ "
+    #set -l arrow " $red➜ "
+    set -l arrow "$red 🙏 $red➜  "
+    set_color normal
     echo $arrow
 end
