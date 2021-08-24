@@ -14,8 +14,22 @@ return require('packer').startup(function()
     -- Language Servers
     use {
         'neovim/nvim-lspconfig',
-        'kabouzeid/nvim-lspinstall'
+        'kabouzeid/nvim-lspinstall',
+        'lspkind-nvim'
     }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons'
+    }
+    use {
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
+        -- your statusline
+        --config = function() require'my_statusline' end,
+        -- some optional icons
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    }
+    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     -- completion
     use { 'hrsh7th/nvim-compe' }
 
@@ -27,9 +41,6 @@ return require('packer').startup(function()
 
     -- Fugitive for Git
     use { 'tpope/vim-fugitive' }
-
-    -- NERDTree
-    use { 'scrooloose/nerdtree' }
 
     -- Go
     use { 'fatih/vim-go' }
