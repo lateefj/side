@@ -122,3 +122,5 @@ require("telescope").load_extension("flutter")
 
 
 require('statusline')
+require('lspkind').init({
+  })

@@ -15,7 +15,8 @@ return require('packer').startup(function()
     use {
         'neovim/nvim-lspconfig',
         'kabouzeid/nvim-lspinstall',
-        'lspkind-nvim'
+        'onsails/lspkind-nvim'
+
     }
     use {
         'kyazdani42/nvim-tree.lua',
