@@ -64,9 +64,6 @@ return require('packer').startup(function()
     -- Zig
     use { 'ziglang/zig.vim' }
 
-    -- Rip Grep
-    use { 'jremmen/vim-ripgrep' }
-
     -- SQL
     use { 'nanotee/sqls.nvim' }
     --Fzf (Need to learn how to use )
