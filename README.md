@@ -30,6 +30,7 @@ git clone git@github.com:lateefj/side.git
 ### Link Fish config
 
 ```bash
+mkdir -p $HOME/.config/fish
 rm -f $HOME/.config/fish/config.fish
 ln -s $HOME/side/config.fish $HOME/.config/fish/config.fish
 ```
@@ -42,7 +43,7 @@ ln -s $HOME/side/nvim $HOME/.config/
 
 ### tmux onfig
 ```
-ln -s $HOME/side/tmux $HOME/.tmux
+ln -s $HOME/side/tmux.conf $HOME/.tmux.config
 ```
 
 ### Run post install script
