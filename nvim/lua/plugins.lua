@@ -65,10 +65,11 @@ return require('packer').startup(function()
     use { 'ziglang/zig.vim' }
 
     -- SQL
-    use { 'nanotee/sqls.nvim' }
-    --Fzf (Need to learn how to use )
-    -- use { 'vijaymarupudi/nvim-fzf' }
-    --
+    use { 
+        'lighttiger2505/sqls',
+        'nanotee/sqls.nvim' 
+    }
+
     -- FLutter tools
     use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
