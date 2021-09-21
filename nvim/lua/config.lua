@@ -89,10 +89,16 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
-require'lspconfig'.sqls.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.sqls.setup{
+local lsp = require('lspconfig')
+
+lsp.sqls.setup{}
+
+--lsp.pyright.setup{}
+lsp.pylsp.setup{ }
+
+
+lsp.bashls.setup{}
+lsp.sqls.setup{
   picker = 'telescope',
   on_attach = function(client)
     client.resolved_capabilities.execute_command = true
