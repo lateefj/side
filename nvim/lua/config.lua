@@ -4,6 +4,9 @@ vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox-material]])
 vim.cmd([[colorscheme gruvbox8]])
 
+-- Copy with: "*y
+vim.o.clipboard = 'unnamed'
+
 --[[ Configure completion ]]--
 -- LSP config (the mappings used in the default file don't quite work right)
 helper.map(helper.MODE.NMAP, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true})
