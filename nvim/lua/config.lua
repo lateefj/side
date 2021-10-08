@@ -1,8 +1,8 @@
 local helper = require('helper')
 
 vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd([[colorscheme gruvbox-material]])
-vim.cmd([[colorscheme gruvbox8]])
+vim.cmd([[colorscheme gruvbox-material]])
+--vim.cmd([[colorscheme gruvbox8]])
 
 -- Copy with: "*y
 vim.o.clipboard = 'unnamed'
@@ -100,7 +100,8 @@ require'lspconfig'.zls.setup{}
 require'lspconfig'.gopls.setup{}
 
 -- Python
-require'lspconfig'.pylsp.setup{ }
+--require'lspconfig'.pylsp.setup{ }
+require'lspconfig'.pyright.setup{}
 
 -- Bash
 require'lspconfig'.bashls.setup{}
