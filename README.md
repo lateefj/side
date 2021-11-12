@@ -100,6 +100,7 @@ Linux / BSD
 Awsome WM
 
 ```bash
+echo "setxkbmap -option caps:escape" >> $HOME/.profile
 
 mkdir -p  ~/.config/awesome/
 ln -s $HOME/side/awesome.lua $HOME/.config/awesome/awesome.lua && echo 'require("side")' >> $HOME/.config/awesome/side.lua
