@@ -40,8 +40,14 @@ set -xg GOPATH $HOME
 set -xg GO111MODULE auto
 
 # Set environment variables
-if test -e $HOME/go/bin
-  set -xg PATH $PATH $HOME/go/bin
+if test -e $HOME/local/go/bin
+  set -xg PATH $PATH $HOME/local/go/bin
+end
+if test -e $HOME/local/ziglang
+  set -xg PATH $PATH $HOME/local/ziglang
+end
+if test -e $HOME/local/zls
+  set -xg PATH $PATH $HOME/local/zls
 end
 
 # Fortran
