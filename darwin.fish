@@ -1,3 +1,5 @@
+# Peformance issue with Mac OS 12
+function __fish_describe_command; end
 # Love path
 set -xg love /Applications/love.app/Contents/MacOS/love
 if test -e $love
