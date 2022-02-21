@@ -87,12 +87,6 @@ _G.s_tab_complete = function()
 end
 
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-
-
 -- Zig
 require'lspconfig'.zls.setup{}
 
@@ -119,5 +113,4 @@ require("telescope").load_extension("flutter")
 
 
 require('statusline')
-require('lspkind').init({
-  })
+require('lspkind').init({ })
