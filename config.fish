@@ -35,11 +35,10 @@ function utmux
   tmux -u $argv
 end
 
-# GO
-set -xg GOPATH $HOME
-set -xg GO111MODULE auto
-
 # Set environment variables
+if test -e $HOME/bin
+  set -xg PATH $PATH $HOME/bin
+end
 if test -e $HOME/local/go/bin
   set -xg PATH $PATH $HOME/local/go/bin
 end
