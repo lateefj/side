@@ -75,5 +75,8 @@ return require('packer').startup(function()
 
     -- Markdown
     use {"ellisonleao/glow.nvim"}
+
+    -- Asciidoc
+    use {'habamax/vim-asciidoctor'}
 end)
 
