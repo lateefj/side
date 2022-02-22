@@ -1,3 +1,4 @@
+local helper = require('helper')
 return require('packer').startup(function()
     -- Packer can manage itself as an optional plugin
     use {'wbthomason/packer.nvim', opt = true}
@@ -20,7 +21,12 @@ return require('packer').startup(function()
     }
     use {
         'kyazdani42/nvim-tree.lua',
-        requires = 'kyazdani42/nvim-web-devicons'
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+        config = function() require'nvim-tree'.setup {
+                helper.map(helper.MODE.NMAP, '<M-t>', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
+        } end
     }
     use {
         'glepnir/galaxyline.nvim',

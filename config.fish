@@ -199,3 +199,6 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/lateef/local/google-cloud-sdk/path.fish.inc' ]; . '/Users/lateef/local/google-cloud-sdk/path.fish.inc'; end
+
+# FZF search
+set -xg FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
