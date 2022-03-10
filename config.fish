@@ -77,11 +77,6 @@ if test -e /usr/lib/dart/bin/
 end
 
 
-# Add pyenv to path if installed
-if test -e $HOME/.pyenv/bin/pyenv
-  set -xg PATH $PATH $HOME/.pyenv/bin
-  set -xg  PYENV_ROOT $HOME/.pyenv
-end
 
 # If pyenv exists then run it
 set pyenv_exists (which pyenv)
@@ -147,11 +142,6 @@ if test -e $HOME/.side/config.fish
   source $HOME/.side/config.fish
 end
 
-# TODO: Use nix for package installation?
-# NIX
-if test -e $HOME/.nix-profile/etc/profile.d/nix.sh
-#eval (bash -c "source ~/.nix-profile/etc/profile.d/nix.sh; fish --command 'echo set -x NIX_PATH \"\$NIX_PATH\"\;; echo set -x PATH \"\$PATH\"\;; echo set -x SSL_CERT_FILE \"\$SSL_CERT_FILE\"'")
-end
 
 # Add current path to include path
 set -xg C_INCLUDE_PATH . $C_INCLUDE_PATH
@@ -161,36 +151,12 @@ if test -e $HOME/local/zig/zig
   set -xg PATH $PATH $HOME/local/zig
 end
 
-# Android studio if test -e $HOME/local/android-studio/bin
-if test -e $HOME/local/android-studio/bin
-  set -xg ANDROID_SDK_ROOT $HOME/local/android-studio/bin
-  set -xg PATH $PATH $HOME/local/android-studio/bin
-end
-if test -e $HOME/Android/Sdk/
-  set -xg ANDROID_SDK_ROOT $HOME/Android/Sdk/
-  set -xg PATH $PATH $HOME/Android/Sdk/tools/
-end
-
-# Flutter integration
-if test -e $HOME/local/flutter/bin/cache/dart-sdk/bin
-  # Add flutters dart to the path
-  set -xg PATH $PATH $HOME/local/flutter/bin/cache/dart-sdk/bin 
-  # Add language server hook for vim configuration
-  function dart_language_server
-    dart $HOME/local/flutter/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot --lsp
-  end
-end
 
 # Set chrome executable if chromium
 if test -e /usr/bin/chromium
   set -xg CHROME_EXECUTABLE /usr/bin/chromium
 end
 
-
-# The next line updates PATH for the Google Cloud SDK.
-if test -e $HOME/local/google-cloud-sdk/path.fish.inc
-  source $HOME/local/google-cloud-sdk/path.fish.inc
-end
 
 function random_string --description "random_string 32"
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c $argv[1] ; echo ''
