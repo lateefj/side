@@ -39,8 +39,11 @@ end
 if test -e $HOME/bin
   set -xg PATH $PATH $HOME/bin
 end
+if test -e $HOME/go/bin
+  set -xg PATH $HOME/go/bin $PATH 
+end
 if test -e $HOME/local/go/bin
-  set -xg PATH $PATH $HOME/local/go/bin
+  set -xg PATH $HOME/local/go/bin $PATH
   set -xg GOBIN $HOME/local/bin
 end
 if test -e $HOME/local/ziglang
