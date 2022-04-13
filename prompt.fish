@@ -24,6 +24,11 @@ function fish_prompt
     set -l normal (set_color normal)
 
     set_color blue
+    echo -n '<'
+    set_color red
+    echo -n (hostname|cut -d . -f 1)
+    set_color blue
+    echo -n '> '
     echo -n '['
     echo -n (date '+%m-%d-%Y %X')
     echo -n ']'
