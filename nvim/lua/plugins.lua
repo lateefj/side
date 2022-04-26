@@ -52,8 +52,10 @@ return require('packer').startup(function()
     -- Go
     use { 'fatih/vim-go' }
 
+    -- XXX: THIS IS REALLY SLOW ON OS X
     -- polyglot
-    use { 'sheerun/vim-polyglot' }
+    --
+    -- use { 'sheerun/vim-polyglot' }
 
     -- Fish
     use { 'dag/vim-fish'}
