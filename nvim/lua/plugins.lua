@@ -78,9 +78,6 @@ return require('packer').startup(function()
         'nanotee/sqls.nvim' 
     }
 
-    -- FLutter tools
-    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
-
     -- Markdown
     use {"ellisonleao/glow.nvim"}
 
