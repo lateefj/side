@@ -162,7 +162,12 @@ end
 
 
 function random_string --description "random_string 32"
-  head /dev/urandom | tr -dc A-Za-z0-9 | head -c $argv[1] ; echo ''
+  switch $PLATFORM
+  case Darwin
+    head -c $argv[1] < /dev/random | base64
+  case '*'
+    head /dev/urandom | tr -dc A-Za-z0-9 | head -c $argv[1] ; echo ''
+  end
 end
 
 
