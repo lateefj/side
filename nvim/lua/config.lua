@@ -107,10 +107,6 @@ require'lspconfig'.sqls.setup{
     require'sqls'.setup{}
   end
 }
--- Flutter configuration
-require("flutter-tools").setup{} -- use defaults
-require("telescope").load_extension("flutter")
-
 
 require('statusline')
 require('lspkind').init({ })

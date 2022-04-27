@@ -52,8 +52,10 @@ return require('packer').startup(function()
     -- Go
     use { 'fatih/vim-go' }
 
+    -- XXX: THIS IS REALLY SLOW ON OS X
     -- polyglot
-    use { 'sheerun/vim-polyglot' }
+    --
+    -- use { 'sheerun/vim-polyglot' }
 
     -- Fish
     use { 'dag/vim-fish'}
@@ -75,9 +77,6 @@ return require('packer').startup(function()
         'lighttiger2505/sqls',
         'nanotee/sqls.nvim' 
     }
-
-    -- FLutter tools
-    use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
 
     -- Markdown
     use {"ellisonleao/glow.nvim"}
