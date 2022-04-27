@@ -80,6 +80,9 @@ if test -e /usr/lib/dart/bin/
 end
 
 
+if test -e $HOME/.pyenv/bin/pyenv
+  set -xg PATH $HOME/.pyenv/bin/ $PATH
+end
 
 # If pyenv exists then run it
 set pyenv_exists (which pyenv)
