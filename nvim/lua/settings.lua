@@ -4,6 +4,7 @@ local cmd = vim.cmd
 local indent = 2
 
 cmd 'syntax enable'
+cmd 'set ts=2 sts=2 sw=2'
 cmd 'filetype plugin indent on'
 
 
