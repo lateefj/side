@@ -36,7 +36,6 @@ return require('packer').startup(function()
         -- some optional icons
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-    use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
     -- completion
     use { 'hrsh7th/nvim-compe' }
 
