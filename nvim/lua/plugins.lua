@@ -4,7 +4,8 @@ return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
     -- Color scheme
-    use { 'sainnhe/gruvbox-material' }
+    use { 'sainnhe/everforest' }
+    -- use { 'sainnhe/gruvbox-material' }
     --use { 'lifepillar/vim-gruvbox8' }
 
     -- Fuzzy finder
@@ -28,13 +29,10 @@ return require('packer').startup(function()
                 helper.map(helper.MODE.NMAP, '<M-t>', ':NvimTreeToggle<CR>', { noremap = true, silent = true})
         } end
     }
+
     use {
-        'glepnir/galaxyline.nvim',
-        branch = 'main',
-        -- your statusline
-        --config = function() require'my_statusline' end,
-        -- some optional icons
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+	    'nvim-lualine/lualine.nvim',
+	    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
     -- completion
     use { 'hrsh7th/nvim-compe' }

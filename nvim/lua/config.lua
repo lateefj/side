@@ -1,7 +1,10 @@
 local helper = require('helper')
 
-vim.o.background = "dark" -- or "light" for light mode
-vim.cmd([[colorscheme gruvbox-material]])
+vim.o.background = "dark" -- dark or "light" for light mode
+vim.g.everforest_background = 'soft'
+--vim.g.everforest_better_performance = 1
+vim.cmd([[colorscheme everforest]])
+-- vim.cmd([[colorscheme gruvbox-material]])
 --vim.cmd([[colorscheme gruvbox8]])
 
 -- Copy with: "*y
@@ -20,6 +23,11 @@ helper.map(helper.MODE.NMAP, '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_next()<C
 vim.cmd([[autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)]])
 
 vim.o.completeopt = "menuone,noselect"
+require'lualine'.setup {
+	options = {
+		theme = 'everforest'
+	}
+}
 
 require'compe'.setup {
   enabled = true;
@@ -108,5 +116,4 @@ require'lspconfig'.sqls.setup{
   end
 }
 
-require('statusline')
 require('lspkind').init({ })
