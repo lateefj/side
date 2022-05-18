@@ -24,7 +24,9 @@ if helper.TMUX == '' then
     cmd 'set clipboard+=unnamed'
 end
 
--- cmd 'set spell spelllang=en_us'
+cmd 'set spell spelllang=en_us'
+cmd 'set spellsuggest=best,9'
+cmd 'set spell!'
 
 -- Set default super tab
 helper.GLOBAL.SuperTabDefaultCompletionType = '<c-n>'

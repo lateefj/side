@@ -10,6 +10,10 @@ vim.cmd([[colorscheme everforest]])
 -- Copy with: "*y
 vim.o.clipboard = 'unnamed'
 
+-- Autospell check document
+vim.cmd([[autocmd BufRead,BufNewFile *.adoc setlocal spell]])
+vim.cmd([[autocmd BufRead,BufNewFile *.md setlocal spell]])
+
 --[[ Configure completion ]]--
 -- LSP config (the mappings used in the default file don't quite work right)
 helper.map(helper.MODE.NMAP, 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', { noremap = true, silent = true})
