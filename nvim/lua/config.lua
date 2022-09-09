@@ -1,11 +1,11 @@
 local helper = require('helper')
 
 vim.o.background = "dark" -- dark or "light" for light mode
-vim.g.everforest_background = 'hard'
-vim.cmd([[colorscheme apprentice]])
--- vim.cmd([[colorscheme hatsunemiku]])
+vim.g.everforest_background = 'soft'
+-- vim.cmd([[colorscheme apprentice]])
+--vim.cmd([[colorscheme gruvbox-material]])
 --vim.g.everforest_better_performance = 1
--- vim.cmd([[colorscheme everforest]])
+vim.cmd([[colorscheme everforest]])
 -- vim.cmd([[colorscheme gruvbox-material]])
 -- vim.cmd([[colorscheme gruvbox]])
 

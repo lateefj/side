@@ -84,18 +84,20 @@ if test -e $HOME/.pyenv/bin/pyenv
   set -xg PATH $HOME/.pyenv/bin/ $PATH
 end
 
-# If pyenv exists then run it
-set pyenv_exists (which pyenv)
-if [ $pyenv_exists ];  test -x $pyenv_exists
-  set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-  status is-login; and pyenv init --path | source
-  pyenv init - | source
+function initpenv
+	# If pyenv exists then run it
+	set pyenv_exists (which pyenv)
+	if [ $pyenv_exists ];  test -x $pyenv_exists
+		set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
+		status is-login; and pyenv init --path | source
+		pyenv init - | source
 
-  # Found this saves a lot of startup time (like 40%) by not calling it based on using this command
-  # echo '' > startup.txt && nvim --startuptime startup.txt
-  if test -z "$VIMRUNTIME"
-    pyenv rehash
-  end
+		# Found this saves a lot of startup time (like 40%) by not calling it based on using this command
+		# echo '' > startup.txt && nvim --startuptime startup.txt
+		if test -z "$VIMRUNTIME"
+			pyenv rehash
+		end
+	end
 end
 
 # Use neovim if it exists

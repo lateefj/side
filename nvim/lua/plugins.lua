@@ -4,9 +4,9 @@ return require('packer').startup(function()
     use {'wbthomason/packer.nvim', opt = true}
 
     -- Color scheme
-    use { '4513ECHO/vim-colors-hatsunemiku' }
-    use { 'romainl/Apprentice' }
-    -- use { 'sainnhe/everforest' }
+    -- use { '4513ECHO/vim-colors-hatsunemiku' }
+    -- use { 'romainl/Apprentice' }
+    use { 'sainnhe/everforest' }
     -- use { 'sainnhe/gruvbox-material' }
     -- use { 'morhetz/gruvbox' }
     --use { 'lifepillar/vim-gruvbox8' }
