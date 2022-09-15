@@ -35,6 +35,8 @@ require'lualine'.setup {
 	}
 }
 
+vim.g.go_list_type = "quickfix"
+
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
