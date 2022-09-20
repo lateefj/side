@@ -12,6 +12,8 @@ helper.map(helper.MODE.NMAP, '<leader>v', ':wincmd v<CR>')
 helper.map(helper.MODE.NMAP, '<leader>e', ':wincmd =<CR>')
 helper.map(helper.MODE.NMAP, '>', '<C-W>>')
 helper.map(helper.MODE.NMAP, '<', '<C-W><')
+helper.map(helper.MODE.NMAP, '-', ':resize -1<CR>')
+helper.map(helper.MODE.NMAP, '+', ':resize +1<CR>')
 
 -- Go one screen line down instead of an next end of line character
 helper.map(helper.MODE.NMAP, 'j', 'gj')
