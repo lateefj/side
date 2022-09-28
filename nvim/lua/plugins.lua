@@ -6,10 +6,12 @@ return require('packer').startup(function()
     -- Color scheme
     -- use { '4513ECHO/vim-colors-hatsunemiku' }
     -- use { 'romainl/Apprentice' }
-    use { 'sainnhe/everforest' }
+    -- use { 'sainnhe/everforest' }
+    use { 'joshdick/onedark.vim' }
     -- use { 'sainnhe/gruvbox-material' }
     -- use { 'morhetz/gruvbox' }
     --use { 'lifepillar/vim-gruvbox8' }
+    use { 'monsonjeremy/onedark.nvim' }
 
     -- Fuzzy finder
     use {

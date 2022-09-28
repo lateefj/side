@@ -24,9 +24,11 @@ if helper.TMUX == '' then
     cmd 'set clipboard+=unnamed'
 end
 
+vim.g.SpellCheck_QuickfixHighlight = 1
 cmd 'set spell spelllang=en_us'
 cmd 'set spellsuggest=best,9'
 cmd 'set spell!'
+cmd 'set spell'
 
 -- Set default super tab
 helper.GLOBAL.SuperTabDefaultCompletionType = '<c-n>'
