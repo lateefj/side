@@ -32,11 +32,24 @@ vim.cmd([[autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)]])
 
 vim.o.completeopt = "menuone,noselect"
 
+local function word_count()
+	return tostring(vim.fn.wordcount().words)
+end
+
 require('onedark').setup()
-require'lualine'.setup {
+require('lualine').setup {
 	options = {
-		theme = 'onedark'
-	}
+		icons_enabled = true,
+    theme = 'auto',
+	},
+	sections = {
+		lualine_a = {'mode'},
+		lualine_b = {'branch', 'diff', 'diagnostics'},
+		lualine_c = {'filename', word_count},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+	},
 }
 
 vim.g.go_list_type = "quickfix"
@@ -83,7 +96,7 @@ end
 
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
+--- jump to prevcnext snippet's placeholder
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
