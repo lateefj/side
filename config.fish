@@ -9,6 +9,7 @@ set -x PLATFORM (uname)
 # Set the default editor
 set -x EDITOR nvim
 
+
 # Use vi key binds
 fish_vi_key_bindings
 
