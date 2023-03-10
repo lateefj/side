@@ -17,4 +17,17 @@ return {
   { "ellisonleao/glow.nvim" },
   -- asciidoctor
   { "habamax/vim-asciidoctor" },
+  {
+    "neovim/nvim-lspconfig",
+    ---@class PluginLspOpts
+    opts = {
+      ---@type lspconfig.options
+      servers = {
+        -- zls
+        zls = {},
+        -- gopls
+        gopls = {},
+      },
+    },
+  },
 }
