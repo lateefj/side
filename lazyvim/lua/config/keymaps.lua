@@ -24,3 +24,6 @@ map("n", ">", "<C-W>>", { desc = "Increase window width" })
 map("n", "<", "<C-W><", { desc = "Descrease window width" })
 map("n", "-", ":resize -1<CR>", { desc = "Decrease window height" })
 map("n", "+", ":resize +1<CR>", { desc = "Increase window height" })
+
+-- Don't swap when doing jj
+vim.cmd("inoremap jj <Esc>")
