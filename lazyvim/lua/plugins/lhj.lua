@@ -18,6 +18,12 @@ return {
   -- asciidoctor
   { "habamax/vim-asciidoctor" },
   {
+    "andrewferrier/wrapping.nvim",
+    config = function()
+      require("wrapping").setup()
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
     opts = {
