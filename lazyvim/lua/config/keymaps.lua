@@ -25,5 +25,10 @@ map("n", "<", "<C-W><", { desc = "Descrease window width" })
 map("n", "-", ":resize -1<CR>", { desc = "Decrease window height" })
 map("n", "+", ":resize +1<CR>", { desc = "Increase window height" })
 
+-- Next
+map("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+-- Previous
+map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- Don't swap when doing jj
 vim.cmd("inoremap jj <Esc>")
+vim.cmd("inoremap kk <Esc>")
