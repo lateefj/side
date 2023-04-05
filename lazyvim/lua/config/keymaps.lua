@@ -32,3 +32,8 @@ map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- Don't swap when doing jj
 vim.cmd("inoremap jj <Esc>")
 vim.cmd("inoremap kk <Esc>")
+-- Go shortcuts
+vim.cmd("autocmd FileType go nmap <leader>b <Plug>(go-build)")
+vim.cmd("autocmd FileType go nmap <leader>r <Plug>(go-run)")
+vim.cmd("autocmd FileType go nmap <leader>t <Plug>(go-test)")
+vim.cmd("autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)")
