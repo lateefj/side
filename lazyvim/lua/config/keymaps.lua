@@ -29,6 +29,9 @@ map("n", "+", ":resize +1<CR>", { desc = "Increase window height" })
 map("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 -- Previous
 map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+map("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Telescope live grep" })
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Telescope find files" })
 -- Don't swap when doing jj
 vim.cmd("inoremap jj <Esc>")
 vim.cmd("inoremap kk <Esc>")
