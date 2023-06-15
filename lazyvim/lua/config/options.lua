@@ -13,3 +13,4 @@ vim.opt.wrap = true
 --]]
 
 vim.cmd("inoremap jj <Esc>")
+vim.cmd("set spell")
