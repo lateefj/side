@@ -23,6 +23,7 @@ return {
       require("wrapping").setup({
         auto_set_mode_filetype_allowlist = {
           "asciidoc",
+          "adoc",
           "gitcommit",
           "latex",
           "mail",
@@ -48,6 +49,25 @@ return {
         -- gopls
         gopls = {},
       },
+    },
+  },
+  -- Coloscheme
+  {
+    "catppuccin/nvim",
+    lazy = true,
+    name = "catppuccin",
+    priority = 1000,
+    flavour = "mocha",
+    background = {
+      light = "latte",
+      dark = "mocha",
+    },
+  },
+  -- Configure LazyVim to load catppuccin
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
     },
   },
 }
