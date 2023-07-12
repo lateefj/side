@@ -5,12 +5,11 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 vim.go.background = "light"
 
--- Wrap texts
---[[vim.wo.wrap = true
-vim.wo.linebreak = true
-vim.wo.list = false -- extra option I set in addition to the ones in your question
-vim.opt.wrap = true
---]]
+vim.g.mustache_abbreviations = "1"
+
+vim.wo.wrap = true
+vim.wo.linebreak = false
+vim.wo.list = false
 
 vim.cmd("inoremap jj <Esc>")
 vim.cmd("set spell")

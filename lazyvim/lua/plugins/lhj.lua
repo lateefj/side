@@ -17,27 +17,7 @@ return {
   { "ellisonleao/glow.nvim" },
   -- asciidoctor
   { "habamax/vim-asciidoctor" },
-  {
-    "andrewferrier/wrapping.nvim",
-    config = function()
-      require("wrapping").setup({
-        auto_set_mode_filetype_allowlist = {
-          "asciidoc",
-          "adoc",
-          "gitcommit",
-          "latex",
-          "mail",
-          "markdown",
-          "rst",
-          "tex",
-          "text",
-          "go",
-          "lua",
-        },
-      })
-      require("wrapping").soft_wrap_mode()
-    end,
-  },
+  { "mustache/vim-mustache-handlebars" },
   {
     "neovim/nvim-lspconfig",
     ---@class PluginLspOpts
