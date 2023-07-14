@@ -3,7 +3,7 @@
 -- Add any additional options here
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
-vim.go.background = "light"
+vim.go.background = "dark"
 
 vim.g.mustache_abbreviations = "1"
 
