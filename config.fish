@@ -87,6 +87,7 @@ if [ $minikube_path ]
     function kubectl
         minikube kubectl -- $argv
     end
+    eval (minikube docker-env)
 end
 
 
