@@ -93,6 +93,7 @@ end
 
 if test -e $HOME/.pyenv/bin/pyenv
     set -xg PATH $HOME/.pyenv/bin/ $PATH
+    set -xg PYENV_VERSION default
 end
 
 function initpenv
