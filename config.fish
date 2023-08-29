@@ -101,7 +101,8 @@ function initpenv
     if [ $pyenv_exists ]
         test -x $pyenv_exists
         set -U fish_user_paths $PYENV_ROOT/bin $fish_user_paths
-        status is-login; and pyenv init --path | source
+        # pyenv + virtualenv
+        status --is-interactive; and pyenv virtualenv-init - | source
         pyenv init - | source
 
         # Found this saves a lot of startup time (like 40%) by not calling it based on using this command
