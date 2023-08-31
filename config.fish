@@ -114,6 +114,10 @@ function initpenv
     end
 end
 
+function pyactivate
+    initpenv
+    pyenv activate $argv
+end
 # Use neovim if it exists
 function which_editor
     set nvim_path (which nvim)
