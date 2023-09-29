@@ -1,26 +1,37 @@
--- Map leader to comma
-vim.g.mapleader = ','
+-- Clean starting over custom neovim configuration
 
-local fn = vim.fn
-local execute = vim.api.nvim_command
+-- Mouse enable all
+vim.opt.mouse = "a"
 
--- Sensible defaults
-require('settings')
+-- Search:
+--
+--
+-- Ignore case
+vim.opt.ignorecase = true
+-- Ignore upper case unless search has upper case letters
+vim.opt.smartcase = true
+-- Highlight search results
+vim.opt.hlsearch = true
 
--- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+-- Text lines:
+--
+-- Wrap long lines
+vim.opt.wrap = true
+vim.opt.breakindent = true
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
--- Install plugins
-require('plugins')
+-- Leader!!!
+vim.g.mapleader = ","
 
--- Key mappings
-require('keymappings')
+-- Import keyboard mappings
+require("keymap")
 
--- Configuration of thing like color scheme and languag servers, autocomplete ect (plugins)
-require('config')
+-- Plugins
+require("plugins")
+
+-- Configuraiton:
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
 

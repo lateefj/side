@@ -1,89 +1,327 @@
-local helper = require("helper")
-return require("packer").startup(function()
-	-- Packer can manage itself as an optional plugin
-	use({ "wbthomason/packer.nvim", opt = true })
 
-	-- Color scheme
-	-- use { '4513ECHO/vim-colors-hatsunemiku' }
-	-- use { 'romainl/Apprentice' }
-	-- use { 'sainnhe/everforest' }
-	use({ "joshdick/onedark.vim" })
-	-- use { 'sainnhe/gruvbox-material' }
-	-- use { 'morhetz/gruvbox' }
-	--use { 'lifepillar/vim-gruvbox8' }
-	use({ "monsonjeremy/onedark.nvim" })
+-- Lazy Plugin Manager
+local lazy = {}
 
-	-- Fuzzy finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
-	-- Language Servers
-	use({
-		"neovim/nvim-lspconfig",
-		"kabouzeid/nvim-lspinstall",
-		"onsails/lspkind-nvim",
-	})
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
-		config = function()
-			require("nvim-tree").setup({
-				helper.map(helper.MODE.NMAP, "<M-t>", ":NvimTreeToggle<CR>", { noremap = true, silent = true }),
-			})
-		end,
-	})
 
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	-- completion
-	use({ "hrsh7th/nvim-compe" })
+lazy.path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+function lazy.install(path)
+	if not vim.loop.fs_stat(path) then
+		print("Installing lazy.nvim....")
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable", -- latest stable release
+			path,
+		})
+	end
+end
+vim.opt.rtp:prepend(lazy.path)
 
-	-- Lua development
-	use({ "tjdevries/nlua.nvim" })
+lazy.opts = {}
 
-	-- Vim dispatch
-	use({ "tpope/vim-dispatch" })
+require("lazy").setup({
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {"joshdick/onedark.vim"},
+	{ "nvim-lualine/lualine.nvim" },
+	{ 'nvim-treesitter/nvim-treesitter'},
+  -- cmp stuff
+	{'hrsh7th/cmp-nvim-lsp'},
+  {'hrsh7th/nvim-cmp'},
+	{'hrsh7th/cmp-buffer'},
+	{'hrsh7th/cmp-path'},
+	{'hrsh7th/cmp-nvim-lsp'},
+  {'L3MON4D3/LuaSnip'},
+  -- Buff line
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  { "neovim/nvim-lspconfig" },
+  { 'hrsh7th/cmp-nvim-lsp'},
+  -- Go
+  {
+    "fatih/vim-go",
+  },
+  -- Fish shell
+  { "dag/vim-fish" },
+  -- Awk
+  { "vim-scripts/awk.vim" },
+  -- clang
+  { "justmao945/vim-clang" },
+  -- Prolog
+  { "soli/prolog-vim" },
+  -- Zig
+  { "ziglang/zig.vim" },
+  -- Python
+  {"python-lsp/python-lsp-server"},
+  -- Markdown
+  { "ellisonleao/glow.nvim" },
+  -- asciidoctor
+  { "habamax/vim-asciidoctor" },
+  { "mustache/vim-mustache-handlebars" },
+  { "neovim/nvim-lspconfig"},
+  -- Comment toggle
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
+    },
+    lazy = false,
+},
+-- Surround text
+  { "tpope/vim-surround"},
+  -- Teleschope 
+  { "nvim-telescope/telescope.nvim", dependencies="nvim-lua/plenary.nvim"},
+  { "nvim-telescope/telescope-fzf-native.nvim"},
+})
 
-	-- Fugitive for Git
-	use({ "tpope/vim-fugitive" })
+vim.opt.termguicolors = true
+vim.cmd.colorscheme("onedark")
 
-	-- Go
-	use({ "fatih/vim-go" })
+require('cmp').setup {
+  sources = {
+    { name = 'nvim_lsp' }
+  }
+}
 
-	-- XXX: THIS IS REALLY SLOW ON OS X
-	-- polyglot
-	--
-	-- use { 'sheerun/vim-polyglot' }
+-- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-	-- Fish
-	use({ "dag/vim-fish" })
+-- The following example advertise capabilities to `clangd`.
+require'lspconfig'.clangd.setup {
+  capabilities = capabilities,
+}
 
-	-- Awk
-	use({ "vim-scripts/awk.vim" })
+-- Plugin Config:
+require("lualine").setup({
+	options = {
+		icons_enabled = true,
+	},
+})
 
-	-- C
-	use({ "justmao945/vim-clang" })
+require('bufferline').setup({
+  options = {
+    mode = 'buffers',
+    offsets = {
+      {filetype = 'NvimTree'}
+    },
+  },
+  highlights = {
+    buffer_selected = {
+      italic = false
+    },
+    indicator_selected = {
+      fg = {attribute = 'fg', highlight = 'Function'},
+      italic = false
+    }
+  }
+})
 
-	-- Prolog
-	use({ "soli/prolog-vim" })
+require('nvim-treesitter.configs').setup({
+  highlight = {
+    enable = true,
+  },
+  ensure_installed = {
+    'javascript',
+    'typescript',
+    'tsx',
+    'css',
+    'json',
+    'lua',
+    'go',
+    'zig',
+    'python',
+  },
+})
 
-	-- Zig
-	use({ "ziglang/zig.vim" })
+require('Comment').setup()
 
-	-- SQL
-	use({
-		"lighttiger2505/sqls",
-		"nanotee/sqls.nvim",
-	})
+local lspconfig = require('lspconfig')
 
-	-- Markdown
-	use({ "ellisonleao/glow.nvim" })
+local lsp_defaults = lspconfig.util.default_config
+-- Capabilities for server
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lsp_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
 
-	-- Asciidoc
-	use({ "habamax/vim-asciidoctor" })
-end)
+-- Gopla
+lspconfig.gopls.setup{}
+-- zig Lsp
+lspconfig.zls.setup{}
+-- Lua LSP setup
+lspconfig.lua_ls.setup({
+  single_file_support = true,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
+
+-- Python
+require "lspconfig".pylsp.setup {
+  settings = {
+    pylsp = {
+      plugins = {
+        black = {
+          cache_config = true,
+          enabled = true,
+          line_length = 119,
+        },
+        flake8 = {
+          enabled = true,
+          maxLineLength = 119,
+        },
+        mypy = {
+          enabled = true,
+        },
+        pycodestyle = {
+          enabled = false,
+        },
+        pyflakes = {
+          enabled = false,
+        },
+      }
+    }
+  }
+}
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function()
+    local bufmap = function(mode, lhs, rhs)
+      local opts = {buffer = true}
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
+
+    -- Displays hover information about the symbol under the cursor
+    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+
+    -- Jump to the definition
+    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+    -- Jump to declaration
+    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+    -- Lists all the implementations for the symbol under the cursor
+    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+    -- Jumps to the definition of the type symbol
+    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+    -- Lists all the references 
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+
+    -- Displays a function's signature information
+    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+    -- Renames all references to the symbol under the cursor
+    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+
+    -- Selects a code action available at the current cursor position
+    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+
+    -- Show diagnostics in a floating window
+    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+
+    -- Move to the previous diagnostic
+    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+
+    -- Move to the next diagnostic
+    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+  end
+})
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
+require('luasnip.loaders.from_vscode').lazy_load()
+
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+
+local select_opts = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end
+  },
+  sources = {
+    {name = 'path'},
+    {name = 'nvim_lsp', keyword_length = 1},
+    {name = 'buffer', keyword_length = 3},
+    {name = 'luasnip', keyword_length = 2},
+  },
+  window = {
+    documentation = cmp.config.window.bordered()
+  },
+  formatting = {
+    fields = {'menu', 'abbr', 'kind'},
+    format = function(entry, item)
+      local menu_icon = {
+        nvim_lsp = 'λ',
+        luasnip = '⋗',
+        buffer = 'Ω',
+        path = '🖫',
+      }
+
+      item.menu = menu_icon[entry.source.name]
+      return item
+    end,
+  },
+  mapping = {
+    ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<Down>'] = cmp.mapping.select_next_item(select_opts),
+
+    ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
+    ['<C-n>'] = cmp.mapping.select_next_item(select_opts),
+
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<C-y>'] = cmp.mapping.confirm({select = true}),
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+
+    ['<C-f>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(1) then
+        luasnip.jump(1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    ['<C-b>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      local col = vim.fn.col('.') - 1
+
+      if cmp.visible() then
+        cmp.select_next_item(select_opts)
+      elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        fallback()
+      else
+        cmp.complete()
+      end
+    end, {'i', 's'}),
+
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item(select_opts)
+      else
+        fallback()
+      end
+    end, {'i', 's'}),
+  },
+})
