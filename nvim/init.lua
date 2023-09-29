@@ -5,7 +5,6 @@ vim.opt.mouse = "a"
 
 -- Search:
 --
---
 -- Ignore case
 vim.opt.ignorecase = true
 -- Ignore upper case unless search has upper case letters
@@ -34,6 +33,10 @@ require("keymap")
 require("plugins")
 
 -- Configuraiton:
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+-- Autoformat
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
+-- Copy / pasta clipboard
+vim.opt.clipboard = "unnamedplus"
 
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

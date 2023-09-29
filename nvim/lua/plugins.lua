@@ -1,22 +1,22 @@
-
 -- Lazy Plugin Manager
 local lazy = {}
 
 
 lazy.path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 function lazy.install(path)
-	if not vim.loop.fs_stat(path) then
-		print("Installing lazy.nvim....")
-		vim.fn.system({
-			"git",
-			"clone",
-			"--filter=blob:none",
-			"https://github.com/folke/lazy.nvim.git",
-			"--branch=stable", -- latest stable release
-			path,
-		})
-	end
+  if not vim.loop.fs_stat(path) then
+    print("Installing lazy.nvim....")
+    vim.fn.system({
+      "git",
+      "clone",
+      "--filter=blob:none",
+      "https://github.com/folke/lazy.nvim.git",
+      "--branch=stable", -- latest stable release
+      path,
+    })
+  end
 end
+
 vim.opt.rtp:prepend(lazy.path)
 
 lazy.opts = {}
@@ -28,20 +28,26 @@ require("lazy").setup({
     priority = 1000,
     opts = {},
   },
-  {"joshdick/onedark.vim"},
-	{ "nvim-lualine/lualine.nvim" },
-	{ 'nvim-treesitter/nvim-treesitter'},
+  -- Coloscheme
+  { "joshdick/onedark.vim" },
+  -- lauline
+  { "nvim-lualine/lualine.nvim" },
+  { 'nvim-treesitter/nvim-treesitter' },
   -- cmp stuff
-	{'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-	{'hrsh7th/cmp-buffer'},
-	{'hrsh7th/cmp-path'},
-	{'hrsh7th/cmp-nvim-lsp'},
-  {'L3MON4D3/LuaSnip'},
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'L3MON4D3/LuaSnip' },
   -- Buff line
-	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+  {
+    'akinsho/bufferline.nvim',
+    version = "*",
+    dependencies = 'nvim-tree/nvim-web-devicons'
+  },
   { "neovim/nvim-lspconfig" },
-  { 'hrsh7th/cmp-nvim-lsp'},
+  { 'hrsh7th/cmp-nvim-lsp' },
   -- Go
   {
     "fatih/vim-go",
@@ -57,26 +63,61 @@ require("lazy").setup({
   -- Zig
   { "ziglang/zig.vim" },
   -- Python
-  {"python-lsp/python-lsp-server"},
+  { "python-lsp/python-lsp-server" },
   -- Markdown
   { "ellisonleao/glow.nvim" },
   -- asciidoctor
   { "habamax/vim-asciidoctor" },
+  {
+    'tigion/nvim-asciidoc-preview',
+    ft = { 'asciidoc' },
+    -- opts = {},
+  },
+  -- Muastache template
   { "mustache/vim-mustache-handlebars" },
-  { "neovim/nvim-lspconfig"},
+  { "neovim/nvim-lspconfig" },
   -- Comment toggle
   {
     'numToStr/Comment.nvim',
     opts = {
-        -- add any options here
+      -- add any options here
     },
     lazy = false,
-},
--- Surround text
-  { "tpope/vim-surround"},
-  -- Teleschope 
-  { "nvim-telescope/telescope.nvim", dependencies="nvim-lua/plenary.nvim"},
-  { "nvim-telescope/telescope-fzf-native.nvim"},
+  },
+  -- Surround text
+  { "tpope/vim-surround" },
+  -- Teleschope
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = "nvim-lua/plenary.nvim"
+  },
+  { "nvim-telescope/telescope-fzf-native.nvim" },
+  -- autoformat on save
+  { "lukas-reineke/lsp-format.nvim" },
+  -- Highlight comments
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    signs = true,      -- show icons in the signs column
+    sign_priority = 8, -- sign priority
+    -- keywords recognized as todo comments
+    keywords = {
+      FIX = {
+        icon = " ", -- icon used for the sign, and in search results
+        color = "error", -- can be a hex color, or a named color (see below)
+        alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
+        -- signs = false, -- configure signs for some keywords individually
+      },
+      TODO = { icon = " ", color = "info" },
+      HACK = { icon = " ", color = "warning" },
+      WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
+      PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+      TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+    },
+    opts = {
+    }
+  },
 })
 
 vim.opt.termguicolors = true
@@ -92,22 +133,22 @@ require('cmp').setup {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- The following example advertise capabilities to `clangd`.
-require'lspconfig'.clangd.setup {
+require 'lspconfig'.clangd.setup {
   capabilities = capabilities,
 }
 
 -- Plugin Config:
 require("lualine").setup({
-	options = {
-		icons_enabled = true,
-	},
+  options = {
+    icons_enabled = true,
+  },
 })
 
 require('bufferline').setup({
   options = {
     mode = 'buffers',
     offsets = {
-      {filetype = 'NvimTree'}
+      { filetype = 'NvimTree' }
     },
   },
   highlights = {
@@ -115,7 +156,7 @@ require('bufferline').setup({
       italic = false
     },
     indicator_selected = {
-      fg = {attribute = 'fg', highlight = 'Function'},
+      fg = { attribute = 'fg', highlight = 'Function' },
       italic = false
     }
   }
@@ -150,12 +191,17 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   require('cmp_nvim_lsp').default_capabilities()
 )
 
+-- Lsp Format
+require("lsp-format").setup {}
 -- Gopla
-lspconfig.gopls.setup{}
+lspconfig.gopls.setup {
+  on_attach = require("lsp-format").on_attach
+}
 -- zig Lsp
-lspconfig.zls.setup{}
+lspconfig.zls.setup {}
 -- Lua LSP setup
 lspconfig.lua_ls.setup({
+  on_attach = require("lsp-format").on_attach,
   single_file_support = true,
   flags = {
     debounce_text_changes = 150,
@@ -194,7 +240,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   desc = 'LSP actions',
   callback = function()
     local bufmap = function(mode, lhs, rhs)
-      local opts = {buffer = true}
+      local opts = { buffer = true }
       vim.keymap.set(mode, lhs, rhs, opts)
     end
 
@@ -213,7 +259,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Jumps to the definition of the type symbol
     bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
 
-    -- Lists all the references 
+    -- Lists all the references
     bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
 
     -- Displays a function's signature information
@@ -236,14 +282,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
-local select_opts = {behavior = cmp.SelectBehavior.Select}
+local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
   snippet = {
@@ -252,16 +298,16 @@ cmp.setup({
     end
   },
   sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 1},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2},
+    { name = 'path' },
+    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'buffer',   keyword_length = 3 },
+    { name = 'luasnip',  keyword_length = 2 },
   },
   window = {
     documentation = cmp.config.window.bordered()
   },
   formatting = {
-    fields = {'menu', 'abbr', 'kind'},
+    fields = { 'menu', 'abbr', 'kind' },
     format = function(entry, item)
       local menu_icon = {
         nvim_lsp = 'λ',
@@ -285,8 +331,8 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
 
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<C-y>'] = cmp.mapping.confirm({select = true}),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
 
     ['<C-f>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(1) then
@@ -294,7 +340,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, {'i', 's'}),
+    end, { 'i', 's' }),
 
     ['<C-b>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(-1) then
@@ -302,7 +348,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, {'i', 's'}),
+    end, { 'i', 's' }),
 
     ['<Tab>'] = cmp.mapping(function(fallback)
       local col = vim.fn.col('.') - 1
@@ -314,7 +360,7 @@ cmp.setup({
       else
         cmp.complete()
       end
-    end, {'i', 's'}),
+    end, { 'i', 's' }),
 
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -322,6 +368,6 @@ cmp.setup({
       else
         fallback()
       end
-    end, {'i', 's'}),
+    end, { 'i', 's' }),
   },
 })
