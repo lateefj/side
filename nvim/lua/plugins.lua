@@ -118,7 +118,14 @@ require("lazy").setup({
     opts = {
     }
   },
+  {
+    'stevearc/overseer.nvim',
+    opts = {},
+  },
+  -- Autoclose
+  { 'm4xshen/autoclose.nvim' },
 })
+
 
 vim.opt.termguicolors = true
 vim.cmd.colorscheme("onedark")
@@ -371,3 +378,7 @@ cmp.setup({
     end, { 'i', 's' }),
   },
 })
+
+require('overseer').setup()
+
+require("autoclose").setup()

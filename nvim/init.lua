@@ -33,6 +33,7 @@ require("keymap")
 require("plugins")
 
 -- Configuraiton:
+require("config")
 -- Autoformat
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
