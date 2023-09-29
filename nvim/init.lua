@@ -25,6 +25,8 @@ vim.opt.expandtab = true
 -- Leader!!!
 vim.g.mapleader = ","
 
+-- Show line numbers
+vim.wo.number = true
 -- Import keyboard mappings
 require("keymap")
 
