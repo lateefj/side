@@ -41,3 +41,5 @@ vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+
+vim.wo.spell = true

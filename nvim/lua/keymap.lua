@@ -19,6 +19,7 @@ map("n", "+", ":resize +1<CR>", { desc = "Increase window height" })
 map("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 -- Previous
 map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
 -- Copy / past to clip board
 vim.keymap.set({ "n", "x" }, "cp", '"+y')
 vim.keymap.set({ "n", "x" }, "cv", '"+p')
