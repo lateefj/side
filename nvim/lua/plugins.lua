@@ -22,18 +22,22 @@ vim.opt.rtp:prepend(lazy.path)
 lazy.opts = {}
 
 require("lazy").setup({
+  --[[
   {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
     opts = {},
   },
+  --]]
   -- Colorscheme
-  --{ "joshdick/onedark.vim" },
+  { "joshdick/onedark.vim" },
   --{ "shaunsingh/solarized.nvim" },
+  --[[
   {
     "catppuccin/nvim", name = "catppuccin", priority = 1000
   },
+  --]]
   -- lauline
   { "nvim-lualine/lualine.nvim" },
   { 'nvim-treesitter/nvim-treesitter' },
@@ -131,10 +135,7 @@ require("lazy").setup({
 })
 
 
-vim.opt.termguicolors = true
--- vim.cmd.colorscheme("onedark")
---vim.cmd.colorscheme("solarized")
-
+--[[
 require("catppuccin").setup({
   flavour = "mocha", -- latte, frappe, macchiato, mocha
   background = {     -- :h background
@@ -178,17 +179,13 @@ require("catppuccin").setup({
     -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
   },
 })
--- Solarized
---require("solarized").set()
-vim.cmd.colorscheme("catppuccin")
--- Presentation mode
-vim.o.background = 'dark'
-
+--]]
 -- Plugin Config:
 require("lualine").setup({
   options = {
     --theme = "solarized",
-    theme = "catppuccin",
+    --theme = "catppuccin",
+    theme = "onedark",
     icons_enabled = true,
   },
 })

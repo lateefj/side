@@ -1,3 +1,14 @@
+vim.opt.termguicolors = true
+-- Solarized
+--require("solarized").set()
+vim.cmd.colorscheme("onedark")
+--vim.cmd.colorscheme("solarized")
+--vim.cmd.colorscheme("catppuccin")
+--vim.cmd.colorscheme("tokyonight-night")
+
+-- Presentation mode
+vim.o.background = 'dark'
+
 vim.api.nvim_create_user_command("ZigLast", function()
   local overseer = require("overseer")
   local tasks = overseer.list_tasks({ recent_first = true })
