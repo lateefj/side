@@ -1,9 +1,9 @@
 vim.opt.termguicolors = true
 -- Solarized
 --require("solarized").set()
-vim.cmd.colorscheme("onedark")
+--vim.cmd.colorscheme("onedark")
 --vim.cmd.colorscheme("solarized")
---vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("catppuccin")
 --vim.cmd.colorscheme("tokyonight-night")
 
 -- Presentation mode
