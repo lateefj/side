@@ -43,3 +43,12 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.wo.spell = true
+local side_path = vim.fn.expand("$HOME/.side")
+local neoside_path = side_path .. "/neoside.lua"
+if io.open(neoside_path) ~= nil then
+  --print(neoside_path)
+  vim.opt.rtp:prepend(side_path)
+  --vim.api.nvim_command("let &packpath = &runtimepath")
+  vim.api.nvim_command("source " .. neoside_path)
+  --require("neoside")
+end
