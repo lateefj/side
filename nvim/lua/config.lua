@@ -1,11 +1,8 @@
 vim.opt.termguicolors = true
--- Solarized
---require("solarized").set()
---vim.cmd.colorscheme("onedark")
---vim.cmd.colorscheme("solarized")
-vim.cmd.colorscheme("catppuccin")
---vim.cmd.colorscheme("tokyonight-night")
-
+vim.cmd.colorscheme("onedark")
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
 -- Presentation mode
 vim.o.background = 'dark'
 

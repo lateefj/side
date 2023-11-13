@@ -26,11 +26,26 @@ vim.g.mapleader = ","
 
 -- Show line numbers
 vim.wo.number = true
--- Import keyboard mappings
-require("keymap")
+-- Install Lazy
+--
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 require("plugins")
+
+-- Import keyboard mappings
+require("keymap")
 
 -- Configuraiton:
 require("config")
@@ -43,12 +58,11 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.wo.spell = true
+
+-- Load any external configuration
 local side_path = vim.fn.expand("$HOME/.side")
 local neoside_path = side_path .. "/neoside.lua"
 if io.open(neoside_path) ~= nil then
-  --print(neoside_path)
   vim.opt.rtp:prepend(side_path)
-  --vim.api.nvim_command("let &packpath = &runtimepath")
   vim.api.nvim_command("source " .. neoside_path)
-  --require("neoside")
 end
