@@ -20,6 +20,8 @@ map("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 -- Previous
 map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
+-- Clear search
+vim.keymap.set("n", "<leader>c", ":noh<cr>")
 -- Copy / past to clip board
 vim.keymap.set({ "n", "x" }, "cp", '"+y')
 vim.keymap.set({ "n", "x" }, "cv", '"+p')
