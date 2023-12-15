@@ -50,18 +50,11 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp' },
   -- Go
   {
-    "ray-x/go.nvim",
+    "fatih/vim-go",
     dependencies = { -- optional packages
-      "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
   -- Fish shell
   { "dag/vim-fish" },
@@ -271,15 +264,6 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
 
 -- Lsp Format
 require("lsp-format").setup {}
--- Go Setup
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('go').setup({
-  -- other setups ....
-  lsp_cfg = {
-    capabilities = capabilities,
-    -- other setups
-  },
-})
 -- zig Lsp
 lspconfig.zls.setup {}
 -- Lua LSP setup
