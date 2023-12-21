@@ -5,13 +5,14 @@ lazy.opts = {}
 
 require("lazy").setup({
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
+  "folke/tokyonight.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {},
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      vim.cmd.colorscheme 'tokyonight'
     end,
-  },
+},
   -- lauline
   { "nvim-lualine/lualine.nvim" },
   -- Treesitter
@@ -50,27 +51,25 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp' },
   -- Go
   {
-    "ray-x/go.nvim",
-    dependencies = { -- optional packages
-      "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("go").setup()
-    end,
-    event = { "CmdlineEnter" },
-    ft = { "go", 'gomod' },
-    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+  "ray-x/go.nvim",
+  dependencies = {  -- optional packages
+    "ray-x/guihua.lua",
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
   },
+  config = function()
+    require("go").setup()
+  end,
+  event = {"CmdlineEnter"},
+  ft = {"go", 'gomod'},
+  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+},
   -- Fish shell
   { "dag/vim-fish" },
   -- Awk
   { "vim-scripts/awk.vim" },
   -- clang
   { "justmao945/vim-clang" },
-  -- Prolog
-  { "soli/prolog-vim" },
   -- Zig
   { "ziglang/zig.vim" },
   -- Python
@@ -218,7 +217,7 @@ require("lazy").setup({
 -- Plugin Config:
 require("lualine").setup({
   options = {
-    theme = "onedark",
+    theme = "tokyonight",
     icons_enabled = false,
     component_separators = '|',
     section_separators = '',

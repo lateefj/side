@@ -24,7 +24,6 @@ vim.opt.expandtab = true
 
 
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("onedark")
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
