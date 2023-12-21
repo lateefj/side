@@ -270,15 +270,6 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
 
 -- Lsp Format
 require("lsp-format").setup {}
--- Go Setup
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('go').setup({
-  -- other setups ....
-  lsp_cfg = {
-    capabilities = capabilities,
-    -- other setups
-  },
-})
 -- zig Lsp
 lspconfig.zls.setup {}
 -- Lua LSP setup
