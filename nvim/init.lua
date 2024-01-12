@@ -4,7 +4,7 @@
 vim.opt.mouse = "a"
 
 -- Leader!!!
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 
 -- Install Lazy
 --
