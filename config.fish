@@ -48,7 +48,7 @@ if test -e $HOME/local/go/bin
     set -xg GOBIN $HOME/local/bin
 end
 if test -e $HOME/local/ziglang
-    set -xg PATH $PATH $HOME/local/ziglang
+    set -xg PATH $HOME/local/ziglang $PATH
 end
 if test -e $HOME/local/zls
     set -xg PATH $PATH $HOME/local/zls
@@ -203,3 +203,4 @@ end
 
 # FZF search
 set -xg FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
+
