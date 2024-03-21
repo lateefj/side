@@ -103,7 +103,11 @@ require("lazy").setup({
     lazy = false,
   },
   -- Debugger
-  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
+{ "rcarriga/nvim-dap-ui", dependencies = { 
+	"mfussenegger/nvim-dap",
+	"nvim-neotest/nvim-nio",
+	} 
+},
 
   -- Signatures
   { "folke/neodev.nvim",    opts = {} },
