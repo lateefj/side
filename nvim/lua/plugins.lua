@@ -51,19 +51,26 @@ require("lazy").setup({
   { 'hrsh7th/cmp-nvim-lsp' },
   -- Go
   {
-  "ray-x/go.nvim",
-  dependencies = {  -- optional packages
-    "ray-x/guihua.lua",
-    "neovim/nvim-lspconfig",
-    "nvim-treesitter/nvim-treesitter",
+    "ray-x/go.nvim",
+    dependencies = {  -- optional packages
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("go").setup()
+    end,
+    event = {"CmdlineEnter"},
+    ft = {"go", 'gomod'},
+    build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
-  config = function()
-    require("go").setup()
-  end,
-  event = {"CmdlineEnter"},
-  ft = {"go", 'gomod'},
-  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-},
+  {
+    'ray-x/navigator.lua',
+    requires = {
+      { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+      { 'neovim/nvim-lspconfig' },
+    },
+  },
   -- Fish shell
   { "dag/vim-fish" },
   -- Awk
@@ -528,6 +535,9 @@ vim.defer_fn(function()
     },
   }
 end, 0)
+
+-- Navigator
+require('navigator').setup()
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
