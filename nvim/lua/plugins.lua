@@ -5,14 +5,9 @@ lazy.opts = {}
 
 require("lazy").setup({
   {
-  "folke/tokyonight.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {},
-    config = function()
-      vim.cmd.colorscheme 'tokyonight'
-    end,
-},
+    "folke/tokyonight.nvim",
+    lazy = false,
+  },
   -- lauline
   { "nvim-lualine/lualine.nvim" },
   -- Treesitter
@@ -52,7 +47,7 @@ require("lazy").setup({
   -- Go
   {
     "ray-x/go.nvim",
-    dependencies = {  -- optional packages
+    dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
@@ -60,14 +55,14 @@ require("lazy").setup({
     config = function()
       require("go").setup()
     end,
-    event = {"CmdlineEnter"},
-    ft = {"go", 'gomod'},
+    event = { "CmdlineEnter" },
+    ft = { "go", 'gomod' },
     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
   },
   {
     'ray-x/navigator.lua',
     requires = {
-      { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
+      { 'ray-x/guihua.lua',     run = 'cd lua/fzy && make' },
       { 'neovim/nvim-lspconfig' },
     },
   },
@@ -110,14 +105,16 @@ require("lazy").setup({
     lazy = false,
   },
   -- Debugger
-{ "rcarriga/nvim-dap-ui", dependencies = { 
-	"mfussenegger/nvim-dap",
-	"nvim-neotest/nvim-nio",
-	} 
-},
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+    }
+  },
 
   -- Signatures
-  { "folke/neodev.nvim",    opts = {} },
+  { "folke/neodev.nvim", opts = {} },
   -- Surround text
   { "tpope/vim-surround" },
   -- Teleschope
@@ -227,11 +224,8 @@ require("lazy").setup({
 
 -- Plugin Config:
 require("tokyonight").setup({
-  -- your configuration comes here
-  -- or leave it empty to use the default settings
-  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  light_style = "day", -- The theme is used when the background is set to light
-  transparent = false, -- Enable this to disable setting the background color
+  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  lualine_bold = true
 })
 
 require("lualine").setup({

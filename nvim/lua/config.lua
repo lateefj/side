@@ -20,13 +20,14 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
-
-
-
 vim.opt.termguicolors = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+-- Colorscheme
+vim.cmd[[colorscheme  tokyonight]]
+
 -- Presentation mode
 vim.o.background = 'dark'
 
