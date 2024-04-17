@@ -24,6 +24,13 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins
 require("plugins")
 
+local config_path = vim.fn.stdpath("config")
+
+local side_config_path = "/lua/neoside/neoconfig.lua"
+if io.open(config_path .. side_config_path) ~= nil then
+  require("neoside.neoconfig")
+end
+
 -- Import keyboard mappings
 require("keymap")
 
@@ -38,11 +45,3 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 
 vim.wo.spell = true
-
--- Load any external configuration
-local side_path = vim.fn.expand("$HOME/.side")
-local neoside_path = side_path .. "/neoside.lua"
-if io.open(neoside_path) ~= nil then
-  vim.opt.rtp:prepend(side_path)
-  vim.api.nvim_command("source " .. neoside_path)
-end

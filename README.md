@@ -105,5 +105,6 @@ ln -s $HOME/side/awesome.lua $HOME/.config/awesome/awesome.lua && echo 'require(
 
 To extend the existing slide configuration simply drop configuration exertions into $HOME/.side.
 
-* $HOME/.side/vimrc to customize vim 
+* $HOME/.side/neoside/neoplugins to customize vim 
+* $HOME/.side/neoside/config.lua to customize vim 
 * $HOME/.side/config.fish to extends fish shell

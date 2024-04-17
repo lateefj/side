@@ -3,7 +3,7 @@ local lazy = {}
 
 lazy.opts = {}
 
-require("lazy").setup({
+local plugins = {
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -34,8 +34,6 @@ require("lazy").setup({
       'rafamadriz/friendly-snippets',
     },
   },
-  -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',     opts = {} },
   -- Buff line
   {
     'akinsho/bufferline.nvim',
@@ -74,10 +72,6 @@ require("lazy").setup({
   { "justmao945/vim-clang" },
   -- Zig
   { "ziglang/zig.vim" },
-  -- Python
-  { "python-lsp/python-lsp-server" },
-  -- Markdown
-  { "ellisonleao/glow.nvim" },
   -- asciidoctor
   { "habamax/vim-asciidoctor" },
   {
@@ -85,8 +79,6 @@ require("lazy").setup({
     ft = { 'asciidoc' },
     -- opts = {},
   },
-  -- Muastache template
-  { "mustache/vim-mustache-handlebars" },
   { "neovim/nvim-lspconfig" },
   {
     -- Add indentation guides even on blank lines
@@ -95,14 +87,6 @@ require("lazy").setup({
     -- See `:help ibl`
     main = 'ibl',
     opts = {},
-  },
-  -- Comment toggle
-  {
-    'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
-    lazy = false,
   },
   -- Debugger
   {
@@ -114,7 +98,7 @@ require("lazy").setup({
   },
 
   -- Signatures
-  { "folke/neodev.nvim", opts = {} },
+  { "folke/neodev.nvim",    opts = {} },
   -- Surround text
   { "tpope/vim-surround" },
   -- Teleschope
@@ -220,7 +204,15 @@ require("lazy").setup({
     main = 'ibl',
     opts = {},
   },
-})
+}
+-- Decide if plugin will be imported
+local config_path = vim.fn.stdpath("config")
+local side_config_path = "/lua/neoside/neoconfig.lua"
+if io.open(config_path .. side_config_path) ~= nil then
+  table.insert(plugins, { import = "neoside.neoplugins" })
+end
+
+require("lazy").setup(plugins)
 
 -- Plugin Config:
 require("tokyonight").setup({
@@ -268,8 +260,6 @@ require('bufferline').setup({
     }
   }
 })
-
-require('Comment').setup()
 
 local lspconfig = require('lspconfig')
 
@@ -590,10 +580,3 @@ require("dapui").setup()
 require("neodev").setup({
   -- add any options here, or leave empty to use the default settings
 })
--- Load any plugins that are not in this
-local side_path = vim.fn.expand("$HOME/.side")
-local neoside_plugins_path = side_path .. "/neoside_plugins.lua"
-if io.open(neoside_plugins_path) ~= nil then
-  vim.opt.rtp:prepend(side_path)
-  --vim.api.nvim_command("source " .. neoside_plugins_path)
-end
