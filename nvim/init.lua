@@ -26,9 +26,9 @@ require("plugins")
 
 local config_path = vim.fn.stdpath("config")
 
-local side_config_path = "/lua/neoside/neoconfig.lua"
+local side_config_path = "/lua/neoside/config.lua"
 if io.open(config_path .. side_config_path) ~= nil then
-  require("neoside.neoconfig")
+  require("neoside.config")
 end
 
 -- Import keyboard mappings

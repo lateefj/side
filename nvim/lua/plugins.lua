@@ -128,7 +128,7 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    signs = true,      -- show icons in the signs column
+    signs = true,    -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
@@ -170,7 +170,8 @@ local plugins = {
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
+        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
+          { buffer = bufnr, desc = 'Preview git hunk' })
 
         -- don't override the built-in and fugitive keymaps
         local gs = package.loaded.gitsigns
@@ -207,8 +208,7 @@ local plugins = {
 }
 -- Decide if plugin will be imported
 local config_path = vim.fn.stdpath("config")
-local side_config_path = "/lua/neoside/neoconfig.lua"
-if io.open(config_path .. side_config_path) ~= nil then
+if io.open(config_path .. "/lua/neoside/neoplugins") ~= nil then
   table.insert(plugins, { import = "neoside.neoplugins" })
 end
 
