@@ -26,10 +26,20 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Colorscheme
-vim.cmd[[colorscheme  tokyonight]]
+vim.cmd [[colorscheme  tokyonight]]
 
 -- Presentation mode
 vim.o.background = 'dark'
+
+require('mini.basics').setup()
+require('mini.bracketed').setup()
+require('mini.comment').setup()
+require('mini.notify').setup()
+require('mini.pairs').setup()
+require('mini.sessions').setup()
+require('mini.statusline').setup()
+require('mini.tabline').setup()
+require('mini.visits').setup()
 
 vim.api.nvim_create_user_command("ZigLast", function()
   local overseer = require("overseer")

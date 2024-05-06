@@ -4,6 +4,7 @@ local lazy = {}
 lazy.opts = {}
 
 local plugins = {
+  { 'echasnovski/mini.nvim',    version = false },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -33,12 +34,6 @@ local plugins = {
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
-  },
-  -- Buff line
-  {
-    'akinsho/bufferline.nvim',
-    version = "*",
-    dependencies = 'nvim-tree/nvim-web-devicons'
   },
   { "neovim/nvim-lspconfig" },
   { 'hrsh7th/cmp-nvim-lsp' },
@@ -128,7 +123,7 @@ local plugins = {
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    signs = true,    -- show icons in the signs column
+    signs = true,      -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
@@ -242,24 +237,6 @@ require 'lspconfig'.clangd.setup {
   capabilities = capabilities,
 }
 
-
-require('bufferline').setup({
-  options = {
-    mode = 'buffers',
-    offsets = {
-      { filetype = 'NvimTree' }
-    },
-  },
-  highlights = {
-    buffer_selected = {
-      italic = false
-    },
-    indicator_selected = {
-      fg = { attribute = 'fg', highlight = 'Function' },
-      italic = false
-    }
-  }
-})
 
 local lspconfig = require('lspconfig')
 
