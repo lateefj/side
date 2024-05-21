@@ -15,33 +15,25 @@ map("n", "<", "<C-W><", { desc = "Descrease window width" })
 map("n", "-", ":resize -1<CR>", { desc = "Decrease window height" })
 map("n", "+", ":resize +1<CR>", { desc = "Increase window height" })
 
--- Next
-map("n", "<leader>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
--- Previous
-map("n", "<leader>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
-
 -- Clear search
-vim.keymap.set("n", "<leader>c", ":noh<cr>")
+map("n", "<leader>c", ":noh<cr>")
 -- Copy / past to clip board
-vim.keymap.set({ "n", "x" }, "cp", '"+y')
-vim.keymap.set({ "n", "x" }, "cv", '"+p')
+map({ "n", "x" }, "cp", '"+y')
+map({ "n", "x" }, "cv", '"+p')
 
--- Select all text in current buffer
-vim.keymap.set("n", "<leader>a", ":keepjumps normal! ggVG<cr>")
---
 -- Telescope
-vim.keymap.set('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
-vim.keymap.set('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
-vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-vim.keymap.set('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
-vim.keymap.set('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+map('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
+map('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
+map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
+map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
+map('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
 -- Zig Test
 map("n", "<leader>zt", "<cmd>ZigTest<cr>", { desc = "ZigTest" })
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
+map('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+map('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+map('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
@@ -49,21 +41,21 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+map('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+map('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+map('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
+map('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+map('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
+map('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
+map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+map('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
 
 local nmap = function(keys, func, desc)
   if desc then
     desc = 'LSP: ' .. desc
   end
 
-  vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  map('n', keys, func, { buffer = bufnr, desc = desc })
 end
 nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')

@@ -46,7 +46,7 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("go").setup()
+      -- require("go").setup()
     end,
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
@@ -142,10 +142,6 @@ local plugins = {
     },
     opts = {
     }
-  },
-  {
-    'stevearc/overseer.nvim',
-    opts = {},
   },
   -- Autoclose
   { 'm4xshen/autoclose.nvim' },
@@ -425,7 +421,6 @@ cmp.setup({
   },
 })
 
-require('overseer').setup()
 
 require("autoclose").setup()
 -- [[ Configure Treesitter ]]
