@@ -26,18 +26,20 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Colorscheme
-vim.cmd [[colorscheme  tokyonight]]
-
+vim.colorscheme = 'default'
 -- Presentation mode
 vim.o.background = 'dark'
 
+require('mini.animate').setup()
 require('mini.basics').setup()
 require('mini.bracketed').setup()
+require('mini.colors').setup()
 require('mini.comment').setup()
 require('mini.completion').setup()
 require('mini.diff').setup()
 require('mini.extra').setup()
 require('mini.git').setup()
+require('mini.hipatterns').setup()
 require('mini.notify').setup()
 require('mini.pairs').setup()
 require('mini.bufremove').setup()
@@ -49,5 +51,7 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
-require("go").setup()
+vim.cmd [[colorscheme default]]
 
+
+require("go").setup()

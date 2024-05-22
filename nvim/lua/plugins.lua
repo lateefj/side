@@ -4,13 +4,12 @@ local lazy = {}
 lazy.opts = {}
 
 local plugins = {
-  { 'echasnovski/mini.nvim',    version = false },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-  },
-  -- lauline
-  { "nvim-lualine/lualine.nvim" },
+  -- Mini.nvim which provides a lot of the default behavior
+  { 'echasnovski/mini.nvim', version = false },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  -- },
   -- Treesitter
   {
     -- Highlight, edit, and navigate code
@@ -94,6 +93,11 @@ local plugins = {
 
   -- Signatures
   { "folke/neodev.nvim",    opts = {} },
+  -- Trouble
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
   -- Surround text
   { "tpope/vim-surround" },
   -- Teleschope
@@ -206,19 +210,11 @@ end
 require("lazy").setup(plugins)
 
 -- Plugin Config:
-require("tokyonight").setup({
-  style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-  lualine_bold = true
-})
+-- require("tokyonight").setup({
+--   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+--   lualine_bold = true
+-- })
 
-require("lualine").setup({
-  options = {
-    theme = "tokyonight",
-    icons_enabled = false,
-    component_separators = '|',
-    section_separators = '',
-  },
-})
 require('cmp').setup {
   sources = {
     { name = 'nvim_lsp' }

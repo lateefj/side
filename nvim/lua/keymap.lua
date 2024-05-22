@@ -55,7 +55,7 @@ local nmap = function(keys, func, desc)
     desc = 'LSP: ' .. desc
   end
 
-  map('n', keys, func, { buffer = bufnr, desc = desc })
+  map('n', keys, func, { desc = desc })
 end
 nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
@@ -78,3 +78,11 @@ nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Fo
 nmap('<leader>wl', function()
   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 end, '[W]orkspace [L]ist Folders')
+
+-- Trouble
+vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
+vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
+vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
+vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
