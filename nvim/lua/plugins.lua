@@ -18,6 +18,25 @@ local plugins = {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
+    opts = {
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "go",
+        "json",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "yaml",
+        "zig",
+      }
+    }
   },
   {
     -- Autocompletion
