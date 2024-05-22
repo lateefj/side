@@ -51,7 +51,7 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
-vim.cmd [[colorscheme default]]
+vim.cmd [[colorscheme onedark]]
 
 
 require("go").setup()
