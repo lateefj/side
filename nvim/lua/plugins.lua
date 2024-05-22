@@ -64,7 +64,7 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      -- require("go").setup()
+      require("go").setup()
     end,
     event = { "CmdlineEnter" },
     ft = { "go", 'gomod' },
