@@ -489,7 +489,13 @@ vim.defer_fn(function()
 end, 0)
 
 -- Navigator
-require('navigator').setup()
+require('navigator').setup(
+  {
+    keymaps = {
+      { key = "<space>k", func = require('navigator.dochighlight').hi_symbol, desc = 'hi_symbol' },
+    }, -- a list of key maps
+  }
+)
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`

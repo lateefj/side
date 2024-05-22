@@ -3,8 +3,8 @@
 -- Mouse enable all
 vim.opt.mouse = "a"
 
--- Leader!!!
-vim.g.mapleader = " "
+-- "Bring me to your Leader!!!"
+vim.g.mapleader = ","
 
 -- Install Lazy
 --
