@@ -26,7 +26,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Colorscheme
-vim.colorscheme = 'default'
+vim.colorscheme = 'onedark'
 -- Presentation mode
 vim.o.background = 'dark'
 
