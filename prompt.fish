@@ -21,12 +21,19 @@ set __fish_git_prompt_char_upstream_behind '-'
 function fish_prompt
     set -l red (set_color -o red)
     set -l blue (set_color -o blue)
+    set -l green (set_color -o green)
     set -l normal (set_color normal)
 
     set_color blue
     echo -n '<'
     set_color red
     echo -n (hostname|cut -d . -f 1)
+    set_color blue
+    set_color green
+    echo -n '@'
+    echo -n (uname -s)
+    echo -n ':'
+    echo -n (uname -i)
     set_color blue
     echo -n '> '
     echo -n '['
