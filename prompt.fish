@@ -36,7 +36,7 @@ function fish_prompt
   echo -n ':'
   set_color red
   switch $PLATFORM
-    case Linux
+    case Darwin
       echo -n (uname -m)
     case '*'
       echo -n (uname -i)
