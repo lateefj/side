@@ -10,7 +10,10 @@ set -xg homebrew_path /opt/homebrew/bin/
 if test -e $homebrew_path
   set -g PATH $homebrew_path $PATH
 end
-
+set llvm_path /usr/local/opt/llvm/bin
+if test -e $llvm_path
+  set -g PATH $llvm_path $PATH
+end
 set pg_path /Applications/Postgres.app/Contents/Versions/latest
 set pg_bin_path /Applications/Postgres.app/Contents/Versions/latest/bin
 
