@@ -25,24 +25,28 @@ vim.opt.termguicolors = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Colorscheme
-vim.colorscheme = 'onedark'
 -- Presentation mode
 vim.o.background = 'dark'
 
+-- require('mini.ai').setup()
 require('mini.animate').setup()
 require('mini.basics').setup()
 require('mini.bracketed').setup()
+require('mini.bufremove').setup()
 require('mini.colors').setup()
 require('mini.comment').setup()
 require('mini.completion').setup()
 require('mini.diff').setup()
 require('mini.extra').setup()
+require('mini.files').setup()
 require('mini.git').setup()
 require('mini.hipatterns').setup()
+require('mini.icons').setup()
+require('mini.operators').setup()
+require('mini.map').setup()
 require('mini.notify').setup()
 require('mini.pairs').setup()
-require('mini.bufremove').setup()
+require('mini.pick').setup()
 require('mini.sessions').setup()
 require('mini.starter').setup()
 require('mini.statusline').setup()
@@ -51,7 +55,8 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
-vim.cmd [[colorscheme onedark]]
+-- Colorscheme
+vim.cmd [[colorscheme expresso]]
 
 -- Run gofmt + goimports on save
 
@@ -62,4 +67,32 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require('go.format').goimports()
   end,
   group = format_sync_grp,
+})
+
+require('asciidoc-preview').setup(
+  {
+    server = {
+      converter = 'cmd',
+      port = 11235,
+    },
+    preview = {
+      position = 'current',
+    },
+  }
+)
+local actions = require("telescope.actions")
+local open_with_trouble = require("trouble.sources.telescope").open
+
+-- Use this to add more results without clearing the trouble list
+local add_to_trouble = require("trouble.sources.telescope").add
+
+local telescope = require("telescope")
+
+telescope.setup({
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = open_with_trouble },
+      n = { ["<c-t>"] = open_with_trouble },
+    },
+  },
 })
