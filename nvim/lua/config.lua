@@ -25,6 +25,8 @@ vim.opt.termguicolors = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Colorscheme
+vim.cmd [[colorscheme expresso]]
 -- Presentation mode
 vim.o.background = 'dark'
 
@@ -55,8 +57,6 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
--- Colorscheme
-vim.cmd [[colorscheme expresso]]
 
 -- Run gofmt + goimports on save
 
