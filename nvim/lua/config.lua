@@ -30,14 +30,12 @@ vim.cmd [[colorscheme expresso]]
 -- Presentation mode
 vim.o.background = 'dark'
 
--- require('mini.ai').setup()
 require('mini.animate').setup()
 require('mini.basics').setup()
 require('mini.bracketed').setup()
 require('mini.bufremove').setup()
 require('mini.colors').setup()
 require('mini.comment').setup()
-require('mini.completion').setup()
 require('mini.diff').setup()
 require('mini.extra').setup()
 require('mini.files').setup()
@@ -57,34 +55,17 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
-
 -- Possible to immediately execute code which depends on the added plugin
 require('nvim-treesitter.configs').setup({
   ensure_installed = { 'lua', 'vimdoc' },
   highlight = { enable = true },
 })
-require("go").setup()
+-- Setup go later
+MiniDeps.later(function() require("go").setup() end)
 
 -- Lsp Format
 require("lsp-format").setup {}
 
-local cmp = require("cmp")
-cmp.setup({
-  mapping = {
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        local entry = cmp.get_selected_entry()
-        if not entry then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        else
-          cmp.confirm()
-        end
-      else
-        fallback()
-      end
-    end, { "i", "s", "c" }),
-  },
-})
 -- Lsp Zero
 local lsp_zero = require('lsp-zero')
 
@@ -111,33 +92,70 @@ lsp_zero.extend_lspconfig({
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
 })
 
-
-require('lspconfig').lua_ls.setup({})
+require('lspconfig').bashls.setup({})
 require('lspconfig').gopls.setup({})
 require('lspconfig').zls.setup({})
-require('lspconfig').pylsp.setup({})
--- Run gofmt + goimports on save
+require('lspconfig').vimls.setup({})
+require('lspconfig').lua_ls.setup({})
+MiniDeps.later(function()
+  require('lspconfig').pylsp.setup({})
+  require('lspconfig').dotls.setup({})
+  require('lspconfig').sqls.setup({})
+end)
 
-local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-    require('go.format').goimports()
-  end,
-  group = format_sync_grp,
+local cmp = require("cmp")
+local cmp_action = require('lsp-zero').cmp_action()
+local lspkind = require('lspkind')
+cmp.setup({
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  }),
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50,   -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      -- can also be a function to dynamically calculate max width such as
+      -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+      ellipsis_char = '...',    -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+    })
+  }
 })
+-- Setup goimport later
+MiniDeps.later(function()
+  -- Run gofmt + goimports on save
 
--- require('asciidoc-preview').setup(
---   {
---     server = {
---       converter = 'cmd',
---       port = 11235,
---     },
---     preview = {
---       position = 'current',
---     },
---   }
--- )
+  local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*.go",
+    callback = function()
+      require('go.format').goimports()
+    end,
+    group = format_sync_grp,
+  })
+end)
+
 local actions = require("telescope.actions")
 local open_with_trouble = require("trouble.sources.telescope").open
 
@@ -154,3 +172,8 @@ telescope.setup({
     },
   },
 })
+-- Git signs setup
+MiniDeps.later(function()
+  require('gitsigns').setup()
+  require('trouble').setup()
+end)

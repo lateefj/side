@@ -15,7 +15,9 @@ add({
 add({
   source = 'hrsh7th/nvim-cmp',
   depends = {
-    'hrsh7th/cmp-nvim-lsp'
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'onsails/lspkind.nvim',
   }
 })
 -- Treesitter
@@ -30,8 +32,8 @@ add({
 -- Go
 add({
   source = 'ray-x/go.nvim',
-  depends = { -- optional packages
-    "ray-x/guihua.lua",
+  depends = { -- optional packag
+    "ray-x/guihua.lua"
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
@@ -88,4 +90,12 @@ add({
   depends = {
     'nvim-lua/plenary.nvim',
   }
+})
+-- Lua Snip
+add({
+  source = 'L3MON4D3/LuaSnip'
+})
+-- Git signs
+add({
+  source = 'lewis6991/gitsigns.nvim'
 })
