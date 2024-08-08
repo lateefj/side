@@ -33,7 +33,7 @@ add({
 add({
   source = 'ray-x/go.nvim',
   depends = { -- optional packag
-    "ray-x/guihua.lua"
+    "ray-x/guihua.lua",
     "neovim/nvim-lspconfig",
     "nvim-treesitter/nvim-treesitter",
   },
