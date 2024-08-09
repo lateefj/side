@@ -7,11 +7,12 @@ add({
   -- Supply dependencies near target plugin
   depends = { 'williamboman/mason.nvim', "lukas-reineke/lsp-format.nvim" },
 })
+-- Zero configuration
 add({
   source = 'VonHeikemen/lsp-zero.nvim',
   checkout = 'v4.x'
 })
-
+-- Autocomplete
 add({
   source = 'hrsh7th/nvim-cmp',
   depends = {
@@ -41,6 +42,7 @@ add({
     post_checkout = function() require("go.install").update_all_sync() end,
   }
 })
+-- Navigator
 add({
   source = 'ray-x/navigator.lua',
   depends = {
@@ -101,5 +103,5 @@ add({
 })
 -- Which key
 add({
- source = 'folke/which-key.nvim'
+  source = 'folke/which-key.nvim'
 })
