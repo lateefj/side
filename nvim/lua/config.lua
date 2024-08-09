@@ -167,8 +167,12 @@ local telescope = require("telescope")
 telescope.setup({
   defaults = {
     mappings = {
-      i = { ["<c-t>"] = open_with_trouble },
+      i = {
+        ["<c-t>"] = open_with_trouble,
+        ["<C-h>"] = "which_key"
+      },
       n = { ["<c-t>"] = open_with_trouble },
+
     },
   },
 })

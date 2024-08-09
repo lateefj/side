@@ -99,3 +99,7 @@ add({
 add({
   source = 'lewis6991/gitsigns.nvim'
 })
+-- Which key
+add({
+ source = 'folke/which-key.nvim'
+})

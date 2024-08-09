@@ -27,17 +27,12 @@ map('n', 'msa', function() MiniSurround.add() end, { desc = "MiniSurround add" }
 map('n', 'msd', function() MiniSurround.delete() end, { desc = "MiniSurround add" })
 map('n', 'msw', function() MiniSessions.write() end, { desc = "MiniSession write" })
 
--- Telescope
-map('n', '<leader><space>', '<cmd>Telescope buffers<cr>')
-map('n', '<leader>?', '<cmd>Telescope oldfiles<cr>')
-map('n', '<leader>ff', '<cmd>Telescope find_files<cr>')
-map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>')
-map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>')
-map('n', '<leader>fs', '<cmd>Telescope current_buffer_fuzzy_find<cr>')
+map('n', '<C-h>', '<cmd>WhichKey<cr>')
+map('n', '<leader>xx', '<cmd>Trouble diagnostics<cr>')
 -- Zig Test
 map("n", "<leader>zt", "<cmd>ZigTest<cr>", { desc = "ZigTest" })
+-- Telescope
 -- See `:help telescope.builtin`
-map('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 map('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 map('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
