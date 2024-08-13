@@ -57,7 +57,7 @@ require('mini.visits').setup()
 
 -- Possible to immediately execute code which depends on the added plugin
 require('nvim-treesitter.configs').setup({
-  ensure_installed = { 'lua', 'vimdoc' },
+  ensure_installed = { 'lua', 'vimdoc', 'go', 'zig', 'python' },
   highlight = { enable = true },
 })
 -- Setup go later
