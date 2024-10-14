@@ -30,12 +30,14 @@ vim.cmd [[colorscheme expresso]]
 -- Presentation mode
 vim.o.background = 'dark'
 
+
 require('mini.animate').setup()
 require('mini.basics').setup()
 require('mini.bracketed').setup()
 require('mini.bufremove').setup()
 require('mini.colors').setup()
 require('mini.comment').setup()
+require('mini.completion').setup()
 require('mini.diff').setup()
 require('mini.extra').setup()
 require('mini.files').setup()
@@ -47,13 +49,84 @@ require('mini.map').setup()
 require('mini.notify').setup()
 require('mini.pairs').setup()
 require('mini.pick').setup()
-require('mini.sessions').setup()
+require('mini.sessions').setup({
+  directory = vim.fn.stdpath("data")
+})
 require('mini.starter').setup()
 require('mini.statusline').setup()
 require('mini.surround').setup()
 require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
+
+-- Code companion
+require("codecompanion").setup({
+  opts = {
+    log_level = 'DEBUG',
+    send_code = true,
+  },
+  strategies = {
+    chat = {
+      adapter = "llama3",
+    },
+    inline = {
+      adapter = "deepseek",
+    },
+    agent = {
+      adapter = "llama3",
+    },
+  },
+  adapters = {
+    llama3 = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        name = "llama3", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "llama3.2:1b",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
+    deepseek = function()
+      return require("codecompanion.adapters").extend("deepseek", {
+        name = "deepseek", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "deepseek-coder",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
+    codegemma = function()
+      return require("codecompanion.adapters").extend("codegemma", {
+        name = "codegemma", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "codegemma:2b",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
+  },
+})
 
 -- Possible to immediately execute code which depends on the added plugin
 require('nvim-treesitter.configs').setup({
@@ -68,6 +141,7 @@ require("lsp-format").setup {}
 
 -- Lsp Zero
 local lsp_zero = require('lsp-zero')
+
 
 -- lsp_attach is where you enable features that only work
 -- if there is a language server active in the file
