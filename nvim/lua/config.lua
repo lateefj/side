@@ -37,7 +37,11 @@ require('mini.bracketed').setup()
 require('mini.bufremove').setup()
 require('mini.colors').setup()
 require('mini.comment').setup()
-require('mini.completion').setup()
+require('mini.completion').setup({
+  lsp_completion = {
+    auto_setup  = true
+  }
+})
 require('mini.diff').setup()
 require('mini.extra').setup()
 require('mini.files').setup()
@@ -59,6 +63,8 @@ require('mini.tabline').setup()
 require('mini.trailspace').setup()
 require('mini.visits').setup()
 
+require('codeassitant').setup({value=true, ops={foo="bar"}})
+
 -- Code companion
 require("codecompanion").setup({
   opts = {
@@ -67,13 +73,13 @@ require("codecompanion").setup({
   },
   strategies = {
     chat = {
-      adapter = "llama3",
+      adapter = "starcoder",
     },
     inline = {
       adapter = "deepseek",
     },
     agent = {
-      adapter = "llama3",
+      adapter = "deepseek",
     },
   },
   adapters = {
@@ -93,8 +99,24 @@ require("codecompanion").setup({
         },
       })
     end,
+    starcoder = function()
+      return require("codecompanion.adapters").extend("ollama", {
+        name = "starcode", -- Give this adapter a different name to differentiate it from the default ollama adapter
+        schema = {
+          model = {
+            default = "starcoder2",
+          },
+          num_ctx = {
+            default = 16384,
+          },
+          num_predict = {
+            default = -1,
+          },
+        },
+      })
+    end,
     deepseek = function()
-      return require("codecompanion.adapters").extend("deepseek", {
+      return require("codecompanion.adapters").extend("ollama", {
         name = "deepseek", -- Give this adapter a different name to differentiate it from the default ollama adapter
         schema = {
           model = {
@@ -110,7 +132,7 @@ require("codecompanion").setup({
       })
     end,
     codegemma = function()
-      return require("codecompanion.adapters").extend("codegemma", {
+      return require("codecompanion.adapters").extend("ollama", {
         name = "codegemma", -- Give this adapter a different name to differentiate it from the default ollama adapter
         schema = {
           model = {
