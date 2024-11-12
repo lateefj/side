@@ -152,5 +152,8 @@ function random_string --description "random_string 32"
 end
 
 # FZF search
-set -xg FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
+# set -xg FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/lhj/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/home/lhj/Downloads/google-cloud-sdk/path.fish.inc'; end

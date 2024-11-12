@@ -60,8 +60,9 @@ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 # Install fisher
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
-fisher install git
-fisher install fzf
+
+fisher install joseluisq/gitnow@2.12.0
+fisher install PatrickF1/fzf.fish
 # Optional install pyenv
 fisher install pyenv
 
