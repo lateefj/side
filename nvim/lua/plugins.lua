@@ -110,42 +110,5 @@ add({
 -- Dressing
 add({
   source = 'stevearc/dressing.nvim'
-
 })
 
--- codecompanion
--- add({
---   source = 'olimorris/codecompanion.nvim',
---   depends = {
---     "nvim-lua/plenary.nvim",
---     "nvim-treesitter/nvim-treesitter",
---     "hrsh7th/nvim-cmp",              -- Optional: For using slash commands and variables in the chat buffer
---     "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
---     "stevearc/dressing.nvim", 
---   }
--- })
---
-
--- add({
---   source = 'yetone/avante.nvim',
---   monitor = 'main',
---   depends = {
---     'stevearc/dressing.nvim',
---     'nvim-lua/plenary.nvim',
---     'MunifTanjim/nui.nvim',
---     'echasnovski/mini.icons'
---   },
---   hooks = { post_checkout = function() vim.cmd('make') end }
--- })
--- --- optional
--- add({ source = 'zbirenbaum/copilot.lua' })
--- add({ source = 'HakonHarnes/img-clip.nvim' })
--- add({ source = 'MeanderingProgrammer/render-markdown.nvim' })
---
--- now(function() require('avante_lib').load() end)
--- later(function() require('render-markdown').setup() end)
--- later(function()
---   require('img-clip').setup({}) -- config img-clip
---   require("copilot").setup({}) -- setup copilot to your liking
---   require("avante").setup({}) -- config for avante.nvim
--- end)
