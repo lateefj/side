@@ -24,14 +24,18 @@ end
 -- Set up 'mini.deps' (customize to your liking)
 require('mini.deps').setup({ path = { package = path_package } })
 
--- Plugins
-require("plugins")
+-- Configuration
+require("config")
+
+
+-- Editor Plugins + Config
+require("editor")
+-- IDE Plugins + Config
+require("ide")
 
 -- Import keyboard mappings
 require("keymap")
 
--- Configuration
-require("config")
 -- Autoformat
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
