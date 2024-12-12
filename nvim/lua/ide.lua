@@ -1,7 +1,7 @@
 local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local map = vim.keymap.set
 
-now(function() 
+now(function()
   -- Fish
   add({
     source = 'dag/vim-fish'
@@ -69,9 +69,8 @@ now(function()
     }
   })
 
-
   -- Go setup
-  require("go").setup() 
+  require("go").setup()
 
   -- Lsp Format
   require("lsp-format").setup {}
@@ -191,6 +190,7 @@ later(function()
       'nvim-lua/plenary.nvim',
     }
   })
+
   -- Possible to immediately execute code which depends on the added plugin
   require('nvim-treesitter.configs').setup({
     ensure_installed = { 'lua', 'vimdoc', 'go', 'zig', 'python', 'html', 'bash', 'c', 'dot', 'fish', 'javascript', 'make', 'promql', 'sql', 'tcl', 'vim', 'yaml' },

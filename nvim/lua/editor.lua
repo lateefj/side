@@ -11,7 +11,7 @@ now(function()
     source = 'lewis6991/gitsigns.nvim'
   })
 
-  -- Editior configuration
+  -- Editor configuration
   require('mini.animate').setup()
   require('mini.basics').setup()
   require('mini.bracketed').setup()
@@ -23,8 +23,11 @@ now(function()
       auto_setup = true
     }
   })
+  require('mini.clue').setup()
   require('mini.diff').setup()
   require('mini.extra').setup()
+  require('mini.indentscope').setup()
+  require('mini.jump').setup()
   require('mini.files').setup()
   require('mini.git').setup()
   require('mini.hipatterns').setup()
