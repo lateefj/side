@@ -27,7 +27,6 @@ require('mini.deps').setup({ path = { package = path_package } })
 -- Configuration
 require("config")
 
-
 -- Editor Plugins + Config
 require("editor")
 -- IDE Plugins + Config
@@ -36,15 +35,6 @@ require("ide")
 -- Import keyboard mappings
 require("keymap")
 
--- Autoformat
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
-
--- Copy / pasta clipboard
-vim.opt.clipboard = "unnamedplus"
-
-vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-
-vim.wo.spell = true
 
 local config_path = vim.fn.stdpath("config")
 

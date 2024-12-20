@@ -30,3 +30,11 @@ vim.o.smartcase = true
 vim.cmd [[colorscheme expresso]]
 -- Presentation mode
 vim.o.background = 'dark'
+
+-- Enable spelling
+vim.wo.spell = true
+
+-- Copy / pasta clipboard
+vim.opt.clipboard = "unnamedplus"
+
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }

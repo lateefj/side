@@ -21,13 +21,6 @@ map("n", "<leader>c", ":noh<cr>")
 map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
 
--- Mini keys
-map('n', 'mm', function() MiniMap.toggle() end, { desc = "toggle minimap" })
-map('n', 'msa', function() MiniSurround.add() end, { desc = "MiniSurround add" })
-map('n', 'msd', function() MiniSurround.delete() end, { desc = "MiniSurround add" })
-map('n', 'msw', function() MiniSessions.write() end, { desc = "MiniSession write" })
-
-map('n', '<C-h>', '<cmd>WhichKey<cr>')
 map('n', '<leader>xx', '<cmd>Trouble diagnostics<cr>')
 -- Zig Test
 map("n", "<leader>zt", "<cmd>ZigTest<cr>", { desc = "ZigTest" })

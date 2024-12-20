@@ -39,22 +39,12 @@ now(function()
       'onsails/lspkind.nvim',
     }
   })
-  -- Treesitter
-  add({
-    source = 'nvim-treesitter/nvim-treesitter',
-    -- Use 'master' while monitoring updates in 'main'
-    checkout = 'master',
-    monitor = 'main',
-    -- Perform action after every checkout
-    hooks = { post_checkout = function() vim.cmd('TSUpdate') end },
-  })
   -- Go
   add({
     source = 'ray-x/go.nvim',
     depends = { -- optional packag
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
-      "nvim-treesitter/nvim-treesitter",
     },
     hooks = {
       post_checkout = function() require("go.install").update_all_sync() end,
@@ -150,9 +140,11 @@ now(function()
       })
     }
   })
+  -- Autoformat
+  vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 end)
 -- Defer loading anything that can be
-later(function() 
+later(function()
   -- Trouble
   add({
     source = 'folke/trouble.nvim'
@@ -183,18 +175,15 @@ later(function()
     source = 'folke/which-key.nvim'
   })
 
+  require('which-key').setup()
+  map('n', '?', '<cmd>WhichKey<cr>')
+
   -- Telescope
   add({
     source = 'nvim-telescope/telescope.nvim',
     depends = {
       'nvim-lua/plenary.nvim',
     }
-  })
-
-  -- Possible to immediately execute code which depends on the added plugin
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'lua', 'vimdoc', 'go', 'zig', 'python', 'html', 'bash', 'c', 'dot', 'fish', 'javascript', 'make', 'promql', 'sql', 'tcl', 'vim', 'yaml' },
-    highlight = { enable = true },
   })
 
   -- Telescope
@@ -271,14 +260,5 @@ later(function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-
-  vim.api.nvim_set_keymap("n", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("n", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-  vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
-  -- Expand 'cc' into 'CodeCompanion' in the command line
-  vim.cmd([[cab cc CodeCompanion]])
 
 end)

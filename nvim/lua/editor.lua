@@ -1,10 +1,7 @@
 local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
+local map = vim.keymap.set
 
 now(function()
-  -- Dressing
-  add({
-    source = 'stevearc/dressing.nvim'
-  })
 
   -- Git signs
   add({
@@ -49,8 +46,13 @@ now(function()
 
 end)
 
-later(function() 
-  -- Dressing config
-  require('dressing').setup()
+later(function()
   require('gitsigns').setup()
+
+  -- Mini keys
+  map('n', 'mm', function() MiniMap.toggle() end, { desc = "toggle minimap" })
+  map('n', 'msa', function() MiniSurround.add() end, { desc = "MiniSurround add" })
+  map('n', 'msd', function() MiniSurround.delete() end, { desc = "MiniSurround add" })
+  map('n', 'msw', function() MiniSessions.write() end, { desc = "MiniSession write" })
+
 end)
