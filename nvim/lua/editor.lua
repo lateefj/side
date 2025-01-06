@@ -7,6 +7,9 @@ now(function()
   add({
     source = 'lewis6991/gitsigns.nvim'
   })
+  add({
+    source = 'echasnovski/mini.pick'
+  })
 
   -- Editor configuration
   require('mini.animate').setup()
@@ -44,11 +47,15 @@ now(function()
   require('mini.trailspace').setup()
   require('mini.visits').setup()
 
+
 end)
 
 later(function()
+  local picker = require('mini.pick')
+  picker.setup()
+  -- Override picker 
+  vim.ui.select = MiniPick.ui_select
   require('gitsigns').setup()
-
   -- Mini keys
   map('n', 'mm', function() MiniMap.toggle() end, { desc = "toggle minimap" })
   map('n', 'msa', function() MiniSurround.add() end, { desc = "MiniSurround add" })

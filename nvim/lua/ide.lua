@@ -19,6 +19,11 @@ now(function()
     source = 'ziglang/zig.vim'
   })
 
+  -- Lua
+  add({
+    source = 'folke/lazydev.nvim'
+  })
+
   -- LSP
   add({
     source = 'neovim/nvim-lspconfig',
@@ -101,6 +106,7 @@ now(function()
   require('lspconfig').dotls.setup({})
   require('lspconfig').sqls.setup({})
 
+  require('lazydev').setup()
   local cmp = require("cmp")
   local cmp_action = require('lsp-zero').cmp_action()
   local lspkind = require('lspkind')
