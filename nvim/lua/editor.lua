@@ -12,6 +12,7 @@ now(function()
   })
 
   -- Editor configuration
+  require('mini.ai').setup()
   require('mini.animate').setup()
   require('mini.basics').setup()
   require('mini.bracketed').setup()

@@ -2,6 +2,14 @@ local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local map = vim.keymap.set
 
 now(function()
+
+ local home = vim.fn.expand('$HOME')
+  -- My first vim plugin for session managers
+  add({
+    source = 'https://git.sr.ht/~lhj/spoon',
+    checkout = 'master'
+  })
+
   -- Fish
   add({
     source = 'dag/vim-fish'
@@ -192,6 +200,12 @@ later(function()
     }
   })
 
+  -- Setting up first plugin
+  require('spoon').setup()
+  vim.keymap.set('n', '<leader>sn', '<cmd>SpoonNew<cr>')
+  vim.keymap.set('n', '<leader>ss', '<cmd>SpoonSave<cr>')
+  vim.keymap.set('n', '<leader>sw', '<cmd>SpoonSwitch<cr>')
+
   -- Telescope
   -- See `:help telescope.builtin`
   local actions = require("telescope.actions")
@@ -239,7 +253,7 @@ later(function()
   map('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
   map('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
   map('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-  map('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+  -- map('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
   map('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
   map('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
   map('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })

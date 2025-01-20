@@ -21,6 +21,12 @@ map("n", "<leader>c", ":noh<cr>")
 map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
 
+-- Terminal short cuts
+map('n', '<leader>t', ':terminal<cr>', {desc = 'New Terminal'})
+map('n', '<leader>vt', [[<cmd>vsplit | term<cr>A]], { desc = 'Open terminal in vertical split' })
+map('n', '<leader>ht', [[<cmd>split | term<cr>A]], { desc = 'Open terminal in horizontal split' })
+map('t', 'jk', '<C-\\><C-n>', { desc = 'Use jk to enter in terminal normal mode' })
+
 map('n', '<leader>xx', '<cmd>Trouble diagnostics<cr>')
 -- Zig Test
 map("n", "<leader>zt", "<cmd>ZigTest<cr>", { desc = "ZigTest" })
