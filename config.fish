@@ -52,6 +52,10 @@ end
 if test -e $HOME/local/zls
   set -xg PATH $PATH $HOME/local/zls
 end
+# Install cargo if it exists
+if test -e "$HOME/.cargo/env.fish
+  source "$HOME/.cargo/env.fish
+end
 
 # Default to optimized compile c code
 set -xg CFLAGS -O2

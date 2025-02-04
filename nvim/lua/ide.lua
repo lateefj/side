@@ -9,7 +9,6 @@ now(function()
     source = 'https://git.sr.ht/~lhj/spoon',
     checkout = 'master'
   })
-
   -- Fish
   add({
     source = 'dag/vim-fish'
@@ -31,7 +30,10 @@ now(function()
   add({
     source = 'folke/lazydev.nvim'
   })
-
+  -- Trouble
+  add({
+    source = 'folke/trouble.nvim'
+  })
   -- LSP
   add({
     source = 'neovim/nvim-lspconfig',
@@ -159,10 +161,7 @@ now(function()
 end)
 -- Defer loading anything that can be
 later(function()
-  -- Trouble
-  add({
-    source = 'folke/trouble.nvim'
-  })
+
   -- Asciidoctor
   add({
     source = 'habamax/vim-asciidoctor'
@@ -206,6 +205,7 @@ later(function()
   vim.keymap.set('n', '<leader>ss', '<cmd>SpoonSave<cr>')
   vim.keymap.set('n', '<leader>sw', '<cmd>SpoonSwitch<cr>')
 
+  require('trouble').setup()
   -- Telescope
   -- See `:help telescope.builtin`
   local actions = require("telescope.actions")
@@ -229,7 +229,6 @@ later(function()
     },
   })
 
-  require('trouble').setup()
 
   -- Run gofmt + goimports on save
   local format_sync_grp = vim.api.nvim_create_augroup("goimports", {})
