@@ -22,7 +22,8 @@ now(function()
   require('mini.completion').setup({
     lsp_completion = {
       auto_setup = true
-    }
+    },
+    fallback_action = '<C-n>'
   })
   require('mini.clue').setup()
   require('mini.diff').setup()
@@ -38,6 +39,7 @@ now(function()
   require('mini.notify').setup()
   require('mini.pairs').setup()
   require('mini.pick').setup()
+  require('mini.snippets').setup()
   require('mini.sessions').setup({
     directory = vim.fn.stdpath("data")
   })

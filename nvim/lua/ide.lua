@@ -116,7 +116,12 @@ now(function()
   require('lspconfig').dotls.setup({})
   require('lspconfig').sqls.setup({})
 
-  require('lazydev').setup()
+  require('lazydev').setup({
+    ft = 'lua',
+    enabled = function(root_dir)
+      return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
+    end,
+  })
   local cmp = require("cmp")
   local cmp_action = require('lsp-zero').cmp_action()
   local lspkind = require('lspkind')
