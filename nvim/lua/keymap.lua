@@ -22,10 +22,15 @@ map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
 
 -- Terminal short cuts
-map('n', '<leader>t', ':terminal<cr>', {desc = 'New Terminal'})
-map('n', '<leader>vt', [[<cmd>vsplit | term<cr>A]], { desc = 'Open terminal in vertical split' })
-map('n', '<leader>ht', [[<cmd>split | term<cr>A]], { desc = 'Open terminal in horizontal split' })
-map('t', 'jk', '<C-\\><C-n>', { desc = 'Use jk to enter in terminal normal mode' })
+map('n', '<leader>tt', ':terminal<cr>', { desc = 'New Terminal' })
+map('n', '<leader>tv', [[<cmd>vsplit | term<cr>A]], { desc = 'Open terminal in vertical split' })
+map('n', '<leader>th', [[<cmd>split | term<cr>A]], { desc = 'Open terminal in horizontal split' })
+map('t', '<ESC>', '<C-\\><C-n>', { desc = 'Escape to exit insert mode' })
+map('t', '<A-h>', '<C-\\><C-N><C-w>h', { desc = 'Got to left term' })
+map('t', '<A-j>', '<C-\\><C-N><C-w>h', { desc = 'Got to right term' })
+map('t', '<A-k', '<C-\\><C-N><C-w>h', { desc = 'Got to up term' })
+map('t', '<A-l', '<C-\\><C-N><C-w>h', { desc = 'Got to down term' })
+map('n', '<leader>tf', ':FloatermNew<cr>', { desc = 'New Floating Terminal' })
 
 map('n', '<leader>xx', '<cmd>Trouble diagnostics<cr>')
 -- Zig Test

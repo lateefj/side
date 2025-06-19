@@ -69,6 +69,10 @@ now(function()
     }
   })
 
+  -- Floating terminal
+  add({
+    source = 'voldikss/vim-floaterm'
+  })
 
   -- Go setup
   require("go").setup()
@@ -107,6 +111,8 @@ now(function()
       },
     },
   })
+
+
   local cmp = require("cmp")
   local cmp_action = require('lsp-zero').cmp_action()
   local lspkind = require('lspkind')
