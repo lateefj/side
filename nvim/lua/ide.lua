@@ -52,7 +52,7 @@ now(function()
   -- Go
   add({
     source = 'ray-x/go.nvim',
-    depends = { -- optional packag
+    depends = { -- optional package
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
     },
@@ -74,19 +74,19 @@ now(function()
     source = 'voldikss/vim-floaterm'
   })
 
-  -- Go setup
-  require("go").setup()
 
   vim.lsp.enable({
+    "awk_lsp",
+    "bashls",
+    "clangd",
+    "dotls",
     "gopls",
     "lua_ls",
-    "clangd",
-    "bashls",
+    "postgres_lsp",
+    "pylsp",
+    "rupy_lsp",
     "vim",
     "zls",
-    "pylsp",
-    "dotls",
-    "sqls"
   })
   vim.diagnostic.config({
     virtual_lines = true,
@@ -113,8 +113,11 @@ now(function()
   })
 
 
+  -- Go setup
+  require("go").setup()
+
+
   local cmp = require("cmp")
-  local cmp_action = require('lsp-zero').cmp_action()
   local lspkind = require('lspkind')
   cmp.setup({
     sources = {

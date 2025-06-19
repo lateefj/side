@@ -33,5 +33,7 @@ map('t', '<A-l', '<C-\\><C-N><C-w>h', { desc = 'Got to down term' })
 map('n', '<leader>tf', ':FloatermNew<cr>', { desc = 'New Floating Terminal' })
 
 map('n', '<leader>xx', '<cmd>Trouble diagnostics<cr>')
--- Zig Test
-map("n", "<leader>zt", "<cmd>ZigTest<cr>", { desc = "ZigTest" })
+-- Zig Binding
+map("n", "<leader>zt", ":compile zig_test<cr>", { desc = "zig test" })
+map("n", "<leader>zc", ":compile zig<cr>", { desc = "zig run" })
+map("n", "<leader>ze", ":compile zig_exe<cr>", { desc = "zig run_exe" })
