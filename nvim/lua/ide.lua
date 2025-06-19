@@ -2,8 +2,7 @@ local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local map = vim.keymap.set
 
 now(function()
-
- local home = vim.fn.expand('$HOME')
+  local home = vim.fn.expand('$HOME')
   -- My first vim plugin for session managers
   add({
     source = 'https://git.sr.ht/~lhj/spoon',
@@ -26,10 +25,6 @@ now(function()
     source = 'ziglang/zig.vim'
   })
 
-  -- Lua
-  add({
-    source = 'folke/lazydev.nvim'
-  })
   -- Trouble
   add({
     source = 'folke/trouble.nvim'
@@ -70,57 +65,47 @@ now(function()
     source = 'ray-x/navigator.lua',
     depends = {
       'ray-x/guihua.lua',
-      'neovim/nvim-lspconfig',
+      'nvim-treesitter/nvim-treesitter',
     }
   })
+
 
   -- Go setup
   require("go").setup()
 
-  -- Lsp Format
-  require("lsp-format").setup {}
-
-  -- Lsp Zero
-  local lsp_zero = require('lsp-zero')
-
-
-  -- lsp_attach is where you enable features that only work
-  -- if there is a language server active in the file
-  local lsp_attach = function(client, bufnr)
-    local opts = { buffer = bufnr }
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end
-
-  lsp_zero.extend_lspconfig({
-    sign_text = true,
-    lsp_attach = lsp_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+  vim.lsp.enable({
+    "gopls",
+    "lua_ls",
+    "clangd",
+    "bashls",
+    "vim",
+    "zls",
+    "pylsp",
+    "dotls",
+    "sqls"
   })
-
-  require('lspconfig').gopls.setup({})
-  require('lspconfig').bashls.setup({})
-  require('lspconfig').zls.setup({})
-  require('lspconfig').vimls.setup({})
-  require('lspconfig').lua_ls.setup({})
-  require('lspconfig').pylsp.setup({})
-  require('lspconfig').dotls.setup({})
-  require('lspconfig').sqls.setup({})
-
-  require('lazydev').setup({
-    ft = 'lua',
-    enabled = function(root_dir)
-      return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
-    end,
+  vim.diagnostic.config({
+    virtual_lines = true,
+    -- virtual_text = true,
+    underline = true,
+    update_in_insert = false,
+    severity_sort = true,
+    float = {
+      border = "rounded",
+      source = true,
+    },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = "󰅚 ",
+        [vim.diagnostic.severity.WARN] = "󰀪 ",
+        [vim.diagnostic.severity.INFO] = "󰋽 ",
+        [vim.diagnostic.severity.HINT] = "󰌶 ",
+      },
+      numhl = {
+        [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+        [vim.diagnostic.severity.WARN] = "WarningMsg",
+      },
+    },
   })
   local cmp = require("cmp")
   local cmp_action = require('lsp-zero').cmp_action()
@@ -166,7 +151,6 @@ now(function()
 end)
 -- Defer loading anything that can be
 later(function()
-
   -- Asciidoctor
   add({
     source = 'habamax/vim-asciidoctor'
@@ -283,6 +267,4 @@ later(function()
   nmap('<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
-
-
 end)

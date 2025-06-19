@@ -39,6 +39,10 @@ end
 if test -e $HOME/bin
   set -xg PATH $PATH $HOME/bin
 end
+# Lua path
+if test -e $HOME/local/lua
+  set -xg LUA_PATH "?;?.lua;$HOME/local/lua/?.lua"
+end
 if test -e $HOME/go/bin
   set -xg PATH $HOME/go/bin $PATH
 end
