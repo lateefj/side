@@ -113,6 +113,23 @@ now(function()
   })
 
 
+  -- Add on Lua Modules like (love2d)
+  local lspconfig = require('lspconfig')
+  lspconfig.lua_ls.setup {
+    settings = {
+      Lua = {
+        workspace = {
+          -- Path to your Addons directory
+          userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
+          checkThirdParty = "Apply"
+        },
+        diagnostics = {
+          globals = { 'vim' }
+        }
+      }
+    }
+  }
+
   -- Go setup
   require("go").setup()
 
