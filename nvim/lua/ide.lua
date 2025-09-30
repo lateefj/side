@@ -30,11 +30,11 @@ now(function()
     source = 'folke/trouble.nvim'
   })
   -- LSP
-  add({
-    source = 'neovim/nvim-lspconfig',
-    -- Supply dependencies near target plugin
-    depends = { 'williamboman/mason.nvim', "lukas-reineke/lsp-format.nvim" },
-  })
+  -- add({
+  --   source = 'neovim/nvim-lspconfig',
+  --   -- Supply dependencies near target plugin
+  --   depends = { 'williamboman/mason.nvim', "lukas-reineke/lsp-format.nvim" },
+  -- })
   -- Zero configuration
   add({
     source = 'VonHeikemen/lsp-zero.nvim',
@@ -49,12 +49,13 @@ now(function()
       'onsails/lspkind.nvim',
     }
   })
+
   -- Go
   add({
     source = 'ray-x/go.nvim',
     depends = { -- optional package
       "ray-x/guihua.lua",
-      "neovim/nvim-lspconfig",
+      -- "neovim/nvim-lspconfig",
     },
     hooks = {
       post_checkout = function() require("go.install").update_all_sync() end,
@@ -75,19 +76,18 @@ now(function()
   })
 
 
-  vim.lsp.enable({
-    "awk_lsp",
-    "bashls",
-    "clangd",
-    "dotls",
-    "gopls",
-    "lua_ls",
-    "postgres_lsp",
-    "pylsp",
-    "rupy_lsp",
-    "vim",
-    "zls",
-  })
+  vim.lsp.enable('awk_lsp')
+  vim.lsp.enable('bashls')
+  vim.lsp.enable('clangd')
+  vim.lsp.enable('dotls')
+  vim.lsp.enable('gopls')
+  vim.lsp.enable('luals')
+  vim.lsp.enable('postgres_lsp')
+  vim.lsp.enable('pylsp')
+  vim.lsp.enable('ruby_lsp')
+  vim.lsp.enable('zls')
+
+
   vim.diagnostic.config({
     virtual_lines = true,
     -- virtual_text = true,
@@ -114,22 +114,22 @@ now(function()
 
 
   -- Add on Lua Modules like (love2d)
-  local lspconfig = require('lspconfig')
-  lspconfig.lua_ls.setup {
-    settings = {
-      Lua = {
-        workspace = {
-          -- Path to your Addons directory
-          userThirdParty = {os.getenv("HOME") .. ".local/share/LuaAddons"},
-          checkThirdParty = "Apply"
-        },
-        diagnostics = {
-          globals = { 'vim' }
-        }
-      }
-    }
-  }
-
+  -- local lspconfig = require('lspconfig')
+  -- lspconfig.lua_ls.setup {
+  --   settings = {
+  --     Lua = {
+  --       workspace = {
+  --         -- Path to your Addons directory
+  --         userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
+  --         checkThirdParty = "Apply"
+  --       },
+  --       diagnostics = {
+  --         globals = { 'vim' }
+  --       }
+  --     }
+  --   }
+  -- }
+  --
   -- Go setup
   require("go").setup()
 

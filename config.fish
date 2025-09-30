@@ -56,6 +56,11 @@ end
 if test -e $HOME/local/zls
   set -xg PATH $PATH $HOME/local/zls
 end
+# UV
+if test -e $HOME/.local/bin/env.fish
+  source $HOME/.local/bin/env.fish
+end
+
 # Install cargo if it exists
 # if test -e "$HOME/.cargo/env.fish
 #   source "$HOME/.cargo/env.fish
