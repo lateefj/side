@@ -2,7 +2,7 @@ local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
 local map = vim.keymap.set
 
 now(function()
-  local home = vim.fn.expand('$HOME')
+  --local home = vim.fn.expand('$HOME')
   -- My first vim plugin for session managers
   add({
     source = 'https://git.sr.ht/~lhj/spoon',
@@ -24,17 +24,11 @@ now(function()
   add({
     source = 'ziglang/zig.vim'
   })
-
   -- Trouble
   add({
     source = 'folke/trouble.nvim'
   })
-  -- LSP
-  -- add({
-  --   source = 'neovim/nvim-lspconfig',
-  --   -- Supply dependencies near target plugin
-  --   depends = { 'williamboman/mason.nvim', "lukas-reineke/lsp-format.nvim" },
-  -- })
+
   -- Zero configuration
   add({
     source = 'VonHeikemen/lsp-zero.nvim',
@@ -112,24 +106,6 @@ now(function()
     },
   })
 
-
-  -- Add on Lua Modules like (love2d)
-  -- local lspconfig = require('lspconfig')
-  -- lspconfig.lua_ls.setup {
-  --   settings = {
-  --     Lua = {
-  --       workspace = {
-  --         -- Path to your Addons directory
-  --         userThirdParty = { os.getenv("HOME") .. ".local/share/LuaAddons" },
-  --         checkThirdParty = "Apply"
-  --       },
-  --       diagnostics = {
-  --         globals = { 'vim' }
-  --       }
-  --     }
-  --   }
-  -- }
-  --
   -- Go setup
   require("go").setup()
 
