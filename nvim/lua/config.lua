@@ -27,7 +27,8 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Colorscheme
-vim.cmd [[colorscheme tomorrow-night]]
+vim.cmd.colorscheme('tomorrow-night')
+--vim.cmd.colorscheme('miniwinter')
 -- Presentation mode
 vim.o.background = 'dark'
 
